@@ -6,6 +6,7 @@ $ has_magic_philo = False
 $ has_philo_philo = False
 $ has_industry_philo = False
 $ has_magic_intro = False
+$ has_witch_watch_info = False
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -44,8 +45,6 @@ label start:
 label scienceworld:
 
     # all science world scripting goes here
-
-    return
 
 label magicworld:
 
@@ -123,14 +122,77 @@ label magicworld:
     mc "(Finally.)"
     $ has_magic_intro = True
     menu magicrootdecision:
-        "What exactly is a Witch of the Watch supposed to do?":
+        "What exactly is a Witch of the Watch supposed to do?" if (has_witch_watch_info == False):
+            jump witchwatchinfo
         "This world is about more than magic, right?":
-        "What do you know about the other worlds?":
+            jump magicworldexposition
+        "Are there any problems in this world I should know about?":
+            jump magicworldproblems
+        "I have to go now.":
+            show wildmyst #shocked
+            wm "WHAT?! ALREADY?!"
+            mc "Yep."
+            show wildmyst #neutral
+            wm "Okay. Come back soon."
+            hide main
+            with moveoutleft
+            "You step back into the portal."
+            jump start
 
-    return
+label witchwatchinfo:
+
+    wm "Ummm... it's been a long time, so I'm not really sure."
+    show wildmyst #happy
+    wm "I remember them visiting and asking questions. I got to show them around!"
+    show wildmyst #angry
+    wm "It's nice to have visitors as long as they aren't STUPID or always JUDGING us!"
+    show main #happy
+    mc "Well, I'm not planning on being stupid or judgemental on this visit. Maybe next time."
+    show wildmyst #neutral
+    wm "Good. Haha."
+    wm "..."
+    show wildmyst #shocked
+    wm "WAIT! I remember something else."
+    wm "One Witch of the Watch used to say something about \"the bubble bursting\" but I never knew what they meant."
+    show main #confused
+    mc "Yeah. That's pretty vague."
+    show wildmyst #neutral
+    wm "Sorry I don't remember anything else."
+    menu witchwatchinforeaction:
+        "Well, you still gave me a little bit of context.":
+            wc "Yeah, I guess."
+            wc "..."
+            show wildmyst #angry
+            wc "FIRE SPELL!"
+            #play sound "fire.mp3" with hpunch
+            hide main
+            with moveoutbottom
+            mc "Aaaah!"
+            show wildmyst #happy
+            wm "That always makes me feel better."
+            show main at left #confused
+            with moveinbottom
+        "How uninformative.":
+            show wildmyst #angry
+            wm "That's RUDE. You said you WEREN'T going to be JUDGEMENTAL!"
+            mc "Whoopsie."
+            show wildmyst #neutral
+        "YOU were very HELPFUL!":
+            show wildmyst #happy
+            wm "I KNOW!"
+            show wildmyst #neutral
+    $ has_witch_watch_info = True
+    jump magicrootdecision
+
+label magicworldexposition
+
+    # slightly branched conversation to learn about and reveal magic world's "idea" goes here
+
+label magicworldproblems
+
+    # highly branched conversation to find opportunity to present philosophy world's "idea" goes here
 
 label philosophyworld:
 
     # all philosophy world scripting goes here
 
-    return
