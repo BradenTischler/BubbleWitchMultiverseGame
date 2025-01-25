@@ -3,8 +3,9 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define e = Character("Eileen")
+define G = Character("Witch of Gluttony", image='LegallyDistictPinkBlob.png', kind=bubble)
 
+image Glutton = "LegallyDistinctPinkBlob.png"
 
 # The game starts here.
 
@@ -16,17 +17,15 @@ label start:
 
     scene bg room
 
-    # This shows a character sprite. A placeholder is used, but you can
-    # replace it by adding a file named "eileen happy.png" to the images
-    # directory.
-
-    show eileen happy
-
     # These display lines of dialogue.
 
-    e "You've created a new Ren'Py game."
+    show Glutton
 
-    e "Once you add a story, pictures, and music, you can release it to the world!"
+    G "Hey there pal, you seem to have created some sort of videogame or somethin\'."
+
+    G "Now that you have given me life, you must atone for the sins you have unleashed unto this world."
+
+    G "I hope you had fun."
 
     # This ends the game.
 

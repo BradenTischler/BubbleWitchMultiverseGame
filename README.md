@@ -1,5 +1,2 @@
 # BubbleWitchMultiverseGame
-gamejam 2025
-here is a change
-peepeedoodookaakaa
-Altered code altered code
+Visual Novel made for the SaskInteractive global game jam in Saskatoon
