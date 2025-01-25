@@ -1,0 +1,31 @@
+Main Character (MC) = "Witch of the Watch"
+Magic Witch = Wild Myst (WC)
+
+MC appears at left
+"Emerging from the portal, you arrive in rocky landscape, peppered by cacti emitting some sort of mystical energy."
+"Stepping out of a building in a nearby frontier town is a figure who clearly has power over the sorcery of magic."
+WC appears at right
+WC "Ah! The newest Witch of the Watch graces us with their presence!"
+MC [choice]
+-"Yes, very nice to meet you."
+-"And who the hell are you supposed to be?"
+-"I guess so?"
+WC "You may call me Wild Myst. I am the Witch of this world, a place of magic and justice!"
+WC "A Witch of the Watch has not visited here in a long time. What brings you here now?"
+MC [choice]
+-"What exactly is a Witch of the Watch supposed to do?" [only appears as an option until you have asked it to one witch leader]
+--jump to [1]
+-"Tell me about this world."
+--jump to [2]
+-"What do you know of the other worlds?"
+--jump to [3]
+-"Are there any problems in this world right now?"
+--jump to [4]
+
+[2]
+WC "Here, we are a collection of individuals, each with their own strength of character. And feeling!"
+WC "When you appreciate the power inside of you, you unlock the sorcery of magic."
+WC "Of course, magic is risky when used for the wrong reasons, so we keep the peace with a swift system of justice!"
+MC [choice]
+-"Can you explain more about magic?"
+-"Can you...

@@ -30,3 +30,21 @@ label start:
     # This ends the game.
 
     return
+
+label scienceworld:
+
+    # all science world scripting goes here
+
+    return
+
+label magicworld:
+
+    # all magic world scripting goes here
+
+    return
+
+label philosophyworld:
+
+    # all philosophy world scripting goes here
+
+    return
