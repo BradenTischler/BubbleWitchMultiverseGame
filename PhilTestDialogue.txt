@@ -1,0 +1,74 @@
+[Player enters the world; the G. WITCH appears, an androgynous character with sparse
+pink hair standing in a tall plume at the top of their head. They are wearing comfortable 
+but archaic Feudal-European robes, and they stand in an observatory filled with abaci,
+Napier's Bones (https://en.wikipedia.org/wiki/Napier's_bones), and other outdated 
+manual mathematical instruments]
+
+G. WITCH: Hark! Who enters my lair!
+
+PLAYER: The witch of the nether-bubble realm.
+
+G. WITCH: And what is your import?
+
+PLAYER: I don't know.
+
+G. WITCH: Well, I will have you know that those of little import...
+[beat]
+...are completely welcome here!
+
+PLAYER: Well, I suppose I shouldn't say that. I'm important, apparently. A book said so.
+I just don't really know *why*, outside of the whole witch thing. Which is fine I guess.
+
+G. WITCH: Well, don't define your worth by some crusty old book! Come, come! All are welcome here!
+All your ideas are welcome! Please make yourself at home!
+
+PLAYER: Alright.
+[new dialogue box]
+Well, to start out with to be at home, I need:...
+[beat]
+A tiger whose back is smeared in meringue riding a unicycle on a bouncing ball that's 
+cheered on by a seal.
+
+G. WITCH: Of course, of course! I'll fetch the mage at once!
+
+PLAYER: ...that was a joke. I didn't know the multiverse could actually get that weird.
+
+G. WITCH: Oh, it was a completely ludicrous suggestion! But ludicrous is welcome here!
+All ideas are welcome here! Have what you want, and it shall be made!
+
+PLAYER: No, no. I'm good.
+
+G. WITCH: Of course you're good you're amazing! You're here! Isn't life a wonderful thing!?
+
+[dialogue options]
+1. Yes, it is! You're right! We're all amazing!
+2. Don't worry, I'm easy to please.
+3. I take it back. Tiger. Meringue. Now.
+	
+Branch 1:
+	
+	G. WITCH: Oh, magnificence! I see we agree! Isn't agreement wonderful!?
+	
+	1. It is!
+	2. It is, but people have to disagree sometimes, don't they?
+	3. No. I hate you. Tiger. Post-haste.
+	4. What are all these doohickeys
+	
+	Branch 1:
+
+		G. WITCH: Wonderful! Stay as long as you like! You are always welcome here!
+		
+		Narration: You spend the rest of your life in blissful happiness with your new comrade. Which is [time elapsed].
+			The world goes black and you don't know how it ended. BAD ENDING
+				# Obviously not how we'd actually implement this, since we agreed on four endings. This just seemed like a natural
+				# conclusion to this dialogue tree, where the user gives into the vices of a given world and settles there. Keeping
+				# the rock a secret would obviously be a bit hard, and these gag endings might discourage people from taste-testing up
+				# to a 'real' ending.
+			
+
+	Branch 2:
+		G. WITCH: I was like you once. Always so dilligent and naïve. But I got stuck in my ways. I know to open up now.
+		
+		1. Good for you! Keeping an open mind is amazing!
+		2. Yes. I'm not naïve. Which is why I get a tiger. Now.
+		3. You are literally disagreeing with me right now.

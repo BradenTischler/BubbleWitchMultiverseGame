@@ -1,4 +1,4 @@
-﻿# The script of the game goes in this file.
+# The script of the game goes in this file.
 
 # variables
 $ mc_name = ""
@@ -12,11 +12,17 @@ $ has_witch_watch_info = False
 # name of the character.
 
 define G = Character("Witch of Gluttony", image='LegallyDistictPinkBlob.png', kind=bubble)
+<<<<<<< Updated upstream
 define mc = Character(mc_name, image='main.png', kind=bubble)
+define sr = Character("Sapona Ramune", image='', kind=bubble) #placeholder name
 # define wm = Character("Wild Myst", image='whatever.png', kind=bubble)
+=======
+define P = Character("Witch of the Mind", image='LegallyDistictPinkBlob.png', kind=bubble)
+>>>>>>> Stashed changes
 
 image Glutton = "LegallyDistinctPinkBlob.png"
 image main = "main.png"
+image sapona = ''
 
 # The game starts here.
 
@@ -38,6 +44,8 @@ label start:
 
     G "I hope you had fun."
 
+    jump philosophyworld
+
     # This ends the game.
 
     return
@@ -45,6 +53,33 @@ label start:
 label scienceworld:
 
     # all science world scripting goes here
+    show main at left
+    with moveinleft
+    "You slip through the membrane, into another sphere."
+    "A soft neon glow fills your vision."
+    "After some time of aimless wandering, a large black limo abruptly pulls in front of you"
+    "Out from the vehicle steps an imposing, but clean-cut creature"
+    show sapona at right
+    with moveinright
+    sr "Welcome, traveller"
+    sr "What brings you to our grand metropolis?"
+
+    #first branch, no consequense
+    menu sci_main_menu:
+        "I'm just looking around, I was curious about this world.":
+            sr "I see. I'm flattered to have piqued your interest"
+        "I'm bored. This place looked interesting":
+            #show sapona happy
+            sr "Well you've come to the right place!"
+            sr "Come and stay a while in one of our fantastic luxury hotels!"
+            sr "Buy a souvenir, and stimulate the local economy!"
+        "I think it must have been fate that guided me here":
+            sr "If one believes in such things, I suppose."
+            sr "This {i}is{/i} a land of opportunity"
+
+    
+
+
 
 label magicworld:
 
@@ -194,5 +229,61 @@ label magicworldproblems
 
 label philosophyworld:
 
-    # all philosophy world scripting goes here
+    scene bg room
+
+    P "Hark! Who enters my lair!?"
+
+    menu:
+        "The valient bubble-witch of the fantastically sophisticated nether-realm!":
+            jump intro_branch_1
+        
+        "[Actual cannonical hub world name]":
+            jump intro_branch_2
+
+        "That's none of your business!":
+            jump intro_branch_3
+
+
+    label intro_branch_1:
+        "Oh, utterly resplendent! A fortuitious parlay, this will be!" :
+            jump intro_branch_1 done
+
+    label intro_branch_2:
+        "Ah, I see. A grave undertaking indeed." :
+            jump intro_branch_2 done
+
+    label intro_branch_3:
+        "Oh, how unfortunate you conceal things from me! But if that is how you choose"
+        "to approach, so be it!" :
+            jump intro_branch_3 done
+
+    P "And what is your import?"
+
+    loopy_phil_1 = False
+    label sticking_loop1:
+        menu:
+             $ if loopy_phil_1 == True:
+                "Well, what are you, then!?"
+                $ break
+            
+            "Sir, I'm not a delivery driver!":
+                jump sticking_loop1
+                 $ loopy_phil_1 = True
+
+            "I'm nobody.":
+                jump sticking_response_1
+
+            "I don't know. A book said I was important.":
+                jump sticking_response_2
+
+            label sticking_response_1:
+                "Well, that's no way to treat yourself! come! have a chat!"
+                jump sticking_loop1 done
+            
+            label sticking_response_2:
+                "Ah, and yet your title flatters you so! I suppose the training was never
+                quite transparent"
+                jump sticking_loop1 done
+
+        
 
