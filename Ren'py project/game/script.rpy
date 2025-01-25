@@ -12,17 +12,23 @@ $ has_witch_watch_info = False
 # name of the character.
 
 define G = Character("Witch of Gluttony", image='LegallyDistictPinkBlob.png', kind=bubble)
-<<<<<<< Updated upstream
 define mc = Character(mc_name, image='main.png', kind=bubble)
 define sr = Character("Sapona Ramune", image='', kind=bubble) #placeholder name
 # define wm = Character("Wild Myst", image='whatever.png', kind=bubble)
-=======
 define P = Character("Witch of the Mind", image='LegallyDistictPinkBlob.png', kind=bubble)
->>>>>>> Stashed changes
 
 image Glutton = "LegallyDistinctPinkBlob.png"
 image main = "main.png"
 image sapona = ''
+
+# defining consistent transforms for use
+
+transform rightish:
+    xalign 0.75
+    yalign 1.0
+transform leftish:
+    xalign 0.25
+    yalign 1.0
 
 # The game starts here.
 
@@ -135,7 +141,7 @@ label magicworld:
             show wildmyst #neutral
         "Can you take me to your boss already?":
             wm "Boss?"
-            show wildmyst #mad
+            show wildmyst #angry
             wm "HEY! I {i}am{/i} the boss around here!"
             wm "Don't you know a fellow Witch when you see one? I control the craft of magic, so I get to be the leader!"
             mc "Whoopsie."
@@ -220,6 +226,40 @@ label witchwatchinfo:
     jump magicrootdecision
 
 label magicworldexposition
+
+    show wildmyst #happy
+    wm "You'd better believe it, FRIEND!"
+    wm "Come with me and I'll show you around."
+    hide wildmyst
+    with moveoutright
+    hide main
+    with moveout right
+    mc "Sure. That sounds like an idea."
+    show wildmyst at leftish #neutral
+    with moveinleft
+    show main at left #neutral
+    with moveinleft
+    "Wild Myst whisks you off to the centre square of a town nearby."
+    wm "This is where we sentence misbehaving citizens to SWIFT justice!"
+    show wildmyst #shocked
+    wm "In this world, you aren't allowed to make fun of anyone or judge anyone or tell anyone they can't be who they are!"
+    show wildmyst #angry
+    wm "And when people break the rules, I take their magic away."
+    menu magictourquestion:
+        "That seems fair.":
+            #
+        "Then what do you do with them?":
+            show wildmyst #shocked
+            wm "They aren't allowed to participate in society anymore, so I put them in a smelly cave."
+            show main #confused
+            mc "For how long?"
+            wm "Hmmm... I'm not really sure. Long enough to teach them a lesson I guess."
+            mc "Do you ever restore their magic to them?"
+            wm "NO! They were mean, so being allowed out of the cave is good enough for them."
+            # quick menu choice about agree or disagree
+        "Yes! Make them feel JUSTICE!":
+            #
+
 
     # slightly branched conversation to learn about and reveal magic world's "idea" goes here
 
