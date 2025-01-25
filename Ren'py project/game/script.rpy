@@ -1,11 +1,11 @@
 ﻿# The script of the game goes in this file.
 
 # variables
-$mc_name = ""
-$has_magic_philo = false
-$has_science_philo = false
-$has_industry_philo = false
-$
+$ mc_name = ""
+$ has_magic_philo = False
+$ has_philo_philo = False
+$ has_industry_philo = False
+$ has_magic_intro = False
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
@@ -52,6 +52,10 @@ label magicworld:
     show main at left #neutral
     with moveinleft
     "You step out of the portal into a strange place."
+    if (has_magic_intro==True):
+        show wildmyst at right #neutral
+        with moveinright
+        jump magicrootdecision
     "Dashing down the steps of a building is a figure who seems to have been expecting you."
     show wildmyst at right #shocked
     with moveinright
@@ -117,8 +121,11 @@ label magicworld:
     with moveinright
     wm "Oh yeah. You probably came here for some reason, right?"
     mc "(Finally.)"
-
-
+    $ has_magic_intro = True
+    menu magicrootdecision:
+        "What exactly is a Witch of the Watch supposed to do?":
+        "This world is about more than magic, right?":
+        "What do you know about the other worlds?":
 
     return
 
