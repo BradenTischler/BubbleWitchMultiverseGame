@@ -13,6 +13,7 @@ $ has_magic_intro = False
 define G = Character("Witch of Gluttony", image='LegallyDistictPinkBlob.png', kind=bubble)
 <<<<<<< Updated upstream
 define mc = Character(mc_name, image='main.png', kind=bubble)
+define sr = Character("Sapona Ramune", image='', kind=bubble) #placeholder name
 # define wm = Character("Wild Myst", image='whatever.png', kind=bubble)
 =======
 define P = Character("Witch of the Mind", image='LegallyDistictPinkBlob.png', kind=bubble)
@@ -20,6 +21,7 @@ define P = Character("Witch of the Mind", image='LegallyDistictPinkBlob.png', ki
 
 image Glutton = "LegallyDistinctPinkBlob.png"
 image main = "main.png"
+image sapona = ''
 
 # The game starts here.
 
@@ -50,6 +52,33 @@ label start:
 label scienceworld:
 
     # all science world scripting goes here
+    show main at left
+    with moveinleft
+    "You slip through the membrane, into another sphere."
+    "A soft neon glow fills your vision."
+    "After some time of aimless wandering, a large black limo abruptly pulls in front of you"
+    "Out from the vehicle steps an imposing, but clean-cut creature"
+    show sapona at right
+    with moveinright
+    sr "Welcome, traveller"
+    sr "What brings you to our grand metropolis?"
+
+    #first branch, no consequense
+    menu sci_main_menu:
+        "I'm just looking around, I was curious about this world.":
+            sr "I see. I'm flattered to have piqued your interest"
+        "I'm bored. This place looked interesting":
+            #show sapona happy
+            sr "Well you've come to the right place!"
+            sr "Come and stay a while in one of our fantastic luxury hotels!"
+            sr "Buy a souvenir, and stimulate the local economy!"
+        "I think it must have been fate that guided me here":
+            sr "If one believes in such things, I suppose."
+            sr "This {i}is{/i} a land of opportunity"
+
+    
+
+
 
     return
 
