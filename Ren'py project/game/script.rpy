@@ -80,8 +80,36 @@ label magicworld:
     mc "(Did she just introduce me to myself?)"
     wm "We haven't had a Witch of the Watch visit our world for a really long time!"
     menu questionleadership:
-        "So, you're in charge around here?"
-    
+        "So, you're in charge around here?":
+            wm "Yep, basically. I'm the Witch who controls the craft of magic and I lead this world."
+        "Wild Myst is a COOL name!":
+            show wildmyst #happy
+            wm "I know, right? A fitting name for the Witch of magic-craft and leader of this amazing world!"
+            show wildmyst #neutral
+        "Can you take me to your boss already?":
+            wm "Boss?"
+            show wildmyst #mad
+            wm "HEY! I {i}am{/i} the boss around here!"
+            wm "Don't you know a fellow Witch when you see one? I control the craft of magic, so I get to be the leader!"
+            mc "Whoopsie."
+            show wildmyst #neutral
+    wm "Anyway, it's good that you're visiting. This is a place where everyone is free to be themselves and cast magic spells all the time!"
+    show wildmyst #angry
+    wm "Like a FIRE SPELL!"
+    #play sound "fire.mp3" with hpunch
+    mc "Aaaah!"
+    show wildmyst #neutral
+    hide wildmyst
+    with moveoutright
+    wm "Okay. BYE!"
+    show main #confused
+    mc "What? Wait!"
+    show wildmyst at right #neutral
+    with moveinright
+    wm "Oh yeah. You probably came here for some reason, right?"
+    mc "(Finally.)"
+
+
 
     return
 
