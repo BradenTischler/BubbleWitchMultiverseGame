@@ -1,4 +1,4 @@
-﻿# The script of the game goes in this file.
+# The script of the game goes in this file.
 
 # variables
 $ mc_name = ""
@@ -11,8 +11,12 @@ $ has_magic_intro = False
 # name of the character.
 
 define G = Character("Witch of Gluttony", image='LegallyDistictPinkBlob.png', kind=bubble)
+<<<<<<< Updated upstream
 define mc = Character(mc_name, image='main.png', kind=bubble)
 # define wm = Character("Wild Myst", image='whatever.png', kind=bubble)
+=======
+define P = Character("Witch of the Mind", image='LegallyDistictPinkBlob.png', kind=bubble)
+>>>>>>> Stashed changes
 
 image Glutton = "LegallyDistinctPinkBlob.png"
 image main = "main.png"
@@ -36,6 +40,8 @@ label start:
     G "Now that you have given me life, you must atone for the sins you have unleashed unto this world."
 
     G "I hope you had fun."
+
+    jump philosophyworld
 
     # This ends the game.
 
@@ -131,6 +137,62 @@ label magicworld:
 
 label philosophyworld:
 
-    # all philosophy world scripting goes here
+    scene bg room
+
+    P "Hark! Who enters my lair!?"
+
+    menu:
+        "The valient bubble-witch of the fantastically sophisticated nether-realm!":
+            jump intro_branch_1
+        
+        "[Actual cannonical hub world name]":
+            jump intro_branch_2
+
+        "That's none of your business!":
+            jump intro_branch_3
+
+
+    label intro_branch_1:
+        "Oh, utterly resplendent! A fortuitious parlay, this will be!" :
+            jump intro_branch_1 done
+
+    label intro_branch_2:
+        "Ah, I see. A grave undertaking indeed." :
+            jump intro_branch_2 done
+
+    label intro_branch_3:
+        "Oh, how unfortunate you conceal things from me! But if that is how you choose"
+        "to approach, so be it!" :
+            jump intro_branch_3 done
+
+    P "And what is your import?"
+
+    loopy_phil_1 = False
+    label sticking_loop1:
+        menu:
+             $ if loopy_phil_1 == True:
+                "Well, what are you, then!?"
+                $ break
+            
+            "Sir, I'm not a delivery driver!":
+                jump sticking_loop1
+                 $ loopy_phil_1 = True
+
+            "I'm nobody.":
+                jump sticking_response_1
+
+            "I don't know. A book said I was important.":
+                jump sticking_response_2
+
+            label sticking_response_1:
+                "Well, that's no way to treat yourself! come! have a chat!"
+                jump sticking_loop1 done
+            
+            label sticking_response_2:
+                "Ah, and yet your title flatters you so! I suppose the training was never
+                quite transparent"
+                jump sticking_loop1 done
+
+        
 
     return
