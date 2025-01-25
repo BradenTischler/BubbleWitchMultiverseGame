@@ -4,6 +4,7 @@
 # name of the character.
 
 define G = Character("Witch of Gluttony", image='LegallyDistictPinkBlob.png', kind=bubble)
+# define wm = Character("Wild Myst", image='whatever.png', kind=bubble)
 
 image Glutton = "LegallyDistinctPinkBlob.png"
 
@@ -39,7 +40,48 @@ label scienceworld:
 
 label magicworld:
 
-    # all magic world scripting goes here
+    show main at left #neutral
+    with moveinleft
+    "You step out of the portal into a strange place."
+    "Dashing down the steps of a building is a figure who seems to have been expecting you."
+    show wildmyst at right #shocked
+    with moveinright
+    wm "It's YOU!"
+    show wildmyst at left #neutral
+    with move
+    hide main
+    with moveoutleft
+    wm "WELCOME!"
+    menu reactionfromground:
+        "Okay. Help me up now, please.":
+            show wildmyst at center
+            with move
+            show main at left #neutral
+            with moveinbottom
+            wm "Oh, you're no fun."
+        "Hey! Watch where you're going!":
+            show wildmyst at center #happy
+            with move
+            show main at left #neutral
+            with moveinbottom
+            wm "Oooh! You've got a temper on you. I like it!"
+            mc "That makes one of us."
+        "THANK YOU!":
+            show wildmyst at center #shocked
+            with move
+            show main at left #neutral
+            with moveinbottom
+            wm "That's right! Let's shout our excitement from the hilltops. YAY!"
+            mc "HOORAY?"
+    show wildmyst at right #neutral
+    with move
+    wm "SO! My name is Wild Myst and you are the new Witch of the Watch."
+    show main #confused
+    mc "(Did she just introduce me to myself?)"
+    wm "We haven't had a Witch of the Watch visit our world for a really long time!"
+    menu questionleadership:
+        "So, you're in charge around here?"
+    
 
     return
 
