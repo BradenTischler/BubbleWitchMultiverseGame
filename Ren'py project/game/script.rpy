@@ -1,12 +1,21 @@
 ﻿# The script of the game goes in this file.
 
+# variables
+$mc_name = ""
+$has_magic_philo = false
+$has_science_philo = false
+$has_industry_philo = false
+$
+
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
 define G = Character("Witch of Gluttony", image='LegallyDistictPinkBlob.png', kind=bubble)
+define mc = Character(mc_name, image='main.png', kind=bubble)
 # define wm = Character("Wild Myst", image='whatever.png', kind=bubble)
 
 image Glutton = "LegallyDistinctPinkBlob.png"
+image main = "main.png"
 
 # The game starts here.
 
