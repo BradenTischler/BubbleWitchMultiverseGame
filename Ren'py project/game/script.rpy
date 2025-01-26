@@ -758,6 +758,8 @@ label philosophyworld:
             P "Well, there are many theories..."
 
             V """
+            {clear}
+            
             One day, my roomate told me how if you triangulate the velocity of the Austrlabus Valley's teloscope
             quite right, the object is {i}clearly{/i} a magnificent dragon that we must feast to every night, lest he
             be lonely and eat us! Of course, I'm so busy with my figures that planning a feast right now seems very hard,
@@ -939,6 +941,8 @@ label philosophyworld:
                 pass
 
         V '''
+        {clear}
+
         You're right. It was that debate that sparked all the good that people did: the arguing,
         the fierce determination, and yet the genuinely kind ones always manage to synthesize things
         and make things more that their parts. I understand. But I need to know: how can I trust myself
@@ -967,6 +971,8 @@ label philosophyworld:
             "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
                 pass
         V '''
+        {clear}
+
         You're right. I knew how to talk, and be jovial and accept people. And I learned how to trust
         people. But I forgot how to think, and that makes me a bad scientist and philosopher. I haven't
         really thought in a while. I got so caught up in all the different ways of doing things, I forgot
