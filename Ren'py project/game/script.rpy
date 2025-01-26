@@ -12,6 +12,8 @@ default has_philo_intro = False
 default has_industry_intro = False
 default magic_tour_suspended = False
 default done_magic_tour = False
+default done_magic_problem_intro = False
+default magic_problem_suspended = False
 default is_solved_industry = False
 default is_solved_magic = False
 default is_solved_philo = False
@@ -449,8 +451,13 @@ label magicworld:
             with moveoutright
             wm "Let's go!"
             $ magic_tour_suspended = False
-        "Are there any problems in this world I should know about?":
+        "Are there any problems in this world I should know about?" if done_magic_problem_intro = False:
             jump magicworldproblems
+        "Can we talk about your problems again?" if magic_problem_suspended:
+            show wildmyst at center
+            with move
+            wm "PLEASE! Tell me you know what to do!"
+            jump solvemagic
         "I have to go now.":
             show wildmyst #shocked
             wm "WHAT?! ALREADY?!"
@@ -691,6 +698,64 @@ label magicworldproblems:
     show wildmyst at center
     with move
     "Wild Myst moves closer and speaks in a quieter voice, so as not to be overheard."
+    wm "My people recently discovered a new vein of maginesium, the resource that powers our magic, deep underground."
+    show wildmyst #happy
+    wm "It's the biggest deposit ever found, which is actually PRETTY exciting!"
+    show wildmyst #shocked
+    wm "But it runs under the lands of many different towns and farms..."
+    wm "So it's not clear who should have the right to start mining the maginesium."
+    wm "And two competing groups have formed, claiming the resource belongs to them."
+    show wildmyst #angry
+    wm "They've actually started FIGHTING with MAGIC!"
+    wm "It's FIRE SPELLS all over the place!"
+    play sound "fire.mp3"
+    with vpunch
+    mc "Aaaah!"
+    show wildmyst #neutral
+    wm "Like that one."
+    menu badadvice:
+        "Can't you just use your powers to mine the resource yourself?":
+            wm "I could, but that wouldn't make anyone happy. I try to work with my people where I can."
+        "Can't you just punish the people who have started fighting?":
+            wm "Normally, I would, but too many people are involved now."
+    wm "Usually, I have a very clear picture of what is right and what is wrong."
+    show wildmyst #shocked
+    wm "But both sides are huge! And I can't decide which one is right..."
+    show wildmyst #neutral
+    wm "I've never had to deal with anything like this before."
+    hide wildmyst
+    with moveoutbottom
+    wm "DARN!"
+    mc "(She's thrown herself to the ground and is now lying in a pitiful heap.)"
+    mc "Hey, I'm sure every problem can be solved."
+    mc "Maybe I can help?"
+    show wildmyst at leftish #happy
+    with moveinbottom
+    wm "YES! You're a Witch of the Watch! You've come to help us in our hour of NEED!"
+    wm "PLEASE! Tell me you know what to do!"
+    menu solvemagic:
+        "Actually, I don't have any ideas right now.":
+            wm "Awww..."
+            show wildmyst at right
+            with move
+            wm "Well, on the off chance that you come up with something, please let me know."
+            mc "'Kay."
+            $ magic_problem_suspended = True
+            jump magicrootdecision
+        "I learned something from another world that might help." if has_phil_philo:
+            $ magic_problem_suspended = False
+            show wildmyst at center
+            with move
+            wm "Another world? Really?"
+            show wildmyst #angry
+            wm "But those scientists and philosophers are so SNOOTY! They don't know ANYTHING about love or magic!"
+            mc "Maybe not, but the philosophers do know something about ideas."
+            show wildmyst #neutral
+            mc "You're seeing your problem in black and white. You think you have to make a moral judgement between only two possibilities."
+            mc "But the philosophers would tell you that there are always infinite possibilities, shades between extremes."
+            wm "What?!"
+            mc "Being just doesn't mean being rigid."
+            mc "Find the fairest solution by..."
 
     
     jump magicrootdecision
