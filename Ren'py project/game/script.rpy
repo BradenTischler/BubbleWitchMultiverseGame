@@ -346,6 +346,12 @@ label scienceworld:
                 #show sapona
                 sr "Of course. What is it?"
                 jump sci_issue
+            
+            "Can I leave?":
+                sr "I can't keep you here, if you must go."
+                sr "At least buy something on the way out, will you?"
+                jump hub_world
+
 
     label sci_solved:
         #do color change stuff
@@ -353,21 +359,7 @@ label scienceworld:
         "A subtle change in the atmosphere..."
         "A shift in your perception..."
         "You think you have done something good."
-        if (is_solved_magic and is_solved_philo):
-            "Yay."
-            jump hub_world
-            # jump best_end
-        elif (current_jumps > max_jumps):
-            if (is_solved_magic):
-                # jump magic_sci_end
-                "Whoo."
-                jump hub_world
-            elif (is_solved_philo):
-                # jump philo_sci_end
-                "Okay."
-                jump hub_world
-        else:
-            jump hub_world
+        jump hub world
 
 # THIS COMMENT MARKS THE END OF SCIENCE WORLD
     
