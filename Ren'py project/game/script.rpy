@@ -25,8 +25,8 @@ default loopy_phil_1 = False
 
 define mc = Character("[mc_name]", image='main.png', kind=adv, color="#DDDDDD")
 define b = Character("Book", kind=nvl)
-define sr = Character("Sapona Ramune", image='sapona.png', kind=adv, color="#0000DD")
-define wm = Character("Wild Myst", image='wildmyst.png', kind=adv, color="#DD0000")
+define sr = Character("Sapona Ramune", image='sapona.png', kind=adv, color="#0000FF")
+define wm = Character("Wild Myst", image='wildmyst.png', kind=adv, color="#FF0000")
 define P = Character("Loopy Phil", image='phil.png', kind=adv, color="#00BB00")
 define V = Character("Loopy Phil", image='phil.png', kind=nvl, color="#00BB00")
 define r = Character("rat.jpg")
