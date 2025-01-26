@@ -346,7 +346,7 @@ label scienceworld:
 
             "Can I leave?"
                 sr "I can't keep you here, if you must go."
-                sr "At least buy something on the wawy out, will you?"
+                sr "At least buy something on the way out, will you?"
                 jump hub_world
 
     label sci_solved:
@@ -1084,11 +1084,47 @@ label ending:
         jump magic_industry_end
   
 label magic_philo_end:
-    "You contact your allies in the worlds of magic and philosophy"
-    "Working together, you hatch a genius plan"
-    ""
-label philo_industry_end:
+    "You contact your allies in the worlds of magic and philosophy."
+    "Working together, you hatch a genius plan."
+    show phil
+    with moveinright
+    "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
+    hide phil
+    with moveoutright
+    show wildmyst
+    with moveinright
+    "While Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
+    hide wildmyst
+    with moveoutright
+    "Unfortunately, without transportation, the team is unable to travel close enough to intecept at a safe distance."
+    "Instead, the team waits until it is almost struck them, then obliterates it with supreme power and precision."
+    "The shrapnel from the blast rains down on the spheres, causing widespread destruction."
+    "Regardless, nothing is lost that cannot be rebuilt."
+    jump fin_screen
 
+label philo_industry_end:
+    "You contact your allies in the worlds of science and philosophy."
+    "Working together, you concoct a wily scheme."
+    show phil
+    with moveinright
+    "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
+    hide phil
+    show sapona
+    with moveinright
+    "While Sapona and the worker's union manufacture a ship to intercept it."
+    hide sapona
+    with moveoutright
+    "Unfortunately, with inadequate firepower, the team can't permanently destroy it."
+    "Instead, the team sends the starship on a collision course with the celestial threat."
+    "Striking at the precise force and velocity, it's approach vector changes enough to barely miss the spheres."
+    "However, the sheer mass of the thing causes powerful tidal shifts as it passes."
+    "Tsunamis and earthquakes plauge the worlds, but eventually they cease."
+    "While there is widespread destruction, it is nothing that can't be rebuilt."
+    jump fin_screen
+    
 label magic_industry_end:
+
+label fin_screen:
+
     
 return        
