@@ -154,27 +154,27 @@ label scienceworld:
         with moveinleft
         "You slip through the membrane, into another sphere."
         "A soft neon glow fills your vision."
-        "After some time of aimless wandering, a large black limo abruptly pulls in front of you"
-        "Out from the vehicle steps an imposing, but clean-cut creature"
+        "After some time of aimless wandering, a large black limo abruptly pulls in front of you."
+        "Out from the vehicle steps an imposing but clean-cut creature."
         show sapona at right
         with moveinright
-        sr "Welcome, traveller"
+        sr "Welcome, traveller."
         sr "What brings you to our grand metropolis?"
 
         #first branch, no consequense
         menu sci_initial:
-            "I'm just looking around, I was curious about this world.":
-                sr "I see. I'm flattered to have piqued your interest"
-            "I'm bored. This place looked interesting":
+            "I'm just looking around. I was curious about this world.":
+                sr "I see. I'm flattered to have piqued your interest."
+            "I'm bored. This place looked interesting.":
                 #show sapona happy
                 sr "Well you've come to the right place!"
                 sr "Come and stay a while in one of our fantastic luxury hotels!"
                 sr "Buy a souvenir, and stimulate the local economy!"
                 $ industry_bored = True
-            "I think it must have been fate that guided me here":
+            "I think it must have been fate that guided me here.":
                 #show sapona angry
                 sr "If one believes in such things, I suppose."
-                sr "This {i}is{/i} a land of opportunity"
+                sr "This {i}is{/i} a land of opportunity."
         $ has_industry_intro = True
         jump sci_main
     else:
@@ -189,11 +189,11 @@ label scienceworld:
                 sr "Ah, you must be one of the new ones."
                 sr "Forgive me, you nothing-witches come and go so often I tend to forget your faces."
                 #show sapona happy
-                sr "I am the Witch of the City"
+                sr "I am the Witch of the City..."
                 sr "Patron of industry, and Bringer of prosperity."
                 sr "I run this world with a cold, unbiased, and concrete hand..."
                 #show sapona
-                sr "...and as a result, my people are the wealthiest amoung the spheres."
+                sr "...and as a result, my people are the wealthiest among the spheres."
                 label sci_whoareyou:
                     if has_industry_philo==False:
                         $ has_skipped_sciphilodialogue = True
@@ -203,15 +203,15 @@ label scienceworld:
                             #show sapona angry
                             sr "{i}You{/i} are a Witch, Little Witch of the Dead Sphere."
                             #show sapona
-                            sr "You are not the first, they tend to come and go somewhat aimlessly."
+                            sr "You are not the first. They tend to come and go somewhat aimlessly."
                             jump sci_whoareyou
                         "Tell me more about your business philosophy.":
                             #show sapona happy
-                            sr "Very wise of you to seek my council, witch of nothingness."
+                            sr "Very wise of you to seek my council, Witch of nothingness."
                             sr "Perhaps with my guidance you can breath some life into that empty world of yours."
                             #show sapona
                             sr "First and foremost is efficiency."
-                            sr "A good witch will not tolerate waste."
+                            sr "A good Witch will not tolerate waste."
                             sr "Try new things, yes; that is the only way to prevent stagnation."
                             sr "But do not allow a failed product line to drag down your entire business."
                             sr "As soon as something stops working, you have to change it..."
@@ -230,8 +230,8 @@ label scienceworld:
                 sr "I'm sure you're quite overwhelmed, coming from that dinky little world, where nothing ever happens."
                 sr "But don't worry, our industious workforce will ensure you are comfortable and taken care of."
                 #show sapona embarrased/neutral
-                sr "...er, well; most of them will."
-                sr "I do apologise, this is a somewhat inconvenient timing."
+                sr "...er, well, most of them will."
+                sr "I do apologise. This is a somewhat inconvenient timing."
                 sr "There is a slight hiccup with some of our staff refusing to do their job."
                 #show sapona happy
                 sr "But I assure you, it's nothing that can't be fixed with high enough overtime pay."
@@ -243,16 +243,16 @@ label scienceworld:
                     "What do you think they want?":
                         pass
                 #show sapona angry
-                sr "Certain {i}lazy{/i} individuals have got it in their heads they need..."
-                "Sapona leans in and states in a low wisper:"
+                sr "Certain {i}lazy{/i} individuals have got it in their heads that they need..."
+                "Sapona leans in and states in a low whisper:"
                 #show sapona happy
                 sr "{i}...vacation days!{/i}"
-                sr "I know, it's absoultely absurd, right?"
+                sr "I know. It's absoultely absurd, right?"
                 sr "I mean, it's not like they aren't paid well enough."
                 sr "You'd think with this much compensation they would be chomping at the bit to come in."
                 $ knows_industry_issue = True
                 menu sci_issue:
-                    "Scandalous! I can't believe there are people who could be so impertinent":
+                    "Scandalous! I can't believe there are people who could be so impertinent.":
                         #show main
                         mc "How could they show such little gratitude for your kindness?"
                         #show sapona
@@ -275,13 +275,13 @@ label scienceworld:
                         mc "If I was reading a book and you were in it, I'd consider the author to be a hack."
                         #show sapona angry
                         "Sapona starts visibly fuming."
-                        sr "...I...well I never..."
+                        sr "...I... well, I never..."
                         "Just as you think steam might start shooting out of her ears, she suddenly calms herself."
                         #if we could pause the music here, that'd be cool
                         #show sapona
                         sr "..."
                         #show sapona happy
-                        sr "Please; oh enlightened one."
+                        sr "Please, oh enlightened one."
                         sr "Inform me on what {i}you{/i} think is going on."
                         jump sci_conflict
 
@@ -317,7 +317,7 @@ label scienceworld:
                         #show main
                         mc "You have to think about this rationally."
                         mc "What reason do you have to believe that these workers are telling you the truth?"
-                        mc "If you are to come to any sort of concrete conclusion you have to start at base principals."
+                        mc "If you are to come to any sort of concrete conclusion you have to start at base principles."
                         mc "To start, you have to rule out the possibility you are living in a dream concocted by some evil imp..."
                         #show sapona
                         sr "..."
@@ -327,7 +327,7 @@ label scienceworld:
 
             "Tell me more about this hotel." if industry_bored:
                 #show sapona
-                sr "I'm glad you asked! only the finest accomodations are availible for our esteemed guests."
+                sr "I'm glad you asked! only the finest accomodations are available for our esteemed guests."
                 sr "We keep them running 24/7, just in case a guest comes along."
                 sr "Happens about once a century or so, but the jobs it creates are well worth it anyway."
                 sr "Besides, what use is all this wealth if we can't show it off when the opportunity arises?"
@@ -352,8 +352,8 @@ label scienceworld:
     label sci_solved:
         #do color change stuff
         "With those words, you feel a weight in the air lift."
-        "A subtle change in the atmosphere,"
-        "A shift in your perception,"
+        "A subtle change in the atmosphere..."
+        "A shift in your perception..."
         "You think you have done something good."
         jump hub_world
 
@@ -779,7 +779,7 @@ label magicworldproblems:
             wm "OKAY! You convinced me."
             show wildmyst #neutral
             wm "Maybe I could find a way for the groups to share the mine?"
-            mc "Yep. Or you could ask if any of them have ideas to fairly decide the issue."
+            mc "Yep. Or you could ask if any of them have ideas to fairly decide the issue. Trust in them."
             wm "Yeah..."
             wm "..."
             wm "Well, I have to say that I'm feeling a lot better, like I can lead my people through the next steps!"
@@ -826,15 +826,14 @@ label philosophyworld:
     P "Hark! Who enters my lair!?"
 
     menu:
-        "The valient bubble-witch of the fantastically sophisticated nether-realm!":
-            P "Oh, utterly resplendent! A fortuitious parlay, this will be!"
+        "The valient Bubble-Witch of the fantastically sophisticated nether-realm!":
+            P "Oh, utterly resplendent! A fortuitous parlay, this will be!"
         
         "[mc_name]":
-            P "Ah — well met, Mrs. Sir. Bubbleton!"
+            P "Ah - well met, Mrs. Sir. Bubbleton!"
         
         "That's none of your business!":
-            P "Oh, how unfortunate you conceal things from me! But if that is how you choose"
-            P "to approach, so be it!"
+            P "Oh, how unfortunate you conceal things from me! But if that is how you choose to approach, so be it!"
 
     P "And now, what is your purpose? What is your import?"
 
@@ -844,21 +843,21 @@ label philosophyworld:
             jump self_id
 
         "I'm nobody.":
-            P "Well, that's no way to treat yourself! come! have a chat!"
+            P "Well, that's no way to treat yourself! Come! Have a chat!"
 
         "I don't know. A book said I was important.":
             "Ah, is that so? Books are wonderful and give us so much good information, but your information is good, too! We can all learn so much from each other!"
 
         "I have to go now. My planet needs me.":
-            P "Oh, so soon! How inconvinient! Our fun was just beginning to blossom. À beintôt!"
+            P "Oh, so soon! How inconvenient! Our fun was just beginning to blossom. À beintôt!"
             jump hub_world
     
     if loopy_phil_1 == True:
         "...well, what are you, then!?"
         jump self_id
 
-    P "There are so many wonderful things, and we are all managing our figures and abaci intently to find the figure in the sky! And yet, people have so many"
-    P "Good ideas of how to find it and what it is, sometimes I don't want the journey to end!"
+    P "There are so many wonderful things, and we are all managing our figures and abaci intently to find the figure in the sky!"
+    P "And yet, people have so many good ideas of how to find it and what it is, sometimes I don't want the journey to end!"
 
     P "Now tell me, what is your purpose in seeing me? What brings such a lovely being from the outside to my own wonderful abode?"
 
@@ -869,7 +868,7 @@ label philosophyworld:
             jump expo_dump
 
         "Your bourgeois metaphysical thinking is unbecoming of you, comrade!": # This just insults them
-            P '{cps=5}That hurts, "comrade."{/cps}' # concerned
+            P "{cps=5}That hurts, \"comrade.\"{/cps}" # concerned
             P "Now tell me, what was it that you wanted from me?" # concerned
             jump self_id
 
@@ -879,12 +878,12 @@ label philosophyworld:
             V """
             {clear}
             
-            One day, my roomate told me how if you triangulate the velocity of the Austrlabus Valley's teloscope
+            One day, my roommate told me how if you triangulate the velocity of the Austrlabus Valley's teloscope
             quite right, the object is {i}clearly{/i} a magnificent dragon that we must feast to every night, lest he
             be lonely and eat us! Of course, I'm so busy with my figures that planning a feast right now seems very hard,
             but of course we must keep him happy! Another friend suggested that the object is a dancing elephant on a tightrope,
-            and it's trying to perform to us and keep {i}us{/i} happy! Of course! A evil dragon that's hungry to eat us that'Magic World Dialogue Sample.txt'
-            also a gregarious circus elephant! What an amazing discovery
+            and it's trying to perform to us and keep {i}us{/i} happy! Of course! A evil dragon that's hungry to eat us that
+            also a gregarious circus elephant! What an amazing discovery.
 
             {clear}
 
@@ -908,10 +907,10 @@ label philosophyworld:
                     pass
                 "Wow! Amazing!":
                     pass
-            P "Yes, that's — wait, what was I saying?"
+            P "Yes, that's - wait, what was I saying?"
             jump self_id
 
-        "Have you considered that science should be efficient?" if (has_philo_philo==True)and(has_industry_philo==True): # This leads to solving the problem; requires having learned the lesson from the science witch
+        "Have you considered that science should be efficient?" if (has_philo_philo==True) and (has_industry_philo==True): # This leads to solving the problem; requires having learned the lesson from the science witch
             jump challenge_time
 
     label expo_dump:
@@ -921,9 +920,9 @@ label philosophyworld:
 
         Well, one day I wasn't, and then I was. There's not much to tell there. Oh, but so much in between! Yes, that's the space I like.
         When I was born, the vivacious place full of life you see was barren, if you can believe it! It was a barren field of grass and dirt, if
-        you could believe it, but it stretched out for miles, so many miles you could walk back to the place you started! and see nothing but a planet of grass! 
-        One day, I hit my foot on something — something other than the brobdingnagian expanse, anyway — and I saw a little brick with little smaller bricks inside of it. 
-        There was nothing there, of course, but my mind knew the word: book. I read the, {i}book{/i}, and it told me I was the "Witch of the Mind," whatever that meant. 
+        you could believe it, but it stretched out for miles, so many miles you could walk back to the place you started! And see nothing but a planet of grass! 
+        One day, I hit my foot on something - something other than the brobdingnagian expanse, anyway - and I saw a little brick with little smaller bricks inside of it. 
+        There was nothing there, of course, but my mind knew the word: book. I read the {i}book{/i} and it told me I was the "Witch of the Mind," whatever that meant. 
         It said I was in charge of this world and that it must be shaped and filled with people.
 
         {clear}
@@ -931,7 +930,7 @@ label philosophyworld:
         I didn't know what "people" meant before I wasn't the only one, of course. But for the time being, I started to make rules for this place: "an object in motion must
         stay in motion," "eukaryotic cells have nuclei," that sort of thing. Eventually, from these rules, other people were made. At first, I talked to them about the way people
         should treat each other. At first it was simple: "don't hurt people." But then others starting to say, "don't do things that cause harm." Our minds started to rail against each
-        other, and eventually, philosophy was born from that dialectic. I was so invested, I started to forget the rules. Eventually, we figuered out how to work through them, though.
+        other, and eventually, philosophy was born from that dialectic. I was so invested, I started to forget the rules. Eventually, we figured out how to work through them, though.
         That was science. Science was hard, but it was hardest for me, because I was remembering what I had forgotten. I began to mourn my lost memories.
 
         {clear}
@@ -949,7 +948,7 @@ label philosophyworld:
         # elated
         P "So now, I take everyone's ideas seriously, no matter how absurd! People might be wrong sometimes, but by and large they're smart and capable!"
         P "You never know where genius can strike! All it takes is a little trust, and people can do wondrous things!"
-        P "Now we spend our days chasing the wildest fancies our eyes and our abaci can detect. Like now, witht the celestial object!"
+        P "Now we spend our days chasing the wildest fancies our eyes and our abaci can detect. Like now, with the celestial object!"
         P "We don't really care for outsiders. We get so excited, we don't really need anyone else!"
         # neutral
         P "Besides, some of them..."
@@ -963,7 +962,7 @@ label philosophyworld:
                 P "well, that..." # neutral
                 # conerned
                 # beat
-                P "{cps=15}...yeah, that was a lot"
+                P "{cps=15}...yeah, that was a lot."
 
             "Your words fly like a finch! Hence, you are amazing!":
                 P "I am, aren't I!? And so are you!!"
@@ -976,13 +975,13 @@ label philosophyworld:
         
         $ has_philo_philo = True
 
-        P "Now we — where were we, again?"
+        P "Now - where were we, again?"
         jump self_id
 
     label challenge_time:
         
         # concerned
-        P '"Efficiency"? What about "efficiency"? Eveyone will get what needs to be done in their time!'
+        P "\"Efficiency\"? What about \"efficiency\"? Eveyone will get what needs to be done in their time!"
         P "There's really no need to rush things here. We'll all get through it in the end!"
 
         menu first_challenge:
@@ -998,16 +997,16 @@ label philosophyworld:
             "You need to be ruthless. You need to be cunning":
                 P "I..." # neutral
                 P "...I can't be like like that again. I need to be better than that." # concerned
-                P "Tell me — just who are you?"
+                P "Tell me - just who are you?"
                 jump self_id
 
             "Science has to be replicable. You need to fail to succeed. That's {i}real{/i} autonomy":
                 pass
 
             "You're not getting ANYTHING DONE! GROW A SPINE!":
-                P "I don't have a spine! I'm a bubble witch!"
-                P "It would be interesting to have one, though — great suggestion!"
-                P "Tell me again — are you a bubble witch?"
+                P "I don't have a spine! I'm a Bubble Witch!"
+                P "It would be interesting to have one, though - great suggestion!"
+                P "Tell me again - are you a Bubble Witch?"
                 jump self_id
 
         P "That..."
@@ -1019,7 +1018,7 @@ label philosophyworld:
             "Get ahold of yourself. Make the big decisions. Others are too weak and stupid to.":
                 P "I.."
                 P "...you know that's not true."
-                P "Tell me — who are you to say that!?"
+                P "Tell me - who are you to say that!?"
                 jump self_id
 
             "Train others to be leaders in their own right. Trust them to fail and {i}learn{/i}":
@@ -1028,7 +1027,7 @@ label philosophyworld:
             "Exactly the way you are! You're perfect!":
                 P "I am, aren't I!?"
                 P "And so are you!! <3"
-                P "Yes, you — wait, who are you?"
+                P "Yes, you - wait, who are you?"
                 jump self_id
 
             "You can't. You're doomed to a life of spinning in circles.":
@@ -1104,7 +1103,7 @@ label philosophyworld:
         $ is_solved_philo = True
 
 label ending:
-    "A strange sense of finality fills the air"
+    "A strange sense of finality fills the air."
     "That celestial object between the shperes..."
     "The one that draws nearer at every breath"
     "You suddenly understand that it's approach is inevitable"
@@ -1117,7 +1116,7 @@ label ending:
         "Heh, I can handle it alone.":
             "You could {i}not{/i} handle it alone."
             "GAME OVER"
-            "RETRY?"
+            "RETRY THAT LAST DECISION?"
             menu:
                 "Yeah, sure.":
                     jump ending
@@ -1137,7 +1136,7 @@ label magic_philo_end:
     "Working together, you hatch a genius plan."
     show phil
     with moveinright
-    "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
+    "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and trajectory of the object."
     hide phil
     with moveoutright
     show wildmyst
@@ -1146,7 +1145,7 @@ label magic_philo_end:
     hide wildmyst
     with moveoutright
     "Unfortunately, without transportation, the team is unable to travel close enough to intecept at a safe distance."
-    "Instead, the team waits until it is almost struck them, then obliterates it with supreme power and precision."
+    "Instead, the team waits until the object has almost struck them, then obliterates it with supreme power and precision."
     "The shrapnel from the blast rains down on the spheres, causing widespread destruction."
     "Regardless, nothing is lost that cannot be rebuilt."
     jump fin_screen
@@ -1165,9 +1164,9 @@ label philo_industry_end:
     with moveoutright
     "Unfortunately, with inadequate firepower, the team can't permanently destroy it."
     "Instead, the team sends the starship on a collision course with the celestial threat."
-    "Striking at the precise force and velocity, it's approach vector changes enough to barely miss the spheres."
+    "Striking with precise force and velocity, its approach vector changes enough to barely miss the spheres."
     "However, the sheer mass of the thing causes powerful tidal shifts as it passes."
-    "Tsunamis and earthquakes plauge the worlds, but eventually they cease."
+    "Tsunamis and earthquakes plague the worlds, but eventually they cease."
     "While there is widespread destruction, it is nothing that can't be rebuilt."
     jump fin_screen
     
