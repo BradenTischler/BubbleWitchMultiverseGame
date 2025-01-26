@@ -2,53 +2,7 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 703: expected statement.
-    expo_dump = False
-              ^
-
-File "game/script.rpy", line 704: expected statement.
-    has_philo_philo = True
-                    ^
-
-File "game/script.rpy", line 707: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    jump self_id
-    ^
-
-File "game/script.rpy", line 753: choice menuitem expects a non-empty block.
-    "Train others to be leaders in their own right. Trust them to fail and {i}learn{/i}":
-                                                                                         ^
-
-File "game/script.rpy", line 769: menu statement expects a non-empty block.
-    menu third_challenge:
-        ^
-
-File "game/script.rpy", line 771: expected statement.
-    "HURT THEM. THEY MUST LEARN!":
-                                 ^
-
-File "game/script.rpy", line 775: expected statement.
-    "Don't try! You're amazing the way you are and so are your people!":
-                                                                       ^
-
-File "game/script.rpy", line 780: expected statement.
-    '"Sticks and stones may break your bones, but words can never hurt me.':
-                                                                           ^
-
-File "game/script.rpy", line 785: expected statement.
-    "Not all challenge is abuse. Philosophy needs rigorous debate.":
-                                                                   ^
-
-File "game/script.rpy", line 787: expected statement.
-    V:
-     ^
-
-File "game/script.rpy", line 814: choice menuitem expects a non-empty block.
-    "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
-                                                                                      ^
-
-File "game/script.rpy", line 816: expected statement.
-    V:
-     ^
+File "game/script.rpy", line 787: Indentation mismatch.
 
 Ren'Py Version: Ren'Py 8.3.4.24120703
-Sun Jan 26 10:39:10 2025
+Sun Jan 26 11:17:55 2025
