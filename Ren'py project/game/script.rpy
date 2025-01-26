@@ -1,4 +1,24 @@
 # The script of the game goes in this file.
+
+  # variables
+default max_jumps = 4
+default current_jumps = 0
+default mc_name = ""
+default has_magic_philo = False
+default has_philo_philo = False
+default has_industry_philo = False
+default has_magic_intro = False
+default has_philo_intro = False
+default has_industry_intro = False
+default is_solved_industry = False
+default is_solved_magic = False
+default is_solved_philo = False
+default has_skipped_sciphilodialogue = False #if the player doesn't bother to ask the right question, makes it so they don't need to go menuing to find it again
+default knows_industry_issue = False #if the player has discovered the problem facing the world, hey can bring it up again without the menus
+default industry_bored = False #if the player answers boredom for why they entered science world, they get a sales pitch.
+default has_witch_watch_info = False
+
+
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
@@ -284,7 +304,7 @@ label scienceworld:
                         sr "..."
                         sr "Get out of my world."
                         "Sapona manifests a portal directly behind you, and sends you through it with a solid kick to centre mass."
-                        jump hub_world
+                        jump start
 
             "Tell me more about this hotel." if industry_bored:
                 #show sapona
