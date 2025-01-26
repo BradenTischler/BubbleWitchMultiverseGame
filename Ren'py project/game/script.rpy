@@ -244,9 +244,9 @@ label scienceworld:
                     #illusion of choice lol
                     #also breaks up the monotony of a long exposition if the player has to do something.
                     "Why exactly are people refusing to do their job?":
-                        $ dummyvariable = 1
+                        pass
                     "What do you think they want?":
-                        $ dummyvariable = 2
+                        pass
                 #show sapona angry
                 sr "Certain {i}lazy{/i} individuals have got it in their heads that they need..."
                 "Sapona leans in and states in a low whisper:"
@@ -292,7 +292,9 @@ label scienceworld:
 
                 menu sci_conflict:
                     "I'm not quite sure yet":
-                        "Placeholder dialogue!!!"
+                        sr "Then come back to me when you ARE sure."
+                        sr "Time is money, and I don't appreciate having mine wasted."
+                        jump sci_main
                     "It just ain't right to force people to work that many hours." if has_magic_philo:
                         #show sapona angry
                         sr "You think you know better than me, Little Witch?"
