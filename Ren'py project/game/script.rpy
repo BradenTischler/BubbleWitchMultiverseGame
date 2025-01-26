@@ -359,7 +359,7 @@ label scienceworld:
         "A subtle change in the atmosphere..."
         "A shift in your perception..."
         "You think you have done something good."
-        jump hub world
+        jump hub_world
 
 # THIS COMMENT MARKS THE END OF SCIENCE WORLD
     
