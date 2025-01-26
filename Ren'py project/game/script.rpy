@@ -1123,7 +1123,26 @@ label philo_industry_end:
     jump fin_screen
     
 label magic_industry_end:
-
+    "You contact your allies in the worlds of magic and philosophy."
+    "Working together, you figure yerselves a solution."
+    show wildmyst
+    with moveinright
+    "Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
+    hide wildmyst
+    with moveoutright
+    show sapona
+    with moveinright
+    "While Sapona and the worker's union manufacture a ship to intercept it."
+    hide sapona
+    with moveoutright
+    "Unfortunately, without proper intel, you are unable to triangulate the exact location of the object."
+    "The fire mages load a powerful spell onto the ship, but have to constantly correct their course as they go."
+    "By the time they reach it, the object is too close to avoid collateral damage."
+    "A close-range blast vaporizes the threat, but the excess heat bakes the surface of the worlds."
+    "The blinding warmth lasts but a moment, just long enough to cause widespread crop failures among the spheres."
+    "Times are tough for a while, but you are confident that eventually everyone can pull through."
+    jump fin_screen
+    
 label fin_screen:
 
     
