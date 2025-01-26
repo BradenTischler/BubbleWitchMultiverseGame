@@ -639,7 +639,6 @@ label philosophyworld:
     label expo_dump:
         # music gets sad and reflective
         V '''
-        [elated]
         Well, one day I wasn't, and then I was. There's not much to tell there. Oh, but so much in between! Yes, that's the space I like.
         When I was born, the vivacious place full of life you see was barren, if you can believe it! It was a barren field of grass and dirt, if
         you could believe it, but it stretched out for miles, so many miles you could walk back to the place you started! and see nothing but a planet of grass! 
@@ -649,7 +648,6 @@ label philosophyworld:
 
         {clear}
 
-        [neutral]
         I didn't know what "people" meant before I wasn't the only one, of course. But for the time being, I started to make rules for this place: "an object in motion must
         stay in motion," "eukaryotic cells have nuclei," that sort of thing. Eventually, from these rules, other people were made. At first, I talked to them about the way people
         should treat each other. At first it was simple: "don't hurt people." But then others starting to say, "don't do things that cause harm." Our minds started to rail against each
@@ -658,7 +656,6 @@ label philosophyworld:
 
         {clear}
 
-        [concerned]
         I saw people making mistakes; doing the wrong things. They challenged me, and sometimes they were right, but I was impatient with them and, really, myself. I started to
         rule them with a rod of iron, enforcing on them a strict sense of justice and a need to adhere to the rule of their superior in the hierarchy that I put myself on top of.
         It worked, to some extent: people got things done. But they also grew fearful, so fearful they weren't really able to go any further with things. I began to realize that I
@@ -666,9 +663,7 @@ label philosophyworld:
 
         {clear}
 
-        [neutral]
         They got better after they had a sense of self, and after we all realized that complicated things have nuance.
-        [this is a hint for how to solve the western world's problems]
         '''
         # music returns to normal
         # elated

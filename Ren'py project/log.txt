@@ -1,659 +1,78 @@
-2025-01-26 16:13:52 UTC
+2025-01-26 17:20:41 UTC
 Windows-10-10.0.22631
 Ren'Py 8.3.4.24120703
 
-Early init took 0.12s
-Loading error handling took 0.10s
-Loading script took 1.76s
-Loading save slot metadata took 0.05s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 546: expected statement.
-    =======
-          ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.65s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 34.81s
+Early init took 0.09s
 Loading error handling took 0.08s
-Loading script took 1.67s
+Loading script took 1.48s
 Loading save slot metadata took 0.04s
 Loading persistent took 0.00s
-
-File "game/script.rpy", line 554: expected statement.
-    "Oh, utterly resplendent! A fortuitious parlay, this will be!" :
-                                                                   ^
-
-File "game/script.rpy", line 557: expected statement.
-    "Ah — well met, Mrs. Sir. Bubbleton!":
-                                         ^
-
-File "game/script.rpy", line 569: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    $ loopy_phil_1 = True
-    ^
-
-File "game/script.rpy", line 624: choice menuitem expects a non-empty block.
-    "Yeah, that's... science.":
-                               ^
-
-File "game/script.rpy", line 638: expected menuitem
-    if expo_dump == True:
-    ^
+Running init code took 0.11s
+Loading analysis data took 0.02s
+Analyze and compile ATL took 0.00s
+Reloading save slot metadata took 0.02s
+Index archives took 0.00s
+Backing up script files to "C:\\Users\\Wendy\\AppData\\Roaming/RenPy/backups\\Ren'py project":
+Dump and make backups took 0.08s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc took 0.06s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.61s
+nvdrs: b"Couldn't load nvlib." (can be ignored)
+Creating interface object took 0.00s
+Cleaning stores took 0.00s
+Init translation took 0.06s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.02s
+Save screen analysis took 0.03s
+Prepare screens took 0.12s
+Save pyanalysis. took 0.02s
+Save bytecode. took 0.03s
+Running _start took 0.00s
+Interface start took 0.30s
 
 Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
+primary display bounds: (0, 0, 1600, 900)
 swap interval: 1 frames
 Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
+Vendor: "b'ATI Technologies Inc.'"
+Renderer: b'AMD Radeon(TM) Vega 8 Graphics'
+Version: b'4.6.13587 Compatibility Profile Context 19.40.46 26.20.14046.3'
 Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
+Screen sizes: virtual=(1920, 1080) physical=(1184, 666) drawable=(1184, 666)
 Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 197.92s
-Loading error handling took 0.08s
-Loading script took 1.65s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
 
-File "game/script.rpy", line 569: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    $ loopy_phil_1 = True
-    ^
-
-File "game/script.rpy", line 625: expected statement.
-    None
-        ^
-
-File "game/script.rpy", line 628: expected statement.
-    None
-        ^
-
-File "game/script.rpy", line 630: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "So how do you get anything {i}done{/i}?"
-                                             ^
-
-File "game/script.rpy", line 641: expected menuitem
-    if expo_dump == True:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.72s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 266.81s
-Loading error handling took 0.08s
-Loading script took 1.75s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 569: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    $ loopy_phil_1 = True
-    ^
-
-File "game/script.rpy", line 625: expected statement.
-    None
-        ^
-
-File "game/script.rpy", line 628: expected statement.
-    None
-        ^
-
-File "game/script.rpy", line 630: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "So how do you get anything {i}done{/i}?"
-                                             ^
-
-File "game/script.rpy", line 641: expected menuitem
-    if expo_dump == True:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.70s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 396.76s
-Loading error handling took 0.08s
-Loading script took 1.62s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 569: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    $ loopy_phil_1 = True
-    ^
-
-File "game/script.rpy", line 630: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "So how do you get anything {i}done{/i}?"
-                                             ^
-
-File "game/script.rpy", line 640: expected menuitem
-    if expo_dump == True:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.71s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 560.66s
-Loading error handling took 0.08s
-Loading script took 1.63s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 569: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    $ loopy_phil_1 = True
-    ^
-
-File "game/script.rpy", line 630: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
-    "So how do you get anything {i}done{/i}?"
-                                             ^
-
-File "game/script.rpy", line 640: expected menuitem
-    if expo_dump == True:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.60s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 484) drawable=(958, 484)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 582.11s
-Loading error handling took 0.08s
-Loading script took 1.63s
-Loading save slot metadata took 0.05s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 569: Line is indented, but the preceding jump statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    $ loopy_phil_1 = True
-    ^
-
-File "game/script.rpy", line 640: expected menuitem
-    if expo_dump == True:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.60s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1009) drawable=(1920, 1009)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 709.09s
-Loading error handling took 0.08s
-Loading script took 1.60s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 640: expected menuitem
-    if expo_dump == True:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.58s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 777.27s
-Loading error handling took 0.09s
-Loading script took 1.83s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 640: expected menuitem
-    if expo_dump == True:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.59s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 837.82s
-Loading error handling took 0.08s
-Loading script took 1.58s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 640: expected menuitem
-    if expo_dump == True:
-    ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.61s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 921.51s
-Loading error handling took 0.08s
-Loading script took 1.54s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 711: Indentation mismatch.
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.58s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 1123.88s
-Loading error handling took 0.08s
-Loading script took 1.56s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 830: Indentation mismatch.
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.59s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 1132.36s
-Loading error handling took 0.09s
-Loading script took 1.54s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 830: Indentation mismatch.
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.58s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 1136.63s
-Loading error handling took 0.08s
-Loading script took 1.53s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 830: Indentation mismatch.
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.61s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 1159.00s
-Loading error handling took 0.08s
-Loading script took 1.61s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 591: expected statement.
-    hump expo_dump
-                  ^
-
-File "game/script.rpy", line 637: end of line expected.
-    "Have you considered that science should be efficient?": if has_philo_philo == True: 
-                                                             ^
-
-File "game/script.rpy", line 640: expected ':' not found.
-    label V_expo_dump
-                     ^
-
-File "game/script.rpy", line 710: expected ':' not found.
-    label challenge_time
-                        ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.62s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 1257.77s
-Loading error handling took 0.08s
-Loading script took 1.66s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 643: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
+Full traceback:
+  File "game/script.rpy", line 641, in script
     V '''
-    ^
-                    [elated]
-                    Well, one day I wasn't, and then I was. There's not much to tell there. Oh, but so much in between! Yes, that's the space I like.
-                    When I was born, the vivacious place full of life you see was barren, if you can believe it! It was a barren field of grass and dirt, if
-                    you could believe it, but it stretched out for miles, so many miles you could walk back to the place you started! and see nothing but a planet of grass! 
-                    One day, I hit my foot on something — something other than the brobdingnagian expanse, anyway — and I saw a little brick with little smaller bricks inside of it. 
-                    There was nothing there, of course, but my mind knew the word: book. I read the, {i}book{/i}, and it told me I was the "Witch of the Mind," whatever that meant. 
-                    It said I was in charge of this world and that it must be shaped and filled with people.
-    
-                    {clear}
-    
-                    [neutral]
-                    I didn't know what "people" meant before I wasn't the only one, of course. But for the time being, I started to make rules for this place: "an object in motion must
-                    stay in motion," "eukaryotic cells have nuclei," that sort of thing. Eventually, from these rules, other people were made. At first, I talked to them about the way people
-                    should treat each other. At first it was simple: "don't hurt people." But then others starting to say, "don't do things that cause harm." Our minds started to rail against each
-                    other, and eventually, philosophy was born from that dialectic. I was so invested, I started to forget the rules. Eventually, we figuered out how to work through them, though.
-                    That was science. Science was hard, but it was hardest for me, because I was remembering what I had forgotten. I began to mourn my lost memories.
-    
-                    {clear}
-    
-                    [concerned]
-                    I saw people making mistakes; doing the wrong things. They challenged me, and sometimes they were right, but I was impatient with them and, really, myself. I started to
-                    rule them with a rod of iron, enforcing on them a strict sense of justice and a need to adhere to the rule of their superior in the hierarchy that I put myself on top of.
-                    It worked, to some extent: people got things done. But they also grew fearful, so fearful they weren't really able to go any further with things. I began to realize that I
-                    was hurting them because I was hurt, not because they needed it. I realized that people need autonomy, so I gave them that.
-    
-                    {clear}
-    
-                    [neutral]
-                    They got better after they had a sense of self, and after we all realized that complicated things have nuance.
-                    [this is a hint for how to solve the western world's problems]
-                    '''
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\ast.py", line 2579, in execute
+    Say.execute(self)
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\ast.py", line 621, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\exports\sayexports.py", line 132, in say
+    who(what, *args, **kwargs)
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\character.py", line 1440, in __call__
+    what = self.prefix_suffix("what", self.what_prefix, what, self.what_suffix)
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\character.py", line 1354, in prefix_suffix
+    return (sub(prefix) + sub(body) + sub(suffix))
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\character.py", line 1334, in sub
+    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\substitutions.py", line 373, in substitute
+    s = interpolate(s, variables) # type: ignore
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\substitutions.py", line 86, in interpolate
+    raise e
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\substitutions.py", line 78, in interpolate
+    value = renpy.python.py_eval(code, {}, scope)
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\python.py", line 1202, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "<none>", line 1, in <module>
+NameError: name 'elated' is not defined
 
-File "game/script.rpy", line 704: expected statement.
-    expo_dump = False
-              ^
-
-File "game/script.rpy", line 705: expected statement.
-    has_philo_philo = True
-                    ^
-
-File "game/script.rpy", line 708: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    jump self_id
-    ^
-
-File "game/script.rpy", line 754: choice menuitem expects a non-empty block.
-    "Train others to be leaders in their own right. Trust them to fail and {i}learn{/i}":
-                                                                                         ^
-
-File "game/script.rpy", line 770: menu statement expects a non-empty block.
-    menu third_challenge:
-        ^
-
-File "game/script.rpy", line 772: expected statement.
-    "HURT THEM. THEY MUST LEARN!":
-                                 ^
-
-File "game/script.rpy", line 776: expected statement.
-    "Don't try! You're amazing the way you are and so are your people!":
-                                                                       ^
-
-File "game/script.rpy", line 781: expected statement.
-    '"Sticks and stones may break your bones, but words can never hurt me.':
-                                                                           ^
-
-File "game/script.rpy", line 786: expected statement.
-    "Not all challenge is abuse. Philosophy needs rigorous debate.":
-                                                                   ^
-
-File "game/script.rpy", line 788: expected statement.
-    V:
-     ^
-
-File "game/script.rpy", line 815: choice menuitem expects a non-empty block.
-    "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
-                                                                                      ^
-
-File "game/script.rpy", line 817: expected statement.
-    V:
-     ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.61s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
-Resetting cache.
-Early init took 1517.07s
-Loading error handling took 0.08s
-Loading script took 1.65s
-Loading save slot metadata took 0.04s
-Loading persistent took 0.00s
-
-File "game/script.rpy", line 703: expected statement.
-    expo_dump = False
-              ^
-
-File "game/script.rpy", line 704: expected statement.
-    has_philo_philo = True
-                    ^
-
-File "game/script.rpy", line 707: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation. You may have forgotten a colon (:).
-    jump self_id
-    ^
-
-File "game/script.rpy", line 753: choice menuitem expects a non-empty block.
-    "Train others to be leaders in their own right. Trust them to fail and {i}learn{/i}":
-                                                                                         ^
-
-File "game/script.rpy", line 769: menu statement expects a non-empty block.
-    menu third_challenge:
-        ^
-
-File "game/script.rpy", line 771: expected statement.
-    "HURT THEM. THEY MUST LEARN!":
-                                 ^
-
-File "game/script.rpy", line 775: expected statement.
-    "Don't try! You're amazing the way you are and so are your people!":
-                                                                       ^
-
-File "game/script.rpy", line 780: expected statement.
-    '"Sticks and stones may break your bones, but words can never hurt me.':
-                                                                           ^
-
-File "game/script.rpy", line 785: expected statement.
-    "Not all challenge is abuse. Philosophy needs rigorous debate.":
-                                                                   ^
-
-File "game/script.rpy", line 787: expected statement.
-    V:
-     ^
-
-File "game/script.rpy", line 814: choice menuitem expects a non-empty block.
-    "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
-                                                                                      ^
-
-File "game/script.rpy", line 816: expected statement.
-    V:
-     ^
-DPI scale factor: 1.000000
-nvdrs: Loaded, about to disable thread optimizations.
-nvdrs: Disabled thread optimizations.
-Interface start took 0.58s
-
-Initializing gl2 renderer:
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Vendor: "b'NVIDIA Corporation'"
-Renderer: b'NVIDIA GeForce GTX 1660 Ti/PCIe/SSE2'
-Version: b'4.6.0 NVIDIA 535.98'
-Display Info: None
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
-Maximum texture size: 4096x4096
-Screen sizes: virtual=(1920, 1080) physical=(958, 1000) drawable=(958, 1000)
-Maximum texture size: 4096x4096
+While running game code:
+  File "game/script.rpy", line 641, in script
+    V '''
+NameError: name 'elated' is not defined
