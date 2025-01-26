@@ -63,7 +63,7 @@ label start:
     scene bg hub with dissolve
     pause 1.5
     "You see void... and floating platforms... and bubbles... and yourself."
-    show main at center
+    show main at leftish
     with moveinbottom
     python:
         mc_name = renpy.input("This is you. What is your name?")
@@ -74,11 +74,11 @@ label start:
             mc "I bet the laws of physics don't even apply here."
             hide main
             with moveoutright
-            show main at center
+            show main at rightish
             with moveinbottom
             hide main
             with moveoutleft
-            show main at center
+            show main at leftish
             with moveinbottom
             mc "Yep. That's what I thought."
         "Depressing.":
@@ -93,7 +93,7 @@ label start:
     b "This interdimensional space is your home now."
     b "However, your destiny is elsewhere."
     b "You must bridge the worlds, or all will fall to ruin."
-    b "Sorry I can't write more, but I'm running out of time."
+    b "Sorry I can't write more; I'm running out of time."
     b "Also, I don't really like this pen."
     b "Good luck. Bye!"
     mc "Hmmm... this book makes me feel..."
@@ -117,13 +117,13 @@ label start:
     mc "Well, I guess I'm supposed to go to those bubbles."
     mc "Where to first?"
     menu travel:
-        "To the blue world.":
+        "To the left-most world.":
             $ current_jumps += 1
             jump scienceworld
-        "To the red world.":
+        "To the middle world.":
             $ current_jumps += 1
             jump magicworld
-        "To the green world.":
+        "To the right-most world.":
             $ current_jumps += 1
             jump philosophyworld
 
@@ -139,13 +139,13 @@ label hub_world:
     "You return to your home, the empty interdimensional space."
     mc "Where to next?"
     menu travelagain:
-        "To the blue world.":
+        "To the left-most world.":
             $ current_jumps += 1
             jump scienceworld
-        "To the red world.":
+        "To the middle-most world.":
             $ current_jumps += 1
             jump magicworld
-        "To the green world.":
+        "To the right-most world.":
             $ current_jumps += 1
             jump philosophyworld    
 
