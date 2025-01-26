@@ -19,16 +19,18 @@ default has_skipped_sciphilodialogue = False #if the player doesn't bother to as
 default knows_industry_issue = False #if the player has discovered the problem facing the world, hey can bring it up again without the menus
 default industry_bored = False #if the player answers boredom for why they entered science world, they get a sales pitch.
 default has_witch_watch_info = False
-
+default challenge_time = False
+default loopy_phil_1 = False
 
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
 define mc = Character("[mc_name]", image='main.png', kind=bubble, color="#888888")
 define b = Character("Book", kind=nvl)
-define sr = Character("Sapona Ramune", image='sapona.png', kind=bubble, color="#000088")
-define wm = Character("Wild Myst", image='wildmyst.png', kind=bubble, color="#880000")
-define P = Character("Loopy Phil", image='phil.png', kind=bubble, color="#008800")
+define sr = Character("Sapona Ramune", image='sapona.png', kind=bubble)
+define wm = Character("Wild Myst", image='wildmyst.png', kind=bubble)
+define P = Character("Loopy Phil", image='phil.png', kind=bubble)
+define V = Character("Loopy Phil", image='phil.png', kind=nvl)
 
 image main = "main.png"
 image sapona = "sapona.png"
@@ -283,7 +285,9 @@ label scienceworld:
 
                 menu sci_conflict:
                     "I'm not quite sure yet":
-                        "Placeholder dialogue!!!"
+                        sr "Then come back to me when you ARE sure."
+                        sr "Time is money, and I don't appreciate having mine wasted."
+                        jump sci_main
                     "It just ain't right to force people to work that many hours." if has_magic_philo:
                         #show sapona angry
                         sr "You think you know better than me, Little Witch?"
@@ -344,21 +348,7 @@ label scienceworld:
         "A subtle change in the atmosphere,"
         "A shift in your perception,"
         "You think you have done something good."
-        if (is_solved_magic and is_solved_philo):
-            "Yay."
-            jump hub_world
-            # jump best_end
-        elif (current_jumps > max_jumps):
-            if (is_solved_magic):
-                # jump magic_sci_end
-                "Whoo."
-                jump hub_world
-            elif (is_solved_philo):
-                # jump philo_sci_end
-                "Okay."
-                jump hub_world
-        else:
-            jump hub_world
+        jump hub_world
 
 # THIS COMMENT MARKS THE END OF SCIENCE WORLD
     
@@ -708,65 +698,287 @@ label magicworldproblems:
 
 label philosophyworld:
 
+
+    # all philosophy world scripting goes here
+
     scene bg philosophy with dissolve
     play music "philosophy.mp3"
     "Wow. Time to go back to the Hub World."
     jump hub_world
 
-"""
     P "Hark! Who enters my lair!?"
 
     menu:
         "The valient bubble-witch of the fantastically sophisticated nether-realm!":
-            jump intro_branch_1
+            P "Oh, utterly resplendent! A fortuitious parlay, this will be!"
         
-        "[Actual cannonical hub world name]":
-            jump intro_branch_2
-
+        "[mc_name]":
+            P "Ah — well met, Mrs. Sir. Bubbleton!"
+        
         "That's none of your business!":
-            jump intro_branch_3
+            P "Oh, how unfortunate you conceal things from me! But if that is how you choose"
+            P "to approach, so be it!"
 
+    P "And now, what is your purpose? What is your import?"
 
-    label intro_branch_1:
-        "Oh, utterly resplendent! A fortuitious parlay, this will be!" :
-            jump intro_branch_1 done
+    menu self_id:   
+        "Sir, I'm not a delivery driver!":
+            P "..."
+            jump self_id
 
-    label intro_branch_2:
-        "Ah, I see. A grave undertaking indeed." :
-            jump intro_branch_2 done
+        "I'm nobody.":
+            P "Well, that's no way to treat yourself! come! have a chat!"
 
-    label intro_branch_3:
-        "Oh, how unfortunate you conceal things from me! But if that is how you choose"
-        "to approach, so be it!" :
-            jump intro_branch_3 done
+        "I don't know. A book said I was important.":
+            "Ah, is that so? Books are wonderful and give us so much good information, but your information is good, too! We can all learn so much from each other!"
 
-    P "And what is your import?"
+        "I have to go now. My planet needs me.":
+            P "Oh, so soon! How inconvinient! Our fun was just beginning to blossom. À beintôt!"
+            jump hub_world
+    
+    if loopy_phil_1 == True:
+        "...well, what are you, then!?"
+        jump self_id
 
-    loopy_phil_1 = False
-    label sticking_loop1:
-        menu:
-             $ if loopy_phil_1 == True:
-                "Well, what are you, then!?"
-                $ break
-            
-            "Sir, I'm not a delivery driver!":
-                jump sticking_loop1
-                 $ loopy_phil_1 = True
+    P "There are so many wonderful things, and we are all managing our figures and abaci intently to find the figure in the sky! And yet, people have so many"
+    P "Good ideas of how to find it and what it is, sometimes I don't want the journey to end!"
 
-            "I'm nobody.":
-                jump sticking_response_1
+    P "Now tell me, what is your purpose in seeing me? What brings such a lovely being from the outside to my own wonderful abode?"
 
-            "I don't know. A book said I was important.":
-                jump sticking_response_2
+    menu first_big_choice:
 
-            label sticking_response_1:
-                "Well, that's no way to treat yourself! come! have a chat!"
-                jump sticking_loop1 done
-            
-            label sticking_response_2:
-                "Ah, and yet your title flatters you so! I suppose the training was never
-                quite transparent"
-                jump sticking_loop1 done
-"""
+        "What's happening in this world?" if has_philo_philo == False: # This is how you get the philosophy idea 
+            #time cost?
+            jump expo_dump
+
+        "Your bourgeois metaphysical thinking is unbecoming of you, comrade!": # This just insults them
+            P '{cps=5}That hurts, "comrade."{/cps}' # concerned
+            P "Now tell me, what was it that you wanted from me?" # concerned
+            jump self_id
+
+        "What's in the sky?": # This leads to a gag exchange
+            P "Well, there are many theories..."
+
+            V """
+            One day, my roomate told me how if you triangulate the velocity of the Austrlabus Valley's teloscope
+            quite right, the object is {i}clearly{/i} a magnificent dragon that we must feast to every night, lest he
+            be lonely and eat us! Of course, I'm so busy with my figures that planning a feast right now seems very hard,
+            but of course we must keep him happy! Another friend suggested that the object is a dancing elephant on a tightrope,
+            and it's trying to perform to us and keep {i}us{/i} happy! Of course! A evil dragon that's hungry to eat us that'Magic World Dialogue Sample.txt'
+            also a gregarious circus elephant! What an amazing discovery
+
+            {clear}
+
+            Somebody also decide to roll their Napier's Bones like dice to see what could be deduced, and used the position of three different
+            villages' sundials to derive a trigonometric equation that made the object look exactly like a meringue pie! Incredible! And, of course,
+            my friend Geoffery used the mass of the amount of cats in the universe divided by the amount of dogs, and looking there, we found someone making
+            an outhouse for dragonflies!
+
+            {clear}
+
+            Of course! A vindictive, gregarious dragon-elephant that's also a meringue pie that's building an outhouse for dragonflies on a tightrope
+            that also wants to eat and kill all of us if we don't give it enough attention! Isn't science wonderful!?
+            """
+
+            menu perplexed_response:
+                "Yeah, that's... science.":
+                    pass
+                "No, that's stupid.":
+                    pass
+                "So how do you get anything {i}done{/i}?":
+                    pass
+                "Wow! Amazing!":
+                    pass
+            P "Yes, that's — wait, what was I saying?"
+            jump self_id
+
+        "Have you considered that science should be efficient?" if (has_philo_philo==True)and(has_industry_philo==True): # This leads to solving the problem; requires having learned the lesson from the science witch
+            jump challenge_time
+
+    label expo_dump:
+        # music gets sad and reflective
+        V '''
+        {clear}
+
+        Well, one day I wasn't, and then I was. There's not much to tell there. Oh, but so much in between! Yes, that's the space I like.
+        When I was born, the vivacious place full of life you see was barren, if you can believe it! It was a barren field of grass and dirt, if
+        you could believe it, but it stretched out for miles, so many miles you could walk back to the place you started! and see nothing but a planet of grass! 
+        One day, I hit my foot on something — something other than the brobdingnagian expanse, anyway — and I saw a little brick with little smaller bricks inside of it. 
+        There was nothing there, of course, but my mind knew the word: book. I read the, {i}book{/i}, and it told me I was the "Witch of the Mind," whatever that meant. 
+        It said I was in charge of this world and that it must be shaped and filled with people.
+
+        {clear}
+
+        I didn't know what "people" meant before I wasn't the only one, of course. But for the time being, I started to make rules for this place: "an object in motion must
+        stay in motion," "eukaryotic cells have nuclei," that sort of thing. Eventually, from these rules, other people were made. At first, I talked to them about the way people
+        should treat each other. At first it was simple: "don't hurt people." But then others starting to say, "don't do things that cause harm." Our minds started to rail against each
+        other, and eventually, philosophy was born from that dialectic. I was so invested, I started to forget the rules. Eventually, we figuered out how to work through them, though.
+        That was science. Science was hard, but it was hardest for me, because I was remembering what I had forgotten. I began to mourn my lost memories.
+
+        {clear}
+
+        I saw people making mistakes; doing the wrong things. They challenged me, and sometimes they were right, but I was impatient with them and, really, myself. I started to
+        rule them with a rod of iron, enforcing on them a strict sense of justice and a need to adhere to the rule of their superior in the hierarchy that I put myself on top of.
+        It worked, to some extent: people got things done. But they also grew fearful, so fearful they weren't really able to go any further with things. I began to realize that I
+        was hurting them because I was hurt, not because they needed it. I realized that people need autonomy, so I gave them that.
+
+        {clear}
+
+        They got better after they had a sense of self, and after we all realized that complicated things have nuance.
+        '''
+        # music returns to normal
+        # elated
+        P "So now, I take everyone's ideas seriously, no matter how absurd! People might be wrong sometimes, but by and large they're smart and capable!"
+        P "You never know where genius can strike! All it takes is a little trust, and people can do wondrous things!"
+        P "Now we spend our days chasing the wildest fancies our eyes and our abaci can detect. Like now, witht the celestial object!"
+        P "We don't really care for outsiders. We get so excited, we don't really need anyone else!"
+        # neutral
+        P "Besides, some of them..."
+        # concerned
+        P "...act like I used to be."
+        #  elated
+        P "So, are you all caught up?"
+
+        menu expo_dump_react:
+            "That was... traumatising.":
+                P "well, that..." # neutral
+                # conerned
+                # beat
+                P "{cps=15}...yeah, that was a lot"
+
+            "Your words fly like a finch! Hence, you are amazing!":
+                P "I am, aren't I!? And so are you!!"
+
+            "Thanks, doofus!":
+                P "I {i}am{/i} a doofus! What a fun word to say! You sure are a clever one, Mrs. Sir. Bubbleton!"
+
+            "I'm gonna be honest: I absorbed {i}none{/i} of what you just said.":
+                P "Well isn't that wonderful!? Isn't it {i}amazing{/i} how there's always something else to learn!?"
         
+        $ has_philo_philo = True
 
+        P "Now we — where were we, again?"
+        jump self_id
+
+    label challenge_time:
+        
+        # concerned
+        P '"Efficiency"? What about "efficiency"? Eveyone will get what needs to be done in their time!'
+        P "There's really no need to rush things here. We'll all get through it in the end!"
+
+        menu first_challenge:
+
+            "You know what, you're right. Forget about it.":
+                P "Yeah, that's right! We'll get there!" # elated
+                P "We just need to consider {i}everyone's{/i} ideas, and {i}then{/i} we'll get this celestial object thing sorted out!"
+                # concerned
+                # beat
+                P "Now, tell me about yourself!" # elated
+                jump self_id
+
+            "You need to be ruthless. You need to be cunning":
+                P "I..." # neutral
+                P "...I can't be like like that again. I need to be better than that." # concerned
+                P "Tell me — just who are you?"
+                jump self_id
+
+            "Science has to be replicable. You need to fail to succeed. That's {i}real{/i} autonomy":
+                pass
+
+            "You're not getting ANYTHING DONE! GROW A SPINE!":
+                P "I don't have a spine! I'm a bubble witch!"
+                P "It would be interesting to have one, though — great suggestion!"
+                P "Tell me again — are you a bubble witch?"
+                jump self_id
+
+        P "That..."
+        P "...is true actually. I suppose it wasn't very scientific of me to neglect critical thinking like that."
+        P "But I know all too well the pitfalls of a real \"leader's\" leader. Tell me: how can I not be like that again?"
+
+        menu second_challenge:
+
+            "Get ahold of yourself. Make the big decisions. Others are too weak and stupid to.":
+                P "I.."
+                P "...you know that's not true."
+                P "Tell me — who are you to say that!?"
+                jump self_id
+
+            "Train others to be leaders in their own right. Trust them to fail and {i}learn{/i}":
+                pass
+
+            "Exactly the way you are! You're perfect!":
+                P "I am, aren't I!?"
+                P "And so are you!! <3"
+                P "Yes, you — wait, who are you?"
+                jump self_id
+
+            "You can't. You're doomed to a life of spinning in circles.":
+                P "That..."
+                P "...I don't want to believe that."
+                jump self_id
+
+        P "You know what, that makes sense. But that still means {i}I{/i} have to be a leader. And when I lead, I hurt people."
+        P "I don't want to do that agaain."
+
+        menu third_challenge:
+
+            "HURT THEM. THEY MUST LEARN!":
+                P "..."
+                jump self_id
+
+            "Don't try! You're amazing the way you are and so are your people!":
+                P "Thank you!"
+                P "And to whom do I owe the honour?"
+                jump self_id
+
+            '"Sticks and stones may break your bones, but words can never hurt me.':
+                P "I..."
+                P "...I don't know if I can trust you on that."
+                P "And who is you? Is you you? Are me me?"
+                jump self_id
+
+            "Not all challenge is abuse. Philosophy needs rigorous debate.":
+                pass
+
+        V '''
+        You're right. It was that debate that sparked all the good that people did: the arguing,
+        the fierce determination, and yet the genuinely kind ones always manage to synthesize things
+        and make things more that their parts. I understand. But I need to know: how can I trust myself
+        enough to trust I won't do what I did to my people again?
+        '''
+
+        menu final_challenge:
+
+            "Because you're great! I know you'll be great!":
+                P "I..."
+                P "...yeah"
+                mc "I know you'll be great because I am..."
+                jump self_id
+
+            "Because you know more than anyone.":
+                P "I..."
+                P "...guess..."
+                P "...except I can never even remember who you are!"
+                jump self_id
+
+            "Because {i}I{/i} trust you":
+                P "Yes, but..."
+                P "...that doesn't feel like enough."
+                jump self_id
+            
+            "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
+                pass
+        V '''
+        You're right. I knew how to talk, and be jovial and accept people. And I learned how to trust
+        people. But I forgot how to think, and that makes me a bad scientist and philosopher. I haven't
+        really thought in a while. I got so caught up in all the different ways of doing things, I forgot
+        to do those things. But those days are over. I'm going to take a stand, and stand with the people
+        I haven't always stood with, whether because I was mean or I was neglectful. No more. We are going to
+        find this object, and now {i}exactly{/i} what it is, {i}scientifically!{/i}! And you know what? If 
+        I can help other worlds out, I'll open my arms to them, too!
+        '''
+
+        $ is_solved_philo = True
+
+
+    return
