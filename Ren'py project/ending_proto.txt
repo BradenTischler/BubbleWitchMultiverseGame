@@ -1,3 +1,5 @@
+{new character: r = rat.png}
+
 label ending:
     
     "You have a bad feeling about this. This place feels unfamiliar, unstable, somehow. And was that rock always so close!?" # earthquake SFX
@@ -32,9 +34,142 @@ label ending:
 
     "Well..."
     "...that's not ideal."
-    "But you did good getting everyone together!"
+    "But, wait, did you not do good on getting everyone together?"
     "And wait.." # flash
     "is that..." # flash
-    "YES!! Some of your friends have come!"
+    "YES!! Some of your friends have come!" # flash if you got the good ending.
 
-    if philo_solve and mag_solve 
+    if is_solved_philo and is_solved__mag and is_solved_industry:
+		P "You..."
+		wm "You..."
+		sr "You..."
+		
+		P "It's been a long time since I could see anyone so bellicosely close-minded..."
+		wm "Well, it's been a long time since I've seen anyone so cold hearted..."
+		sr "Speak for yourselves! I would {i]never{/i} hire workers as lackadasical as you lot!"
+		
+		P "Yet, despite our differences, we need to come together, because I don't have the resources"
+		P "to do this myself. I need to learn to trust you."
+		
+		wm "And I think all y'all's plans are STUPID and if we just had a bit more time I'm sure I could get"
+		wm "a big FIREBALL BLAST to DESTROY everything! But, I suppose, I don't have time to figure that one out,"
+		wm "so I guess I need to trust y'all to take me down a notch so we can do this quickly."
+		
+		sr "Harumph! As if I'd be able to trust the likes of you! But I guess people need to be able to"
+		sr "ask for help while getting their own backyard trimmed, so I guess I'll step back on the latter"
+		sr "and put a foot forward on how to do the former."
+		
+		"Finally! People behaving like {i}people{/i}!
+		
+		P "My people and I have triangulated the location of Mr. Ma'am Mean Moon, as well as where it's going."
+		P "With the skills from your realms, its days are as numbered as there are cats in the ocean!"
+		
+		sr 'Hmph! This "end of the world" business is uninteresting in the extreme! But I suppose it's"
+		sr "Bad for profits, and without some concessions end up with riots and eternal death. Very well,"
+		sr "My infrastructure and labour reserves are at your beck and call. My engineers have proposed a rocket."
+		
+		P "I've already sent my engineers to help yours, Noodle-kun! I can't wait to work together after so much time alone!"
+		
+		sr "I can't say I return the favour. But yes, this partnership will be..."
+		sr "...interesting, and dare I say..."
+		sr "...fun."
+		
+		wm "Well, what are we waiting for!? My maginesium loaded onto that baby is going to EXPLODE THAT 
+		wm "DUMB ROCKET'S FACE INTO SMITHEREENS!!!"
+		
+		P "Well put, Wintery Mint! This gargantuan granite is no mach for the flowering power of partnership!"
+		
+		wm "And hey, we haven't let the most {i}important{/i} partner speak! [mc_name], you're the {i}real{/i} hero
+		wm "of this story!"
+		
+		P "Yeah. Without you, we would never have worked together! Thank you ever so!"
+		
+		sr "Pheh. Some congratulations are in order, I suppose."
+		
+		mc "...No."
+		
+		sr "Pardon?"
+		
+		mc "I didn't do anything. I just blubbered about figuring out a job I didn't understand. You and the"
+		mc "people around you were the ones to put your heads together to actually solve a problem. {i}you{/i}
+		mc "are the ones bending heaven and earth to save the multiverse!"
+		
+		P "That's true, but we all have our own agency in what happened. And your part to play, just by talking to people"
+		P "who wouldn't without you, is just as invaluable as any rocket headed to the sky!"
+		
+		wm "Yeah, don't beat yourself up! Self-pity is ANNOYING and WEAK! We all have a part to play in revolutionizing"
+		wm "the way we live our lives!"
+		
+		sr "Heh. I'm reticent to say it, but the brash one is right..."
+		sr "...on most accounts"
+		
+		mc "I suppose, on that, I feel..."
+		
+		menu I_need_to_go:
+			
+			"Jubilant! We've all saved the world!":
+				P "Excellent! I'm glad to hear it!
+			
+			"I'm just getting my accounts in order.":
+				sr "Good. As we all must."
+				
+			"Happy, but also kind of sentimental!? That was so fun!!"
+				wm "Yeah, you strangers are so much nicer than I thought!"
+				wm "The world should almost end more often!"
+			
+			"I did my part, and you did yours. I guess that's all we can do."
+				sr "Yes, we all have our part to play. A good assessment."
+				P "We fit in like a puzzle! We challenge, we build, and we grow!"
+				wm "Yeeeeeeeeeehawwwwwwwww!"
+				
+		mc "We were all in our bubbles before. But after stepping out and seeing the world, I think we all kind of know now — people
+		mc "can do anything, as long as they work together!"
+		
+		P "Together!"
+		
+		wm "Together!"
+		
+		sr "Everyone in their place, together."
+		
+		jump good_end_narration
+		
+		
+label good_end_narration
+	{black bg}
+	
+	"""
+	And so, our valient heroes saved the day, and used all their powers together to stop
+	the impending doom of the Literal-Embodiment-of-Hate-Rock. With Loopy Phil's compassion,
+	Wild Mysts maginesium, and Sapona Ramune's...
+	...business...
+	...acumen...
+	the stupid piece of granit was blasted to smithereen's (Myst's words). You did it!
+	But never forget the people who made that possible. Remember: people can only do
+	what seems impossible when they work together!"
+	"""
+	
+	"That said..."
+	
+	jump sequel_bait
+	
+label sequel_bait
+	{granite texture-y background}
+	sr "Is everything prepared for the market expansion, Mr. Rat?"
+	r "Yes, yes, don't rush me!"
+	sr "[mc_name] has reminded me of just how lucrative multiverse travel is."
+	sr "I've extracted all the profits I can from my world. It's time to expand."
+	sr "The gaping maw of capital demands it."
+	
+	r 'Yes, yes, I'm getting all the systems organized to prepare for your "business'
+	r 'expansion." But don't these plans seem to be...'
+	r 'a little unethical?'
+	
+	sr "I care little for ethics. So long as there is a world, there is profit to be"
+	sr "had, and I am prepared to be the one to make those profits."
+	
+	r "So you can have a fancier life than you already do?"
+	
+	sr "...someone will do this. Be thankful that person is {i]me{/i}.
+	
+	{ominous sting}
+	{À suivre screen

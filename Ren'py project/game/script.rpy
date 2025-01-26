@@ -344,6 +344,11 @@ label scienceworld:
                 sr "Of course. What is it?"
                 jump sci_issue
 
+            "Can I leave?"
+                sr "I can't keep you here, if you must go."
+                sr "At least buy something on the way out, will you?"
+                jump hub_world
+
     label sci_solved:
         #do color change stuff
         "With those words, you feel a weight in the air lift."
@@ -1098,9 +1103,6 @@ label philosophyworld:
 
         $ is_solved_philo = True
 
-
-return
-
 label ending:
     "A strange sense of finality fills the air"
     "That celestial object between the shperes..."
@@ -1117,7 +1119,7 @@ label ending:
             "GAME OVER"
             "RETRY?"
             menu:
-                "Yeah sure.":
+                "Yeah, sure.":
                     jump ending
                 "Nah, I'm too cool for school, even if it kills me.":
                     return
@@ -1126,10 +1128,71 @@ label ending:
     elif is_solved_industry==False:
         jump magic_philo_end
     elif is_solved_magic==False:
-        jump philoindustry_end
+        jump philo_industry_end
     elif is_solved_philo==False:
-        jump magicindustry_end
-        
+        jump magic_industry_end
+  
+label magic_philo_end:
+    "You contact your allies in the worlds of magic and philosophy."
+    "Working together, you hatch a genius plan."
+    show phil
+    with moveinright
+    "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
+    hide phil
+    with moveoutright
+    show wildmyst
+    with moveinright
+    "While Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
+    hide wildmyst
+    with moveoutright
+    "Unfortunately, without transportation, the team is unable to travel close enough to intecept at a safe distance."
+    "Instead, the team waits until it is almost struck them, then obliterates it with supreme power and precision."
+    "The shrapnel from the blast rains down on the spheres, causing widespread destruction."
+    "Regardless, nothing is lost that cannot be rebuilt."
+    jump fin_screen
+
+label philo_industry_end:
+    "You contact your allies in the worlds of science and philosophy."
+    "Working together, you concoct a wily scheme."
+    show phil
+    with moveinright
+    "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
+    hide phil
+    show sapona
+    with moveinright
+    "While Sapona and the worker's union manufacture a ship to intercept it."
+    hide sapona
+    with moveoutright
+    "Unfortunately, with inadequate firepower, the team can't permanently destroy it."
+    "Instead, the team sends the starship on a collision course with the celestial threat."
+    "Striking at the precise force and velocity, it's approach vector changes enough to barely miss the spheres."
+    "However, the sheer mass of the thing causes powerful tidal shifts as it passes."
+    "Tsunamis and earthquakes plauge the worlds, but eventually they cease."
+    "While there is widespread destruction, it is nothing that can't be rebuilt."
+    jump fin_screen
+    
+label magic_industry_end:
+    "You contact your allies in the worlds of magic and philosophy."
+    "Working together, you figure yerselves a solution."
+    show wildmyst
+    with moveinright
+    "Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
+    hide wildmyst
+    with moveoutright
+    show sapona
+    with moveinright
+    "While Sapona and the worker's union manufacture a ship to intercept it."
+    hide sapona
+    with moveoutright
+    "Unfortunately, without proper intel, you are unable to triangulate the exact location of the object."
+    "The fire mages load a powerful spell onto the ship, but have to constantly correct their course as they go."
+    "By the time they reach it, the object is too close to avoid collateral damage."
+    "A close-range blast vaporizes the threat, but the excess heat bakes the surface of the worlds."
+    "The blinding warmth lasts but a moment, just long enough to cause widespread crop failures among the spheres."
+    "Times are tough for a while, but you are confident that eventually everyone can pull through."
+    jump fin_screen
+    
+label fin_screen:
 
     
-        
+return        
