@@ -127,7 +127,18 @@ label start:
     return
 
 label hub_world:
-    #do hub world things
+
+    scene bg hub with dissolve
+    play music "hub.mp3"
+    "You return to your home, the empty interdimensional space."
+    mc "Where to next?"
+    menu travelagain:
+        "To the blue world.":
+            jump scienceworld
+        "To the red world.":
+            jump magicworld
+        "To the green world.":
+            jump philosophyworld    
 
 label scienceworld:
 
@@ -306,7 +317,7 @@ label scienceworld:
                         sr "..."
                         sr "Get out of my world."
                         "Sapona manifests a portal directly behind you, and sends you through it with a solid kick to centre mass."
-                        jump start
+                        jump hub_world
 
             "Tell me more about this hotel." if industry_bored:
                 #show sapona
@@ -335,19 +346,19 @@ label scienceworld:
         "You think you have done something good."
         if (is_solved_magic and is_solved_philo):
             "Yay."
-            jump start
+            jump hub_world
             # jump best_end
         elif (current_jumps > max_jumps):
             if (is_solved_magic):
                 # jump magic_sci_end
                 "Whoo."
-                jump start
+                jump hub_world
             elif (is_solved_philo):
                 # jump philo_sci_end
                 "Okay."
-                jump start
+                jump hub_world
         else:
-            jump start
+            jump hub_world
 
 # THIS COMMENT MARKS THE END OF SCIENCE WORLD
     
@@ -459,7 +470,7 @@ label magicworld:
             hide main
             with moveoutleft
             "You step back into the portal."
-            jump start
+            jump hub_world
 
 label witchwatchinfo:
 
@@ -517,8 +528,8 @@ label magicworldexposition:
     hide main
     with moveoutright
     mc "Sure. That sounds like an idea."
-    show wildmyst at leftish #neutral
     show main at left #neutral
+    show wildmyst at leftish #neutral
     with moveinleft
     "Wild Myst whisks you off to the centre square of a town nearby."
     wm "This is where we sentence misbehaving citizens to SWIFT justice!"
@@ -556,8 +567,8 @@ label magicworldexposition:
     hide main
     with moveoutleft
     wm "Let's continue the tour."
-    show wildmyst at rightish #neutral
     show main at right #neutral
+    show wildmyst at rightish #neutral
     with moveinright
     "Next, you descend the hill and come to a stop outside the entrance to a mineshaft."
     "We have mines like this all over our world. It's where we get our maginesium from."
@@ -610,8 +621,8 @@ label magicworldexposition:
     wm "Follow me. The last stop is my FAVOURITE!"
 
     label finaltourstop:
-        show wildmyst at leftish #neutral
         show main at left #neutral
+        show wildmyst at leftish #neutral
         with moveinleft
         "You descend further into the depths below the hills..."
         "Sweet-smelling steam starts to permeate the air around you."
@@ -647,14 +658,51 @@ label magicworldexposition:
         wm "Here, we NEVER forget the importance of individual freedom, and collective unity arises from that."
         wm "Happy people make better societies. Don't you think?"
         show main #confused
-
+        mc "I'm a bit too much of an amnesiac to know for sure, but I certainly understand this world better now."
+        show wildmyst #happy
+        wm "YEEHAW!"
+        show main #neutral
+        "{cps=15}{colour=#880000}You learned the ways of the Magic World!{/color}{/cps}"
+        $ has_magic_philo = True
+        hide main
+        hide wildmyst
+        with moveoutleft
+        mc "Let's go back outside."
+        show main at left #neutral
+        show wildmyst at right #neutral
+        with moveinbottom
     jump magicrootdecision
-
-    # slightly branched conversation to learn about and reveal magic world's "idea" goes here
 
 label magicworldproblems:
 
-    "There is nothing here yet!"
+    show wildmyst #happy
+    wm "No way! This world is a happy place."
+    menu insistmagic:
+        "Oh. Okay, then.":
+            jump magicrootdecision
+        "Come on. There must be SOMETHING!":
+            pass
+    show wildmyst #neutral
+    wm "Well, I don't know... but you asked with such enthusiasm..."
+    wm "I guess..."
+    show wildmyst #shocked
+    wm "I don't know if I can TRUST you!"
+    menu insistfurther:
+        "Yeah, you probably can't.":
+            show wildmyst #neutral
+            wm "See? Exactly."
+            jump magicrootdecision
+        "Please. I think my destiny has something to do with helping you.":
+            pass
+    wm "Well..."
+    wm "I suppose I can trust a Witch of the Watch. They've never done anything to harm us in the past."
+    wm "You see... there is one thing..."
+    mc "What is it?"
+    show wildmyst at center
+    with move
+    "Wild Myst moves closer and speaks in a quieter voice, so as not to be overheard."
+
+    
     jump magicrootdecision
     # highly branched conversation to find opportunity to present philosophy world's "idea" goes here
 
@@ -663,7 +711,7 @@ label philosophyworld:
     scene bg philosophy with dissolve
     play music "philosophy.mp3"
     "Wow. Time to go back to the Hub World."
-    jump start
+    jump hub_world
 
 """
     P "Hark! Who enters my lair!?"
