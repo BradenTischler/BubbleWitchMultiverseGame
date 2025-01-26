@@ -12,6 +12,8 @@ default has_philo_intro = False
 default has_industry_intro = False
 default magic_tour_suspended = False
 default done_magic_tour = False
+default done_magic_problem_intro = False
+default magic_problem_suspended = False
 default is_solved_industry = False
 default is_solved_magic = False
 default is_solved_philo = False
@@ -25,17 +27,17 @@ default loopy_phil_1 = False
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define mc = Character("[mc_name]", image='main.png', kind=bubble, color="#888888")
-define b = Character("Book", kind=nvl)
-define sr = Character("Sapona Ramune", image='sapona.png', kind=bubble)
-define wm = Character("Wild Myst", image='wildmyst.png', kind=bubble)
-define P = Character("Loopy Phil", image='phil.png', kind=bubble)
-define V = Character("Loopy Phil", image='phil.png', kind=nvl)
+define mc = Character("[mc_name]", image='main.png', color="#CCCCCC")
+define b = Character("", kind=nvl, color="#FFFFFF")
+define sr = Character("Sapona Ramune", image='sapona.png', color="#0000DD")
+define wm = Character("Wild Myst", image='wildmyst.png', color="#DD0000")
+define P = Character("Loopy Phil", image='phil.png', color="#00BB00")
+define V = Character("Loopy Phil", image='phil.png', kind=nvl, color="#00BB00")
 
-image main = "main.png"
-image sapona = "sapona.png"
-image wildmyst = "wildmyst.png"
-image phil = "phil.png"
+# image main = "main.png"
+# image sapona = "sapona.png"
+# image wildmyst = "wildmyst.png"
+# image phil = "phil.png"
 
 # defining consistent transforms for use
 
@@ -342,6 +344,11 @@ label scienceworld:
                 sr "Of course. What is it?"
                 jump sci_issue
 
+            "Can I leave?"
+                sr "I can't keep you here, if you must go."
+                sr "At least buy something on the way out, will you?"
+                jump hub_world
+
     label sci_solved:
         #do color change stuff
         "With those words, you feel a weight in the air lift."
@@ -366,7 +373,7 @@ label magicworld:
         show wildmyst at right #neutral
         with moveinright
         jump magicrootdecision
-    "Dashing down the steps of a building is a figure who seems to have been expecting you."
+    "Dashing down a path from a nearby hill is a figure who seems to have been expecting you."
     show wildmyst at right #shocked
     with moveinright
     wm "It's YOU!"
@@ -449,8 +456,14 @@ label magicworld:
             with moveoutright
             wm "Let's go!"
             $ magic_tour_suspended = False
-        "Are there any problems in this world I should know about?":
+            jump finaltourstop
+        "Are there any problems in this world I should know about?" if done_magic_problem_intro == False:
             jump magicworldproblems
+        "Can we talk about your problems again?" if magic_problem_suspended:
+            show wildmyst at center
+            with move
+            wm "PLEASE! Tell me you know what to do!"
+            jump solvemagic
         "I have to go now.":
             show wildmyst #shocked
             wm "WHAT?! ALREADY?!"
@@ -551,7 +564,7 @@ label magicworldexposition:
                     show wildmyst #happy
         "Yes! Make them feel JUSTICE!":
             show wildmyst #happy
-            "You really seem to GET what we're all about HERE!."
+            "You really seem to GET what we're all about HERE!"
             show wildmyst #happy
     hide wildmyst
     hide main
@@ -560,7 +573,7 @@ label magicworldexposition:
     show main at right #neutral
     show wildmyst at rightish #neutral
     with moveinright
-    "Next, you descend the hill and come to a stop outside the entrance to a mineshaft."
+    "Next, you climb a hill and come to a stop outside the entrance to a mineshaft."
     "We have mines like this all over our world. It's where we get our maginesium from."
     menu maginesiumquestion:
         "Maginesium? What's that, exactly?":
@@ -652,7 +665,7 @@ label magicworldexposition:
         show wildmyst #happy
         wm "YEEHAW!"
         show main #neutral
-        "{cps=15}{color=#880000}You learned the ways of the Magic World!{/color}{/cps}"
+        "{cps=15}{color=#DD0000}You learned the ways of the Magic World!{/color}{/cps}"
         $ has_magic_philo = True
         hide main
         hide wildmyst
@@ -665,6 +678,7 @@ label magicworldexposition:
 
 label magicworldproblems:
 
+    $ done_magic_problem_intro = True
     show wildmyst #happy
     wm "No way! This world is a happy place."
     menu insistmagic:
@@ -691,10 +705,115 @@ label magicworldproblems:
     show wildmyst at center
     with move
     "Wild Myst moves closer and speaks in a quieter voice, so as not to be overheard."
-
-    
+    wm "My people recently discovered a new vein of maginesium, the resource that powers our magic, deep underground."
+    show wildmyst #happy
+    wm "It's the biggest deposit ever found, which is actually PRETTY exciting!"
+    show wildmyst #shocked
+    wm "But it runs under the lands of many different towns and farms..."
+    wm "So it's not clear who should have the right to start mining the maginesium."
+    wm "And two competing groups have formed, claiming the resource belongs to them."
+    show wildmyst #angry
+    wm "They've actually started FIGHTING with MAGIC!"
+    wm "It's FIRE SPELLS all over the place!"
+    play sound "fire.mp3"
+    with vpunch
+    mc "Aaaah!"
+    show wildmyst #neutral
+    wm "Like that one."
+    menu badadvice:
+        "Can't you just use your powers to mine the resource yourself?":
+            wm "I could, but that wouldn't make anyone happy. I try to work with my people where I can."
+        "Can't you just punish the people who have started fighting?":
+            wm "Normally, I would, but too many people are involved now."
+    wm "Usually, I have a very clear picture of what is right and what is wrong."
+    show wildmyst #shocked
+    wm "But both sides are huge! And I can't decide which one is right..."
+    show wildmyst #neutral
+    wm "I've never had to deal with anything like this before."
+    hide wildmyst
+    with moveoutbottom
+    wm "DARN!"
+    mc "(She's thrown herself to the ground and is now lying in a pitiful heap.)"
+    mc "Hey, I'm sure every problem can be solved."
+    mc "Maybe I can help?"
+    show wildmyst at leftish #happy
+    with moveinbottom
+    wm "YES! You're a Witch of the Watch! You've come to help us in our hour of NEED!"
+    wm "PLEASE! Tell me you know what to do!"
+    menu solvemagic:
+        "Actually, I don't have any ideas right now.":
+            wm "Awww..."
+            show wildmyst at right
+            with move
+            wm "Well, on the off chance that you come up with something, please let me know."
+            mc "'Kay."
+            $ magic_problem_suspended = True
+            jump magicrootdecision
+        "I learned something from another world that might help." if has_philo_philo:
+            $ magic_problem_suspended = False
+            show wildmyst at center
+            with move
+            wm "Another world? Really?"
+            show wildmyst #angry
+            wm "But those scientists and philosophers are so SNOOTY! They don't know ANYTHING about love or justice!"
+            mc "Maybe not, but the philosophers do know something about ideas."
+            show wildmyst #neutral
+            mc "You're seeing your problem in black and white. You think you have to make a moral judgement between only two possibilities."
+            mc "But the philosophers would tell you that there are always infinite possibilities, shades between extremes."
+            wm "What?!"
+            mc "Being just doesn't mean being rigid."
+            mc "Find the fairest solution by giving yourself FREEDOM to explore the nuance."
+            wm "Well, I do like freedom."
+            wm "Hmmm... Let me think..."
+            hide wildmyst
+            with moveoutbottom
+            show wildmyst at right
+            with moveinright
+            hide wildmyst
+            with moveoutbottom
+            show wildmyst at center
+            with moveinright
+            hide wildmyst
+            with moveoutbottom
+            show wildmyst at right #happy
+            wm "OKAY! You convinced me."
+            show wildmyst #neutral
+            wm "Maybe I could find a way for the groups to share the mine?"
+            mc "Yep. Or you could ask if any of them have ideas to fairly decide the issue."
+            wm "Yeah..."
+            wm "..."
+            wm "Well, I have to say that I'm feeling a lot better, like I can lead my people through the next steps!"
+            show wildmyst #happy
+            wm "Actually, it makes me so happy that..."
+            wm "FIRE SPELL!"
+            play sound "fire.mp3"
+            with vpunch
+            mc "(Huh. That didn't surprise me at all. Guess I got used to it.)"
+            wm "Seriously... just..."
+            show wildmyst at left
+            with move
+            play sound "thud.mp3"
+            with hpunch
+            hide main
+            with moveoutleft
+            wm "THANK YOU SO MUCH!"
+            menu thankyou:
+                "... ... ... you're welcome.":
+                    pass
+                "No problem, fellow Witch.":
+                    pass
+                "HAPPY TO DO IT!":
+                    pass
+            show wildmyst at right #neutral
+            with move
+            wm "I guess... the other worlds have some good ideas after all..."
+            "Deep down, you feel you have achieved something important - something you were meant to do."
+            show main at left
+            with moveinbottom
+            $ is_solved_magic = True
+            "{cps=15}{color=#DD0000}You helped the Magic World get out of their bubble!{/color}{/cps}"
     jump magicrootdecision
-    # highly branched conversation to find opportunity to present philosophy world's "idea" goes here
+
 
 label philosophyworld:
 
@@ -984,5 +1103,96 @@ label philosophyworld:
 
         $ is_solved_philo = True
 
+label ending:
+    "A strange sense of finality fills the air"
+    "That celestial object between the shperes..."
+    "The one that draws nearer at every breath"
+    "You suddenly understand that it's approach is inevitable"
+    mc "That thing is going to destroy us all!"
+    menu:
+        "Contact the witches!":
+            pass
+        "Somebody save me!":
+            pass
+        "Heh, I can handle it alone.":
+            "You could {i}not{/i} handle it alone."
+            "GAME OVER"
+            "RETRY?"
+            menu:
+                "Yeah, sure.":
+                    jump ending
+                "Nah, I'm too cool for school, even if it kills me.":
+                    return
+    if is_solved_industry and is_solved_magic and is_solved_philo:
+        jump good_end
+    elif is_solved_industry==False:
+        jump magic_philo_end
+    elif is_solved_magic==False:
+        jump philo_industry_end
+    elif is_solved_philo==False:
+        jump magic_industry_end
+  
+label magic_philo_end:
+    "You contact your allies in the worlds of magic and philosophy."
+    "Working together, you hatch a genius plan."
+    show phil
+    with moveinright
+    "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
+    hide phil
+    with moveoutright
+    show wildmyst
+    with moveinright
+    "While Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
+    hide wildmyst
+    with moveoutright
+    "Unfortunately, without transportation, the team is unable to travel close enough to intecept at a safe distance."
+    "Instead, the team waits until it is almost struck them, then obliterates it with supreme power and precision."
+    "The shrapnel from the blast rains down on the spheres, causing widespread destruction."
+    "Regardless, nothing is lost that cannot be rebuilt."
+    jump fin_screen
 
-    return
+label philo_industry_end:
+    "You contact your allies in the worlds of science and philosophy."
+    "Working together, you concoct a wily scheme."
+    show phil
+    with moveinright
+    "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
+    hide phil
+    show sapona
+    with moveinright
+    "While Sapona and the worker's union manufacture a ship to intercept it."
+    hide sapona
+    with moveoutright
+    "Unfortunately, with inadequate firepower, the team can't permanently destroy it."
+    "Instead, the team sends the starship on a collision course with the celestial threat."
+    "Striking at the precise force and velocity, it's approach vector changes enough to barely miss the spheres."
+    "However, the sheer mass of the thing causes powerful tidal shifts as it passes."
+    "Tsunamis and earthquakes plauge the worlds, but eventually they cease."
+    "While there is widespread destruction, it is nothing that can't be rebuilt."
+    jump fin_screen
+    
+label magic_industry_end:
+    "You contact your allies in the worlds of magic and philosophy."
+    "Working together, you figure yerselves a solution."
+    show wildmyst
+    with moveinright
+    "Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
+    hide wildmyst
+    with moveoutright
+    show sapona
+    with moveinright
+    "While Sapona and the worker's union manufacture a ship to intercept it."
+    hide sapona
+    with moveoutright
+    "Unfortunately, without proper intel, you are unable to triangulate the exact location of the object."
+    "The fire mages load a powerful spell onto the ship, but have to constantly correct their course as they go."
+    "By the time they reach it, the object is too close to avoid collateral damage."
+    "A close-range blast vaporizes the threat, but the excess heat bakes the surface of the worlds."
+    "The blinding warmth lasts but a moment, just long enough to cause widespread crop failures among the spheres."
+    "Times are tough for a while, but you are confident that eventually everyone can pull through."
+    jump fin_screen
+    
+label fin_screen:
+
+    
+return        
