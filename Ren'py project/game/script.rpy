@@ -224,6 +224,7 @@ label scienceworld:
                             sr "As soon as something stops working, you have to change it..."
                             #show sapona angry
                             sr "...or scrap it entirely"
+                            "{cps=15}{color=#0066FF}You learned the ways of the Science World!{/color}{/cps}"
                             $ has_industry_philo = True
                             $ has_skipped_sciphilodialogue = False
                             jump sci_whoareyou
@@ -318,6 +319,7 @@ label scienceworld:
                                 sr "...I had not thought of it that way."
                                 sr "I think you may actually be right."
                                 sr "Who knew a nothing-witch could be so wise?"
+                                "{cps=15}{color=#0066FF}You helped the Magic World get out of their bubble!{/color}{/cps}"
                                 $ is_solved_industry = True
                                 jump sci_solved
                     "How can you really be sure the reason for this strike is the lack of vacation days?" if has_philo_philo:
@@ -994,6 +996,7 @@ label philosophyworld:
             "I'm gonna be honest: I absorbed {i}none{/i} of what you just said.":
                 P "Well isn't that wonderful!? Isn't it {i}amazing{/i} how there's always something else to learn!?"
         
+        "{cps=15}{color=#00BB00}You learned the ways of the Philosophy World!{/color}{/cps}"
         $ has_philo_philo = True
 
         P "Now - where were we, again?"
@@ -1116,6 +1119,8 @@ label philosophyworld:
         find this object, and now {i}exactly{/i} what it is, {i}scientifically!{/i}! And you know what? If 
         I can help other worlds out, I'll open my arms to them, too! Trust and challenge: that is the essense of being human!
         """
+
+        "{cps=15}{color=#00BB00}You helped the Philosophy World get out of their bubble!{/color}{/cps}"
 
         $ is_solved_philo = True
 
