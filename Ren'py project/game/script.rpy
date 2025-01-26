@@ -1,27 +1,8 @@
 # The script of the game goes in this file.
-
-# variables
-$ max_jumps = 4
-$ current_jumps = 0
-$ mc_name = ""
-$ has_magic_philo = False
-$ has_philo_philo = False
-$ has_industry_philo = False
-$ has_magic_intro = False
-$ has_philo_intro = False
-$ has_industry_intro = False
-$ is_solved_industry = False
-$ is_solved_magic = False
-$ is_solved_philo = False
-$ has_skipped_sciphilodialogue = False #if the player doesn't bother to ask the right question, makes it so they don't need to go menuing to find it again
-$ knows_industry_issue = False #if the player has discovered the problem facing the world, hey can bring it up again without the menus
-$ industry_bored = False #if the player answers boredom for why they entered science world, they get a sales pitch.
-$ has_witch_watch_info = False
-
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define mc = Character(mc_name, image='main.png', kind=bubble)
+define mc = Character("[mc_name]", image='main.png', kind=bubble)
 define sr = Character("Sapona Ramune", image='sapona.png', kind=bubble)
 define wm = Character("Wild Myst", image='wildmyst.png', kind=bubble)
 define P = Character("Loopy Phil", image='phil.png', kind=bubble)
@@ -48,13 +29,33 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
+    # variables
+    $ max_jumps = 4
+    $ current_jumps = 0
+    $ mc_name = ""
+    $ has_magic_philo = False
+    $ has_philo_philo = False
+    $ has_industry_philo = False
+    $ has_magic_intro = False
+    $ has_philo_intro = False
+    $ has_industry_intro = False
+    $ is_solved_industry = False
+    $ is_solved_magic = False
+    $ is_solved_philo = False
+    $ has_skipped_sciphilodialogue = False #if the player doesn't bother to ask the right question, makes it so they don't need to go menuing to find it again
+    $ knows_industry_issue = False #if the player has discovered the problem facing the world, hey can bring it up again without the menus
+    $ industry_bored = False #if the player answers boredom for why they entered science world, they get a sales pitch.
+    $ has_witch_watch_info = False
+
     scene bg hub
     play music "hub.mp3"
     # These display lines of dialogue.
 
     show main at center
     with moveinbottom
-
+    python:
+        mc_name = renpy.input("What is your name?")
+        mc_name = mc_name.strip() or "Witchley"
     mc "Where should I go today?"
     menu travel:
         "To the science world.":
@@ -75,7 +76,7 @@ label scienceworld:
 
     scene bg science
     play music "science.mp3"
-    if !has_industry_intro:
+    if has_industry_intro==False:
         #introduction
         show main at left
         with moveinleft
@@ -121,34 +122,35 @@ label scienceworld:
                 sr "I run this world with a cold, unbiased, and concrete hand..."
                 #show sapona
                 sr "...and as a result, my people are the wealthiest amoung the spheres."
-                menu sci_whoareyou:
-                    if !has_industry_philo:
+                label sci_whoareyou:
+                    if has_industry_philo==False:
                         $ has_skipped_sciphilodialogue = True
-                    #show sapona
-                    "What is a \"Witch\"?":
-                        #show sapona angry
-                        sr "{i}You{/i} are a Witch, Little Witch of the Dead Sphere."
+                    menu:
                         #show sapona
-                        sr "You are not the first, they tend to come and go somewhat aimlessly."
-                        jump sci_whoareyou
-                    "Tell me more about your business philosophy.":
-                        #show sapona happy
-                        sr "Very wise of you to seek my council, witch of nothingness."
-                        sr "Perhaps with my guidance you can breath some life into that empty world of yours."
-                        #show sapona
-                        sr "First and foremost is efficiency."
-                        sr "A good witch will not tolerate waste."
-                        sr "Try new things, yes; that is the only way to prevent stagnation."
-                        sr "But do not allow a failed product line to drag down your entire business."
-                        sr "As soon as something stops working, you have to change it..."
-                        #show sapona angry
-                        sr "...or scrap it entirely"
-                        $ has_industry_philo = True
-                        $ has_skipped_sciphilodialogue = False
-                        jump sci_whoareyou
-                    "I'd like to ask something else.":
-                        sr "If you insist."
-                        jump sci_main
+                        "What is a \"Witch\"?":
+                            #show sapona angry
+                            sr "{i}You{/i} are a Witch, Little Witch of the Dead Sphere."
+                            #show sapona
+                            sr "You are not the first, they tend to come and go somewhat aimlessly."
+                            jump sci_whoareyou
+                        "Tell me more about your business philosophy.":
+                            #show sapona happy
+                            sr "Very wise of you to seek my council, witch of nothingness."
+                            sr "Perhaps with my guidance you can breath some life into that empty world of yours."
+                            #show sapona
+                            sr "First and foremost is efficiency."
+                            sr "A good witch will not tolerate waste."
+                            sr "Try new things, yes; that is the only way to prevent stagnation."
+                            sr "But do not allow a failed product line to drag down your entire business."
+                            sr "As soon as something stops working, you have to change it..."
+                            #show sapona angry
+                            sr "...or scrap it entirely"
+                            $ has_industry_philo = True
+                            $ has_skipped_sciphilodialogue = False
+                            jump sci_whoareyou
+                        "I'd like to ask something else.":
+                            sr "If you insist."
+                            jump sci_main
             "Where exactly am I?":
                 #show sapona happy
                 sr "We call it \"The Grand Metropolis\"."
@@ -165,7 +167,9 @@ label scienceworld:
                     #illusion of choice lol
                     #also breaks up the monotony of a long exposition if the player has to do something.
                     "Why exactly are people refusing to do their job?":
+                        $ dummyvariable = 1
                     "What do you think they want?":
+                        $ dummyvariable = 2
                 #show sapona angry
                 sr "Certain {i}lazy{/i} individuals have got it in their heads they need..."
                 "Sapona leans in and states in a low wisper:"
@@ -211,65 +215,60 @@ label scienceworld:
 
                 menu sci_conflict:
                     "I'm not quite sure yet":
-                    if has_magic_philo:
-                        "It just ain't right to force people to work that many hours.":
-                            #show sapona angry
-                            sr "You think you know better than me, Little Witch?"
-                            sr "What do you know of running a sphere?"
-                            sr "Do you have thousands of lives in your hands, depending on you to keep them in house and home?"
-                            menu:
-                                "I guess not...":
-                                    #show main
-                                    mc "I don't really know all that much about business, but it still seems wrong..."
-                                    jump sci_main
-                                if has_industry_philo:
-                                    "Your commitment to efficiency should compel you to change your stance.":
-                                        #show main
-                                        #que ace attourney music
-                                        mc "Overwork is just as large a threat to productivity as lack of work."
-                                        mc "And currently, due to your callous demeanour, you are experiencing both."
-                                        mc "You are stuck in a local maximum, your laser-focus has left you unable to see the forest for the trees."
-                                        #show sapona
-                                        sr "..."
-                                        sr "...I had not thought of it that way."
-                                        sr "I think you may actually be right."
-                                        sr "Who knew a nothing-witch could be so wise?"
-                                        $ is_solved_industry = True
-                                        jump sci_solved
-                    if has_philo_philo:
-                        "How can you really be sure the reason for this strike is the lack of vacation days?":
-                            #show main
-                            mc "You have to think about this rationally."
-                            mc "What reason do you have to believe that these workers are telling you the truth?"
-                            mc "If you are to come to any sort of concrete conclusion you have to start at base principals."
-                            mc "To start, you have to rule out the possibility you are living in a dream concocted by some evil imp..."
-                            #show sapona
-                            sr "..."
-                            sr "Get out of my world."
-                            "Sapona manifests a portal directly behind you, and sends you through it with a solid kick to centre mass."
-                            jump hub_world
+                        "Placeholder dialogue!!!"
+                    "It just ain't right to force people to work that many hours." if has_magic_philo:
+                        #show sapona angry
+                        sr "You think you know better than me, Little Witch?"
+                        sr "What do you know of running a sphere?"
+                        sr "Do you have thousands of lives in your hands, depending on you to keep them in house and home?"
+                        menu:
+                            "I guess not...":
+                                #show main
+                                mc "I don't really know all that much about business, but it still seems wrong..."
+                                jump sci_main
+                            "Your commitment to efficiency should compel you to change your stance." if has_industry_philo:
+                                #show main
+                                #que ace attourney music
+                                mc "Overwork is just as large a threat to productivity as lack of work."
+                                mc "And currently, due to your callous demeanour, you are experiencing both."
+                                mc "You are stuck in a local maximum, your laser-focus has left you unable to see the forest for the trees."
+                                #show sapona
+                                sr "..."
+                                sr "...I had not thought of it that way."
+                                sr "I think you may actually be right."
+                                sr "Who knew a nothing-witch could be so wise?"
+                                $ is_solved_industry = True
+                                jump sci_solved
+                    "How can you really be sure the reason for this strike is the lack of vacation days?" if has_philo_philo:
+                        #show main
+                        mc "You have to think about this rationally."
+                        mc "What reason do you have to believe that these workers are telling you the truth?"
+                        mc "If you are to come to any sort of concrete conclusion you have to start at base principals."
+                        mc "To start, you have to rule out the possibility you are living in a dream concocted by some evil imp..."
+                        #show sapona
+                        sr "..."
+                        sr "Get out of my world."
+                        "Sapona manifests a portal directly behind you, and sends you through it with a solid kick to centre mass."
+                        jump hub_world
 
-            if industry_bored:
-                "Tell me more about this hotel.":
-                    #show sapona
-                    sr "I'm glad you asked! only the finest accomodations are availible for our esteemed guests."
-                    sr "We keep them running 24/7, just in case a guest comes along."
-                    sr "Happens about once a century or so, but the jobs it creates are well worth it anyway."
-                    sr "Besides, what use is all this wealth if we can't show it off when the opportunity arises?"
-                    $ industry_bored = False
-                    jump sci_main
+            "Tell me more about this hotel." if industry_bored:
+                #show sapona
+                sr "I'm glad you asked! only the finest accomodations are availible for our esteemed guests."
+                sr "We keep them running 24/7, just in case a guest comes along."
+                sr "Happens about once a century or so, but the jobs it creates are well worth it anyway."
+                sr "Besides, what use is all this wealth if we can't show it off when the opportunity arises?"
+                $ industry_bored = False
+                jump sci_main
 
-            if has_skipped_sciphilodialogue:
-                "About your job earlier...":
-                    #show sapona
-                    sr "What about it?"
-                    jump sci_whoareyou
-            
-            if knows_industry_issue:
-                "Remember that issue you were talking about?":
-                    #show sapona
-                    sr "Of course. What is it?"
-                    jump sci_issue
+            "About your job earlier..." if has_skipped_sciphilodialogue:
+                #show sapona
+                sr "What about it?"
+                jump sci_whoareyou
+        
+            "Remember that issue you were talking about?" if knows_industry_issue:
+                #show sapona
+                sr "Of course. What is it?"
+                jump sci_issue
 
     label sci_solved:
         #do color change stuff
@@ -278,12 +277,18 @@ label scienceworld:
         "A shift in your perception,"
         "You think you have done something good."
         if (is_solved_magic and is_solved_philo):
-            jump best_end
+            "Yay."
+            jump start
+            # jump best_end
         elif (current_jumps > max_jumps):
             if (is_solved_magic):
-                jump magic_sci_end
+                # jump magic_sci_end
+                "Whoo."
+                jump start
             elif (is_solved_philo):
-                jump philo_sci_end
+                # jump philo_sci_end
+                "Okay."
+                jump start
         else:
             jump start
 
@@ -370,7 +375,7 @@ label magicworld:
     mc "(Finally.)"
     $ has_magic_intro = True
     menu magicrootdecision:
-        "What exactly is a Witch of the Watch supposed to do?" if (has_witch_watch_info == False):
+        "What exactly is a Witch of the Watch supposed to do?" if has_witch_watch_info==False:
             jump witchwatchinfo
         "This world is about more than magic, right?":
             jump magicworldexposition
@@ -408,10 +413,10 @@ label witchwatchinfo:
     wm "Sorry I don't remember anything else."
     menu witchwatchinforeaction:
         "Well, you still gave me a little bit of context.":
-            wc "Yeah, I guess."
-            wc "..."
+            wm "Yeah, I guess."
+            wm "..."
             show wildmyst #angry
-            wc "FIRE SPELL!"
+            wm "FIRE SPELL!"
             #play sound "fire.mp3" with hpunch
             hide main
             with moveoutbottom
@@ -432,7 +437,7 @@ label witchwatchinfo:
     $ has_witch_watch_info = True
     jump magicrootdecision
 
-label magicworldexposition
+label magicworldexposition:
 
     show wildmyst #happy
     wm "You'd better believe it, FRIEND!"
@@ -440,7 +445,7 @@ label magicworldexposition
     hide wildmyst
     with moveoutright
     hide main
-    with moveout right
+    with moveoutright
     mc "Sure. That sounds like an idea."
     show wildmyst at leftish #neutral
     with moveinleft
@@ -471,7 +476,7 @@ label magicworldexposition
 
     # slightly branched conversation to learn about and reveal magic world's "idea" goes here
 
-label magicworldproblems
+label magicworldproblems:
 
     "There is nothing here yet!"
     jump magicrootdecision
@@ -481,7 +486,10 @@ label philosophyworld:
 
     scene bg philosophy
     play music "philosophy.mp3"
+    "Wow. Time to go back to the Hub World."
+    jump start
 
+"""
     P "Hark! Who enters my lair!?"
 
     menu:
@@ -535,6 +543,6 @@ label philosophyworld:
                 "Ah, and yet your title flatters you so! I suppose the training was never
                 quite transparent"
                 jump sticking_loop1 done
-
+"""
         
 
