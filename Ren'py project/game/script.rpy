@@ -141,9 +141,9 @@ label philosophyworld:
     P "Now tell me, what is your purpose in seeing me? What brings such a lovely being from the outside to my own wonderful abode?"
 
     menu first_big_choice:
-        if has_philo_philo == False:
-            "What's happening in this world? [costs 1 time]": # This is how you get the philosophy idea
-                $ expo_dump = True
+
+        "What's happening in this world? [costs 1 time]" if has_philo_philo == False: # This is how you get the philosophy idea
+            $ expo_dump = True
 
         "Your bourgeois metaphysical thinking is unbecoming of you, comrade!": # This just insults them
             P '{cps = 5}That hurts, "comrade."' # concerned
@@ -187,7 +187,7 @@ label philosophyworld:
             P "Yes, that's — wait, what was I saying?"
             jump self_id
 
-        "Have you considered that science should be efficient?": # This leads to solving the problem; requires having learned the lesson from the science witch
+        "Have you considered that science should be efficient?" if has_philo_philo == True: # This leads to solving the problem; requires having learned the lesson from the science witch
             $ challenge_time = True
 
         if expo_dump == True:
@@ -258,13 +258,125 @@ label philosophyworld:
 
             P "Now we — where were we, again?"
                 jump self_id
+
+        if challenge_time == True:
             
+            # concerned
+            P '"Efficiency"? What about "efficiency"? Eveyone will get what needs to be done in their time!'
+            P "There's really no need to rush things here. We'll all get through it in the end!"
 
+            menu first_challenge:
 
-    
-    
+                "You know what, you're right. Forget about it.":
+                    P "Yeah, that's right! We'll get there!" # elated
+                    P "We just need to consider {i]everyone's{/i} ideas, and {i}then{/i} we'll get this celesiatl object thing sorted out!"
+                    # concerned
+                    # beat
+                    P "Now, tell me about yourself!" # elated
+                    jump self_id
 
-        
+                "You need to be ruthless. You need to be cunning":
+                    P "I..." # neutral
+                    P "...I can't be like like that again. I need to be better than that." # concerned
+                    P "Tell me — just who are you?"
+                    jump self_id
+
+                "Science has to be replicable. You need to fail to succeed. That's {i}real{/i} autonomy":
+
+                "You're not getting ANYTHING DONE! GROW A SPINE!":
+                    P "I don't have a spine! I'm a bubble witch!"
+                    P "It would be interesting to have one, though — great suggestion!"
+                    P "Tell me again — are you a bubble witch?"
+                    jump self_id
+
+            P "That..."
+            P "...is true actually. I suppose it wasn't very scientific of me to neglect critical thinking like that."
+            P "But I know all too well the pitfalls of a real \"leader's\" leader. Tell me: how can I not be like that again?"
+
+            menu second_challenge:
+
+                "Get ahold of yourself. Make the big decisions. Others are too weak and stupid to.":
+                    P "I.."
+                    P "...you know that's not true."
+                    P "Tell me — who are you to say that!?"
+                    jump self_id
+
+                "Train others to be leaders in their own right. Trust them to fail and {i}learn{/i}":
+                
+                "Exactly the way you are! You're perfect!":
+                    P "I am, aren't I!?"
+                    P "And so are you!! <3"
+                    P "Yes, you — wait, who are you?"
+                    jump self_id
+
+                "You can't. You're doomed to a life of spinning in circles.":
+                    P "That..."
+                    P "...I don't want to believe that."
+                    jump self_id
+
+            P "You know what, that makes sense. But that still means {i}I{/i} have to be a leader. And when I lead, I hurt people."
+            P "I don't want to do that agaain."
+
+            menu third_challenge:
+
+            "HURT THEM. THEY MUST LEARN!":
+                P "..."
+                jump self_id
+
+            "Don't try! You're amazing the way you are and so are your people!":
+                P "Thank you!"
+                P "And to whom do I owe the honour?"
+                jump self_id
+
+            '"Sticks and stones may break your bones, but words can never hurt me.':
+                P "I..."
+                P "...I don't know if I can trust you on that."
+                P "And who is you? Is you you? Are me me?"
+
+            "Not all challenge is abuse. Philosophy needs rigorous debate.":
+
+            V:
+            '''
+            You're right. It was that debate that sparked all the good that people did: the arguing,
+            the fierce determination, and yet the genuinely kind ones always manage to synthesize things
+            and make things more that their parts. I understand. But I need to know: how can I trust myself
+            enough to trust I won't do what I did to my people again?
+            '''
+
+            menu final_challenge:
+
+                "Because you're great! I know you'll be great!":
+                    P "I..."
+                    P "...yeah"
+                    mc "I know you'll be great because I am..."
+                    jump self_id
+
+                "Because you know more than anyone.":
+                    P "I..."
+                    P "...guess..."
+                    P "...except I can never even remember who you are!"
+                    jump self_id
+
+                "Because {i}I{/i} trust you":
+                    P "Yes, but..."
+                    P "...that doesn't feel like enough."
+                    jump self_id
+                
+                "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
+
+            V:
+            '''
+            You're right. I knew how to talk, and be jovial and accept people. And I learned how to trust
+            people. But I forgot how to think, and that makes me a bad scientist and philosopher. I haven't
+            really thought in a while. I got so caught up in all the different ways of doing things, I forgot
+            to do those things. But those days are over. I'm going to take a stand, and stand with the people
+            I haven't always stood with, whether because I was mean or I was neglectful. No more. We are going to
+            find this object, and now {i}exactly{/i} what it is, {i}scientifically!{/i}! And you know what? If 
+            I can help other worlds out, I'll open my arms to them, too!
+            '''
+
+            $ philo_solve = True
+
 >>>>>>> Stashed changes
 
     return
