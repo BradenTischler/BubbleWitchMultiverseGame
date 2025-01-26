@@ -1,34 +1,34 @@
-2025-01-26 17:20:41 UTC
+2025-01-26 17:27:32 UTC
 Windows-10-10.0.22631
 Ren'Py 8.3.4.24120703
 
 Early init took 0.09s
-Loading error handling took 0.08s
-Loading script took 1.48s
+Loading error handling took 0.04s
+Loading script took 0.31s
 Loading save slot metadata took 0.04s
 Loading persistent took 0.00s
-Running init code took 0.11s
+Running init code took 0.07s
 Loading analysis data took 0.02s
 Analyze and compile ATL took 0.00s
-Reloading save slot metadata took 0.02s
+Reloading save slot metadata took 0.03s
 Index archives took 0.00s
 Backing up script files to "C:\\Users\\Wendy\\AppData\\Roaming/RenPy/backups\\Ren'py project":
 Dump and make backups took 0.08s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
-Initial gc took 0.06s
+Initial gc took 0.05s
 DPI scale factor: 1.000000
 nvdrs: Loaded, about to disable thread optimizations.
 nvdrs: b"Couldn't load nvlib." (can be ignored)
 Creating interface object took 0.00s
 Cleaning stores took 0.00s
-Init translation took 0.06s
+Init translation took 0.05s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.02s
-Save screen analysis took 0.03s
-Prepare screens took 0.12s
-Save pyanalysis. took 0.02s
+Save screen analysis took 0.02s
+Prepare screens took 0.09s
+Save pyanalysis. took 0.00s
 Save bytecode. took 0.03s
 Running _start took 0.00s
 Interface start took 0.30s
@@ -43,36 +43,3 @@ Version: b'4.6.13587 Compatibility Profile Context 19.40.46 26.20.14046.3'
 Display Info: None
 Screen sizes: virtual=(1920, 1080) physical=(1184, 666) drawable=(1184, 666)
 Maximum texture size: 4096x4096
-
-Full traceback:
-  File "game/script.rpy", line 641, in script
-    V '''
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\ast.py", line 2579, in execute
-    Say.execute(self)
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\ast.py", line 621, in execute
-    renpy.exports.say(who, what, *args, **kwargs)
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\exports\sayexports.py", line 132, in say
-    who(what, *args, **kwargs)
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\character.py", line 1440, in __call__
-    what = self.prefix_suffix("what", self.what_prefix, what, self.what_suffix)
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\character.py", line 1354, in prefix_suffix
-    return (sub(prefix) + sub(body) + sub(suffix))
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\character.py", line 1334, in sub
-    return renpy.substitutions.substitute(s, scope=scope, force=force, translate=translate)[0]
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\substitutions.py", line 373, in substitute
-    s = interpolate(s, variables) # type: ignore
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\substitutions.py", line 86, in interpolate
-    raise e
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\substitutions.py", line 78, in interpolate
-    value = renpy.python.py_eval(code, {}, scope)
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\python.py", line 1209, in py_eval
-    return py_eval_bytecode(code, globals, locals)
-  File "C:\Users\Wendy\renpy\renpy-8.3.4-sdk\renpy\python.py", line 1202, in py_eval_bytecode
-    return eval(bytecode, globals, locals)
-  File "<none>", line 1, in <module>
-NameError: name 'elated' is not defined
-
-While running game code:
-  File "game/script.rpy", line 641, in script
-    V '''
-NameError: name 'elated' is not defined

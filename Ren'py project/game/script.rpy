@@ -639,6 +639,8 @@ label philosophyworld:
     label expo_dump:
         # music gets sad and reflective
         V '''
+        {clear}
+
         Well, one day I wasn't, and then I was. There's not much to tell there. Oh, but so much in between! Yes, that's the space I like.
         When I was born, the vivacious place full of life you see was barren, if you can believe it! It was a barren field of grass and dirt, if
         you could believe it, but it stretched out for miles, so many miles you could walk back to the place you started! and see nothing but a planet of grass! 
