@@ -766,14 +766,14 @@ label philosophyworld:
 
         menu third_challenge:
 
-"HURT THEM. THEY MUST LEARN!":
-    P "..."
-    jump self_id
+            "HURT THEM. THEY MUST LEARN!":
+                P "..."
+                jump self_id
 
-"Don't try! You're amazing the way you are and so are your people!":
-    P "Thank you!"
-    P "And to whom do I owe the honour?"
-    jump self_id
+            "Don't try! You're amazing the way you are and so are your people!":
+                P "Thank you!"
+                P "And to whom do I owe the honour?"
+                jump self_id
 
             '"Sticks and stones may break your bones, but words can never hurt me.':
                 P "I..."
