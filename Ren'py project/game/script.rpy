@@ -274,7 +274,9 @@ label scienceworld:
 
                 menu sci_conflict:
                     "I'm not quite sure yet":
-                        "Placeholder dialogue!!!"
+                        sr "Then come back to me when you ARE sure."
+                        sr "Time is money, and I don't appreciate having mine wasted."
+                        jump sci_main
                     "It just ain't right to force people to work that many hours." if has_magic_philo:
                         #show sapona angry
                         sr "You think you know better than me, Little Witch?"
@@ -308,7 +310,7 @@ label scienceworld:
                         sr "..."
                         sr "Get out of my world."
                         "Sapona manifests a portal directly behind you, and sends you through it with a solid kick to centre mass."
-                        jump start
+                        jump hub_world
 
             "Tell me more about this hotel." if industry_bored:
                 #show sapona
@@ -335,21 +337,7 @@ label scienceworld:
         "A subtle change in the atmosphere,"
         "A shift in your perception,"
         "You think you have done something good."
-        if (is_solved_magic and is_solved_philo):
-            "Yay."
-            jump start
-            # jump best_end
-        elif (current_jumps > max_jumps):
-            if (is_solved_magic):
-                # jump magic_sci_end
-                "Whoo."
-                jump start
-            elif (is_solved_philo):
-                # jump philo_sci_end
-                "Okay."
-                jump start
-        else:
-            jump start
+        jump hub_world
 
 # THIS COMMENT MARKS THE END OF SCIENCE WORLD
     
