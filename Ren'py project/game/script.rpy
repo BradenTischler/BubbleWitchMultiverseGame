@@ -985,4 +985,37 @@ label philosophyworld:
         $ is_solved_philo = True
 
 
-    return
+return
+
+label ending:
+    "A strange sense of finality fills the air"
+    "That celestial object between the shperes..."
+    "The one that draws nearer at every breath"
+    "You suddenly understand that it's approach is inevitable"
+    mc "That thing is going to destroy us all!"
+    menu:
+        "Contact the witches!":
+            pass
+        "Somebody save me!":
+            pass
+        "Heh, I can handle it alone.":
+            "You could {i}not{/i} handle it alone."
+            "GAME OVER"
+            "RETRY?"
+            menu:
+                "Yeah sure.":
+                    jump ending
+                "Nah, I'm too cool for school, even if it kills me.":
+                    return
+    if is_solved_industry and is_solved_magic and is_solved_philo:
+        jump good_end
+    elif is_solved_industry==False:
+        jump magic_philo_end
+    elif is_solved_magic==False:
+        jump philoindustry_end
+    elif is_solved_philo==False:
+        jump magicindustry_end
+        
+
+    
+        
