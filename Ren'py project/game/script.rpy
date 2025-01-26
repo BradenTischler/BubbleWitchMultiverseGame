@@ -619,15 +619,34 @@ label magicworldexposition:
         wm "These are our HOT SPRINGS! I call them the happiest place in our world."
         wm "Here, more than anywhere else, people are free to relax and be their truest selves."
         menu hotspring:
-            "Yes, I notice some children splashing.":
-                pass
+            "Yes, I notice how relaxing the atmosphere is.":
+                show wildmyst #neutral
+                wm "You are perceptive. There's literal magic in the air from the surrounding Maginesium deposits."
+                wm "These springs are a symbol of everything we stand for in this world."
+                show wildmyst #angry
+                wm "And if anything threatens this place, I will retaliate with EXTREME reprisal!"
+                wm "Another FIRE SPELL!"
+                play sound "fire.mp3"
+                with vpunch
+                mc "Aaaah!"
+                mc "(Oh, this time the spell just heated up the springs a bit more.)"
             "Indeed, this is clearly a no-shame zone.":
                 show wildmyst #shocked
                 wm "RIGHT! There's no place for body shame or any other kind of shame in this world!"
                 show wildmyst #angry
                 wm "EXCEPT when someone tries to stop another person from being free. They can be shamed a LOT!"
             "Ah, I see some people smooching each other.":
-                pass
+                wm "Right. This is a world of freedom and LOVE. If people want to smooch each other, we let them!"
+                show wildmyst #shocked
+                wm "Standing in the way of love and identity is NOT okay!"
+                show wildmyst #angry
+                wm "And must be PUNISHED."
+        show wildmyst #neutral
+        wm "So, you see. There are some rules about what people can do here, but it's only to protect true freedom."
+        wm "The collective is important, but it's made up of individuals."
+        wm "Here, we NEVER forget the importance of individual freedom, and collective unity arises from that."
+        wm "Happy people make better societies. Don't you think?"
+        show main #confused
 
     jump magicrootdecision
 
