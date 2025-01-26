@@ -326,7 +326,7 @@ label scienceworld:
                         sr "..."
                         sr "Get out of my world."
                         "Sapona manifests a portal directly behind you, and sends you through it with a solid kick to centre mass."
-                        jump start
+                        jump hub_world
 
             "Tell me more about this hotel." if industry_bored:
                 #show sapona
@@ -355,19 +355,19 @@ label scienceworld:
         "You think you have done something good."
         if (is_solved_magic and is_solved_philo):
             "Yay."
-            jump start
+            jump hub_world
             # jump best_end
         elif (current_jumps > max_jumps):
             if (is_solved_magic):
                 # jump magic_sci_end
                 "Whoo."
-                jump start
+                jump hub_world
             elif (is_solved_philo):
                 # jump philo_sci_end
                 "Okay."
-                jump start
+                jump hub_world
         else:
-            jump start
+            jump hub_world
 
 # THIS COMMENT MARKS THE END OF SCIENCE WORLD
     
@@ -467,7 +467,7 @@ label magicworld:
             hide main
             with moveoutleft
             "You step back into the portal."
-            jump start
+            jump hub_world
 
 label witchwatchinfo:
 
@@ -697,12 +697,15 @@ label philosophyworld:
 
     # all philosophy world scripting goes here
 
-    "You step into the portal into a strange, very musty room."
 
-    scene bg philosophy with dissolve
     play music "philosophy.mp3"
+    scene bg philosophy with dissolve
 
-
+    show main at left
+    with moveinleft
+    "You step into the portal into a strange, very musty room."
+    show phil at right
+    with moveinright
     P "Hark! Who enters my lair!?"
 
     menu:
@@ -726,7 +729,7 @@ label philosophyworld:
             P "Well, that's no way to treat yourself! Come! Have a chat!"
 
         "I don't know. A book said I was important.":
-            "Ah, is that so? Books are wonderful and give us so much good information, but your information is good, too! We can all learn so much from each other!"
+            P "Ah, is that so? Books are wonderful and give us so much good information, but your information is good, too! We can all learn so much from each other!"
 
         "I have to go now. My planet needs me.":
             P "Oh, so soon! How inconvenient! Our fun was just beginning to blossom. À beintôt!"
@@ -799,7 +802,7 @@ label philosophyworld:
     label expo_dump:
         # music gets sad and reflective
         V """
-        [elated]
+
         Well, one day I wasn't, and then I was. There's not much to tell there. Oh, but so much in between! Yes, that's the space I like.
         When I was born, the vivacious place full of life you see was barren, if you can believe it! It was a barren field of grass and dirt, if
         you could believe it, but it stretched out for miles, so many miles you could walk back to the place you started! And see nothing but a planet of grass! 
@@ -809,7 +812,7 @@ label philosophyworld:
 
         {clear}
 
-        [neutral]
+
         I didn't know what "people" meant before I wasn't the only one, of course. But for the time being, I started to make rules for this place: "an object in motion must
         stay in motion," "eukaryotic cells have nuclei," that sort of thing. Eventually, from these rules, other people were made. At first, I talked to them about the way people
         should treat each other. At first it was simple: "don't hurt people." But then others starting to say, "don't do things that cause harm." Our minds started to rail against each
@@ -818,7 +821,7 @@ label philosophyworld:
 
         {clear}
 
-        [concerned]
+
         I saw people making mistakes; doing the wrong things. They challenged me, and sometimes they were right, but I was impatient with them and, really, myself. I started to
         rule them with a rod of iron, enforcing on them a strict sense of justice and a need to adhere to the rule of their superior in the hierarchy that I put myself on top of.
         It worked, to some extent: people got things done. But they also grew fearful, so fearful they weren't really able to go any further with things. I began to realize that I
@@ -826,9 +829,9 @@ label philosophyworld:
 
         {clear}
 
-        [neutral]
+
         They got better after they had a sense of self, and after we all realized that complicated things have nuance.
-        [this is a hint for how to solve the western world's problems]
+
         """
         # music returns to normal
         # elated
