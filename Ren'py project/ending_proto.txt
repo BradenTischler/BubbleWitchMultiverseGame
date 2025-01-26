@@ -1,0 +1,40 @@
+label ending:
+    
+    "You have a bad feeling about this. This place feels unfamiliar, unstable, somehow. And was that rock always so close!?" # earthquake SFX
+    "You see another book has arrived for you. At a loss of what to do, you decide to read what's there." # more violent earthquake SFX
+
+    b:
+    """
+    Hi there! Hope the job's going okay, and you're settling in! Just a quick thing you need to know:
+
+    {clear}
+
+    The entire multiverse has been collapsing the entire time you've been on the job, and we're all going to 
+    die if we don't stop an interdimensional moon from destroying all worlds. 
+
+    {clear}
+    
+    Sorry, should have lead with that! 
+    
+    {clear}
+
+    We call it the Literal-Embodiment-of-Hate-Rock here because, well, it starting coming at us when the bubble witches outside of
+    the interdimensional realm started to isolate themselves and become fearful of others' ideas. No idea how {i}that{/i} happened! 
+    Again, so sorry! Thankfully, though, it's both the literal embodiment of hate {i}and{/i} a rock! Which means: you just need to 
+    get some of the bubble witches together and blow it up! Of course, if you could get at least a core trio of them together to 
+    ward it off forever, that would be ideal.
+
+    {clear}
+
+    Don't worry, though! If you get at least two of them together, at least that much should be enough of a starting point to start off with!
+    Again, again, sorry, sorry! It's just so weird adjusting to being a transcendental essence that can only communicate cryptically! Ciao brutta!
+    """
+
+    "Well..."
+    "...that's not ideal."
+    "But you did good getting everyone together!"
+    "And wait.." # flash
+    "is that..." # flash
+    "YES!! Some of your friends have come!"
+
+    if philo_solve and mag_solve 
