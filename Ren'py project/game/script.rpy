@@ -449,7 +449,7 @@ label magicworld:
             hide main
             with moveoutleft
             "You step back into the portal."
-            jump start
+            jump hub_world
 
 label witchwatchinfo:
 
@@ -684,7 +684,7 @@ label philosophyworld:
 
         "I have to go now. My planet needs me.":
             P "Oh, so soon! How inconvinient! Our fun was just beginning to blossom. À beintôt!"
-            jump start
+            jump hub_world
     
     if loopy_phil_1 == True:
         "...well, what are you, then!?"
