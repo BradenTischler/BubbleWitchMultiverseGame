@@ -541,6 +541,7 @@ label magicworldproblems:
 
 label philosophyworld:
 
+
     # all philosophy world scripting goes here
 
     scene bg philosophy with dissolve
@@ -563,17 +564,21 @@ label philosophyworld:
 
     menu self_id:   
         "Sir, I'm not a delivery driver!":
-            P "Well, what are you then!?"
+            P "..."
             jump self_id
 
         "I'm nobody.":
             P "Well, that's no way to treat yourself! come! have a chat!"
 
         "I don't know. A book said I was important.":
-            P "Ah, is that so? Books are wonderful and give us so much good information, but your information is good, too! We can all learn so much from each other!"
+            "Ah, is that so? Books are wonderful and give us so much good information, but your information is good, too! We can all learn so much from each other!"
+
+        "I have to go now. My planet needs me.":
+            P "Oh, so soon! How inconvinient! Our fun was just beginning to blossom. À beintôt!"
+            jump start
     
     if loopy_phil_1 == True:
-        "Well, what are you, then!?"
+        "...well, what are you, then!?"
         jump self_id
 
     P "There are so many wonderful things, and we are all managing our figures and abaci intently to find the figure in the sky! And yet, people have so many"
@@ -761,14 +766,14 @@ label philosophyworld:
 
         menu third_challenge:
 
-            "HURT THEM. THEY MUST LEARN!":
-                P "..."
-                jump self_id
+"HURT THEM. THEY MUST LEARN!":
+    P "..."
+    jump self_id
 
-            "Don't try! You're amazing the way you are and so are your people!":
-                P "Thank you!"
-                P "And to whom do I owe the honour?"
-                jump self_id
+"Don't try! You're amazing the way you are and so are your people!":
+    P "Thank you!"
+    P "And to whom do I owe the honour?"
+    jump self_id
 
             '"Sticks and stones may break your bones, but words can never hurt me.':
                 P "I..."
