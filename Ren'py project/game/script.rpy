@@ -119,10 +119,13 @@ label start:
     mc "Where to first?"
     menu travel:
         "To the blue world.":
+            $ current_jumps += 1
             jump scienceworld
         "To the red world.":
+            $ current_jumps += 1
             jump magicworld
         "To the green world.":
+            $ current_jumps += 1
             jump philosophyworld
 
     # This ends the game.
@@ -138,10 +141,13 @@ label hub_world:
     mc "Where to next?"
     menu travelagain:
         "To the blue world.":
+            $ current_jumps += 1
             jump scienceworld
         "To the red world.":
+            $ current_jumps += 1
             jump magicworld
         "To the green world.":
+            $ current_jumps += 1
             jump philosophyworld    
 
 label scienceworld:
@@ -276,7 +282,7 @@ label scienceworld:
                         #show sapona angry
                         "Sapona starts visibly fuming."
                         sr "...I...well I never..."
-                        "Just as you think steam might start shooting out of her ears, she suddenly calms herself."
+                        "Just as you think steam might start shooting out of their ears, Sapona suddenly calms themself."
                         #if we could pause the music here, that'd be cool
                         #show sapona
                         sr "..."
