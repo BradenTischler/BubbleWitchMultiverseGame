@@ -48,20 +48,21 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    scene bg room
-
+    scene bg hub
+    play music "hub.mp3"
     # These display lines of dialogue.
 
-    show Glutton
+    show main at center
+    with moveinbottom
 
-
-    G "Hey there pal, you seem to have created some sort of videogame or somethin\'."
-
-    G "Now that you have given me life, you must atone for the sins you have unleashed unto this world."
-
-    G "I hope you had fun."
-
-    jump philosophyworld
+    mc "Where should I go today?"
+    menu travel:
+        "To the science world.":
+            jump scienceworld
+        "To the magic world.":
+            jump magicworld
+        "To the philosophy world.":
+            jump philosophyworld
 
     # This ends the game.
 
@@ -72,6 +73,8 @@ label hub_world:
 
 label scienceworld:
 
+    scene bg science
+    play music "science.mp3"
     if !has_industry_intro:
         #introduction
         show main at left
@@ -282,7 +285,7 @@ label scienceworld:
             elif (is_solved_philo):
                 jump philo_sci_end
         else:
-            jump hub_world
+            jump start
 
 # THIS COMMENT MARKS THE END OF SCIENCE WORLD
     
@@ -291,6 +294,8 @@ label scienceworld:
 
 label magicworld:
 
+    scene bg magic
+    play music "magic.mp3"
     show main at left #neutral
     with moveinleft
     "You step out of the portal into a strange place."
@@ -449,7 +454,7 @@ label magicworldexposition
     wm "And when people break the rules, I take their magic away."
     menu magictourquestion:
         "That seems fair.":
-            #
+            "Wow."
         "Then what do you do with them?":
             show wildmyst #shocked
             wm "They aren't allowed to participate in society anymore, so I put them in a smelly cave."
@@ -460,18 +465,22 @@ label magicworldexposition
             wm "NO! They were mean, so being allowed out of the cave is good enough for them."
             # quick menu choice about agree or disagree
         "Yes! Make them feel JUSTICE!":
-            #
+            "Wow."
+    jump magicrootdecision
 
 
     # slightly branched conversation to learn about and reveal magic world's "idea" goes here
 
 label magicworldproblems
 
+    "There is nothing here yet!"
+    jump magicrootdecision
     # highly branched conversation to find opportunity to present philosophy world's "idea" goes here
 
 label philosophyworld:
 
-    scene bg room
+    scene bg philosophy
+    play music "philosophy.mp3"
 
     P "Hark! Who enters my lair!?"
 
