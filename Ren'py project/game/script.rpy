@@ -66,6 +66,9 @@ label start:
 
     return
 
+label hub_world:
+    #do hub world things
+
 label scienceworld:
 
     if !has_industry_intro:
