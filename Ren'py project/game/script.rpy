@@ -129,7 +129,18 @@ label start:
     return
 
 label hub_world:
-    #do hub world things
+
+    scene bg hub with dissolve
+    play music "hub.mp3"
+    "You return to your home, the empty interdimensional space."
+    mc "Where to next?"
+    menu travelagain:
+        "To the blue world.":
+            jump scienceworld
+        "To the red world.":
+            jump magicworld
+        "To the green world.":
+            jump philosophyworld    
 
 label scienceworld:
 
@@ -507,8 +518,8 @@ label magicworldexposition:
     hide main
     with moveoutright
     mc "Sure. That sounds like an idea."
-    show wildmyst at leftish #neutral
     show main at left #neutral
+    show wildmyst at leftish #neutral
     with moveinleft
     "Wild Myst whisks you off to the centre square of a town nearby."
     wm "This is where we sentence misbehaving citizens to SWIFT justice!"
@@ -546,8 +557,8 @@ label magicworldexposition:
     hide main
     with moveoutleft
     wm "Let's continue the tour."
-    show wildmyst at rightish #neutral
     show main at right #neutral
+    show wildmyst at rightish #neutral
     with moveinright
     "Next, you descend the hill and come to a stop outside the entrance to a mineshaft."
     "We have mines like this all over our world. It's where we get our maginesium from."
@@ -557,7 +568,7 @@ label magicworldexposition:
         "Sounds like some sort of vitamin.":
             show wildmyst #shocked
             wm "NO! It's not a VITAMIN!"
-            show wildmsyt #neutral
+            show wildmyst #neutral
             wm "Well, actually it is. Sort of."
         "Ah, of course. I know all about manganese.":
             show wildmyst #angry
@@ -600,8 +611,8 @@ label magicworldexposition:
     wm "Follow me. The last stop is my FAVOURITE!"
 
     label finaltourstop:
-        show wildmyst at leftish #neutral
         show main at left #neutral
+        show wildmyst at leftish #neutral
         with moveinleft
         "You descend further into the depths below the hills..."
         "Sweet-smelling steam starts to permeate the air around you."
@@ -637,14 +648,51 @@ label magicworldexposition:
         wm "Here, we NEVER forget the importance of individual freedom, and collective unity arises from that."
         wm "Happy people make better societies. Don't you think?"
         show main #confused
-
+        mc "I'm a bit too much of an amnesiac to know for sure, but I certainly understand this world better now."
+        show wildmyst #happy
+        wm "YEEHAW!"
+        show main #neutral
+        "{cps=15}{color=#880000}You learned the ways of the Magic World!{/color}{/cps}"
+        $ has_magic_philo = True
+        hide main
+        hide wildmyst
+        with moveoutleft
+        mc "Let's go back outside."
+        show main at left #neutral
+        show wildmyst at right #neutral
+        with moveinbottom
     jump magicrootdecision
-
-    # slightly branched conversation to learn about and reveal magic world's "idea" goes here
 
 label magicworldproblems:
 
-    "There is nothing here yet!"
+    show wildmyst #happy
+    wm "No way! This world is a happy place."
+    menu insistmagic:
+        "Oh. Okay, then.":
+            jump magicrootdecision
+        "Come on. There must be SOMETHING!":
+            pass
+    show wildmyst #neutral
+    wm "Well, I don't know... but you asked with such enthusiasm..."
+    wm "I guess..."
+    show wildmyst #shocked
+    wm "I don't know if I can TRUST you!"
+    menu insistfurther:
+        "Yeah, you probably can't.":
+            show wildmyst #neutral
+            wm "See? Exactly."
+            jump magicrootdecision
+        "Please. I think my destiny has something to do with helping you.":
+            pass
+    wm "Well..."
+    wm "I suppose I can trust a Witch of the Watch. They've never done anything to harm us in the past."
+    wm "You see... there is one thing..."
+    mc "What is it?"
+    show wildmyst at center
+    with move
+    "Wild Myst moves closer and speaks in a quieter voice, so as not to be overheard."
+
+    
     jump magicrootdecision
     # highly branched conversation to find opportunity to present philosophy world's "idea" goes here
 
@@ -710,6 +758,8 @@ label philosophyworld:
             P "Well, there are many theories..."
 
             V """
+            {clear}
+            
             One day, my roomate told me how if you triangulate the velocity of the Austrlabus Valley's teloscope
             quite right, the object is {i}clearly{/i} a magnificent dragon that we must feast to every night, lest he
             be lonely and eat us! Of course, I'm so busy with my figures that planning a feast right now seems very hard,
@@ -891,6 +941,8 @@ label philosophyworld:
                 pass
 
         V '''
+        {clear}
+
         You're right. It was that debate that sparked all the good that people did: the arguing,
         the fierce determination, and yet the genuinely kind ones always manage to synthesize things
         and make things more that their parts. I understand. But I need to know: how can I trust myself
@@ -919,6 +971,8 @@ label philosophyworld:
             "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
                 pass
         V '''
+        {clear}
+
         You're right. I knew how to talk, and be jovial and accept people. And I learned how to trust
         people. But I forgot how to think, and that makes me a bad scientist and philosopher. I haven't
         really thought in a while. I got so caught up in all the different ways of doing things, I forgot

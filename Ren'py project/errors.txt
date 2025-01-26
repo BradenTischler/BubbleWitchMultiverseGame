@@ -2,17 +2,11 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 373: expected end of line
-    play sound "thud.mp3" with hpunch
-                          ^
+The label travel is defined twice, at File "game/script.rpy", line 116:
+    menu travel:
+and File "game/script.rpy", line 135:
+    menu travel:
 
-File "game/script.rpy", line 421: expected end of line
-    play sound "fire.mp3" with vpunch
-                          ^
-
-File "game/script.rpy", line 477: expected end of line
-    play sound "fire.mp3" with vpunch
-                          ^
 
 Ren'Py Version: Ren'Py 8.3.2.24090902
-Sun Jan 26 10:32:08 2025
+Sun Jan 26 12:08:08 2025
