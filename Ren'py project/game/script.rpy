@@ -140,6 +140,9 @@ label hub_world:
     play music "hub.mp3"
     "You return to your home, the empty interdimensional space."
     mc "Where to next?"
+    if current_jumps >= max_jumps:
+        if (has_industry_philo and has_magic_philo) or (has_industry_philo and has_philo_philo) or (has_magic_philo and has_philo_philo):
+            jump ending
     menu travelagain:
         "To the left-most world.":
             $ current_jumps += 1
@@ -149,7 +152,7 @@ label hub_world:
             jump magicworld
         "To the right-most world.":
             $ current_jumps += 1
-            jump philosophyworld    
+            jump philosophyworld  
 
 label scienceworld:
 
