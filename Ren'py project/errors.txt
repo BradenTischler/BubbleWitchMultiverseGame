@@ -2,13 +2,17 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 262: expected menuitem
-    if has_skipped_sciphilodialogue:
-    ^
+File "game/script.rpy", line 373: expected end of line
+    play sound "thud.mp3" with hpunch
+                          ^
 
-File "game/script.rpy", line 443: end of line expected.
-    with moveout right
-                 ^
+File "game/script.rpy", line 421: expected end of line
+    play sound "fire.mp3" with vpunch
+                          ^
+
+File "game/script.rpy", line 477: expected end of line
+    play sound "fire.mp3" with vpunch
+                          ^
 
 Ren'Py Version: Ren'Py 8.3.2.24090902
-Sat Jan 25 21:30:54 2025
+Sun Jan 26 10:32:08 2025

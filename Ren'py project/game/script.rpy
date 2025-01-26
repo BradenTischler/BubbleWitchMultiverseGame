@@ -10,6 +10,8 @@ default has_industry_philo = False
 default has_magic_intro = False
 default has_philo_intro = False
 default has_industry_intro = False
+default magic_tour_suspended = False
+default done_magic_tour = False
 default is_solved_industry = False
 default is_solved_magic = False
 default is_solved_philo = False
@@ -22,11 +24,11 @@ default has_witch_watch_info = False
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define mc = Character("[mc_name]", image='main.png', kind=bubble)
+define mc = Character("[mc_name]", image='main.png', kind=bubble, color="#888888")
 define b = Character("Book", kind=nvl)
-define sr = Character("Sapona Ramune", image='sapona.png', kind=bubble)
-define wm = Character("Wild Myst", image='wildmyst.png', kind=bubble)
-define P = Character("Loopy Phil", image='phil.png', kind=bubble)
+define sr = Character("Sapona Ramune", image='sapona.png', kind=bubble, color="#000088")
+define wm = Character("Wild Myst", image='wildmyst.png', kind=bubble, color="#880000")
+define P = Character("Loopy Phil", image='phil.png', kind=bubble, color="#008800")
 
 image main = "main.png"
 image sapona = "sapona.png"
@@ -222,9 +224,9 @@ label scienceworld:
                     #illusion of choice lol
                     #also breaks up the monotony of a long exposition if the player has to do something.
                     "Why exactly are people refusing to do their job?":
-                        $ dummyvariable = 1
+                        pass
                     "What do you think they want?":
-                        $ dummyvariable = 2
+                        pass
                 #show sapona angry
                 sr "Certain {i}lazy{/i} individuals have got it in their heads they need..."
                 "Sapona leans in and states in a low wisper:"
@@ -369,6 +371,8 @@ label magicworld:
     wm "It's YOU!"
     show wildmyst at left #neutral
     with move
+    play sound "thud.mp3"
+    with hpunch
     hide main
     with moveoutleft
     wm "WELCOME!"
@@ -416,7 +420,8 @@ label magicworld:
     wm "Anyway, it's good that you're visiting. This is a place where everyone is free to be themselves and cast magic spells all the time!"
     show wildmyst #angry
     wm "Like a FIRE SPELL!"
-    #play sound "fire.mp3" with hpunch
+    play sound "fire.mp3"
+    with vpunch
     mc "Aaaah!"
     show wildmyst #neutral
     hide wildmyst
@@ -432,8 +437,17 @@ label magicworld:
     menu magicrootdecision:
         "What exactly is a Witch of the Watch supposed to do?" if has_witch_watch_info==False:
             jump witchwatchinfo
-        "This world is about more than magic, right?":
+        "This world is about more than magic, right?" if done_magic_tour==False:
             jump magicworldexposition
+        "Actually, can we continue that tour?" if magic_tour_suspended==True:
+            show wildmyst #happy
+            wm "YAY! I knew you secretly LOVED my tour!"
+            mc "(That's not really what I said, but sure.)"
+            hide wildmyst
+            hide main
+            with moveoutright
+            wm "Let's go!"
+            $ magic_tour_suspended = False
         "Are there any problems in this world I should know about?":
             jump magicworldproblems
         "I have to go now.":
@@ -472,7 +486,8 @@ label witchwatchinfo:
             wm "..."
             show wildmyst #angry
             wm "FIRE SPELL!"
-            #play sound "fire.mp3" with hpunch
+            play sound "fire.mp3"
+            with vpunch
             hide main
             with moveoutbottom
             mc "Aaaah!"
@@ -494,16 +509,15 @@ label witchwatchinfo:
 
 label magicworldexposition:
 
+    $ done_magic_tour = True
     show wildmyst #happy
     wm "You'd better believe it, FRIEND!"
     wm "Come with me and I'll show you around."
     hide wildmyst
-    with moveoutright
     hide main
     with moveoutright
     mc "Sure. That sounds like an idea."
     show wildmyst at leftish #neutral
-    with moveinleft
     show main at left #neutral
     with moveinleft
     "Wild Myst whisks you off to the centre square of a town nearby."
@@ -514,7 +528,8 @@ label magicworldexposition:
     wm "And when people break the rules, I take their magic away."
     menu magictourquestion:
         "That seems fair.":
-            "Wow."
+            show wildmyst #neutral
+            "Yes. As I said, this is a world of freedom, which you can't have without justice."
         "Then what do you do with them?":
             show wildmyst #shocked
             wm "They aren't allowed to participate in society anymore, so I put them in a smelly cave."
@@ -523,11 +538,98 @@ label magicworldexposition:
             wm "Hmmm... I'm not really sure. Long enough to teach them a lesson I guess."
             mc "Do you ever restore their magic to them?"
             wm "NO! They were mean, so being allowed out of the cave is good enough for them."
-            # quick menu choice about agree or disagree
+            menu magicagreedisagree:
+                "I guess that makes sense.":
+                    wm "Darn tootin'."
+                "What? That sounds cruel!":
+                    show wildmyst #neutral
+                    wm "I appreciate your opinion. Passionate beliefs are welcome here."
+                    show wildmyst #angry
+                    wm "But threats to our freedom deserve ZERO tolerance!"
+                    mc "(Intense.)"
+                    show wildmyst #happy
         "Yes! Make them feel JUSTICE!":
-            "Wow."
-    jump magicrootdecision
+            show wildmyst #happy
+            "You really seem to GET what we're all about HERE!."
+            show wildmyst #happy
+    hide wildmyst
+    hide main
+    with moveoutleft
+    wm "Let's continue the tour."
+    show wildmyst at rightish #neutral
+    show main at right #neutral
+    with moveinright
+    "Next, you descend the hill and come to a stop outside the entrance to a mineshaft."
+    "We have mines like this all over our world. It's where we get our maginesium from."
+    menu maginesiumquestion:
+        "Maginesium? What's that, exactly?":
+            wm "I'm glad you asked."
+        "Sounds like some sort of vitamin.":
+            show wildmyst #shocked
+            wm "NO! It's not a VITAMIN!"
+            show wildmsyt #neutral
+            wm "Well, actually it is. Sort of."
+        "Ah, of course. I know all about manganese.":
+            show wildmyst #angry
+            wm "It's not MANGANESE!"
+            show wildmyst #neutral
+            wm "Manganese is a metallic element used in rubber, glass, ceramics, and stainless steel alloys."
+            mc "You sure know a lot about mining."
+            show wildmyst #happy
+            wm "Yes, I do!"
+            show wildmyst #neutral
+            wm "Anyway..."
+    wm "Maginesium is the root of all magical energy on our world."
+    wm "It can be used to make magical artifacts like my super cool badge-wand."
+    wm "You can also consume small amounts of it to boost your own magical powers."
+    mc "Nifty."
+    show wildmyst #happy
+    wm "Yes, it is. We have a lot of it here, which is why our world is so AWESOME!"
+    show wildmyst
+    wm "Okay, I think we can move on to the next part of our tour."
+    menu magictourdecision:
+        "Goody.":
+            pass
+        "Actually, I'm pretty bored of this tour.":
+            $ magic_tour_suspended = True
+            show wildmyst #shocked
+            wm "Wha...?"
+            show wildmyst #neutral
+            wm "That's too bad, but I will respect your choice."
+            hide wildmyst
+            hide main
+            with moveoutright
+            wm "Let's go back to where we started."
+            show wildmyst at right
+            show main at left
+            with moveinbottom
+            jump magicrootdecision
+    hide wildmyst
+    hide main
+    with moveoutright
+    wm "Follow me. The last stop is my FAVOURITE!"
 
+    label finaltourstop:
+        show wildmyst at leftish #neutral
+        show main at left #neutral
+        with moveinleft
+        "You descend further into the depths below the hills..."
+        "Sweet-smelling steam starts to permeate the air around you."
+        show wildmyst #happy
+        wm "These are our HOT SPRINGS! I call them the happiest place in our world."
+        wm "Here, more than anywhere else, people are free to relax and be their truest selves."
+        menu hotspring:
+            "Yes, I notice some children splashing.":
+                pass
+            "Indeed, this is clearly a no-shame zone.":
+                show wildmyst #shocked
+                wm "RIGHT! There's no place for body shame or any other kind of shame in this world!"
+                show wildmyst #angry
+                wm "EXCEPT when someone tries to stop another person from being free. They can be shamed a LOT!"
+            "Ah, I see some people smooching each other.":
+                pass
+
+    jump magicrootdecision
 
     # slightly branched conversation to learn about and reveal magic world's "idea" goes here
 
