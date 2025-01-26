@@ -1,34 +1,28 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 6, in script
-    define G = Character("Witch of Gluttony", kind=bubble)
-  File "game/script.rpy", line 6, in <module>
-    define G = Character("Witch of Gluttony", kind=bubble)
-  File "renpy/common/00speechbubble.rpy", line 131, in __init__
-    raise Exception("BubbleCharacter require an image tag (the image='...' parameter).")
-Exception: BubbleCharacter require an image tag (the image='...' parameter).
+  File "game/script.rpy", line 342, in script
+    if (has_magic_intro==True):
+  File "game/script.rpy", line 342, in <module>
+    if (has_magic_intro==True):
+NameError: name 'has_magic_intro' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 6, in script
-    define G = Character("Witch of Gluttony", kind=bubble)
-  File "C:\Users\Main\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 2241, in execute
-    self.set()
-  File "C:\Users\Main\Renpy\renpy-8.3.4-sdk\renpy\ast.py", line 2255, in set
-    value = renpy.python.py_eval_bytecode(self.code.bytecode)
-  File "C:\Users\Main\Renpy\renpy-8.3.4-sdk\renpy\python.py", line 1202, in py_eval_bytecode
+  File "game/script.rpy", line 342, in script
+    if (has_magic_intro==True):
+  File "C:\Users\haapp\Desktop\Games\Ren'Py\renpy\ast.py", line 1843, in execute
+    if renpy.python.py_eval(condition):
+  File "C:\Users\haapp\Desktop\Games\Ren'Py\renpy\python.py", line 1209, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "C:\Users\haapp\Desktop\Games\Ren'Py\renpy\python.py", line 1202, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "game/script.rpy", line 6, in <module>
-    define G = Character("Witch of Gluttony", kind=bubble)
-  File "C:\Users\Main\Renpy\renpy-8.3.4-sdk\renpy\character.py", line 1778, in Character
-    return type(kind)(name, kind=kind, **properties)
-  File "renpy/common/00speechbubble.rpy", line 131, in __init__
-    raise Exception("BubbleCharacter require an image tag (the image='...' parameter).")
-Exception: BubbleCharacter require an image tag (the image='...' parameter).
+  File "game/script.rpy", line 342, in <module>
+    if (has_magic_intro==True):
+NameError: name 'has_magic_intro' is not defined
 
 Windows-10-10.0.19045 AMD64
-Ren'Py 8.3.4.24120703
+Ren'Py 8.3.2.24090902
 BubbleWitchMultiverseGame 1.0
-Sat Jan 25 02:55:41 2025
+Sat Jan 25 22:50:31 2025
