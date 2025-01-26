@@ -27,17 +27,17 @@ default loopy_phil_1 = False
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define mc = Character("[mc_name]", image='main.png', kind=bubble, color="#888888")
-define b = Character("Book", kind=nvl)
-define sr = Character("Sapona Ramune", image='sapona.png', kind=bubble)
-define wm = Character("Wild Myst", image='wildmyst.png', kind=bubble)
-define P = Character("Loopy Phil", image='phil.png', kind=bubble)
-define V = Character("Loopy Phil", image='phil.png', kind=nvl)
+define mc = Character("[mc_name]", image='main.png', color="#CCCCCC")
+define b = Character("", kind=nvl, color="#FFFFFF")
+define sr = Character("Sapona Ramune", image='sapona.png', color="#0000DD")
+define wm = Character("Wild Myst", image='wildmyst.png', color="#DD0000")
+define P = Character("Loopy Phil", image='phil.png', color="#00BB00")
+define V = Character("Loopy Phil", image='phil.png', kind=nvl, color="#00BB00")
 
-image main = "main.png"
-image sapona = "sapona.png"
-image wildmyst = "wildmyst.png"
-image phil = "phil.png"
+# image main = "main.png"
+# image sapona = "sapona.png"
+# image wildmyst = "wildmyst.png"
+# image phil = "phil.png"
 
 # defining consistent transforms for use
 
@@ -368,7 +368,7 @@ label magicworld:
         show wildmyst at right #neutral
         with moveinright
         jump magicrootdecision
-    "Dashing down the steps of a building is a figure who seems to have been expecting you."
+    "Dashing down a path from a nearby hill is a figure who seems to have been expecting you."
     show wildmyst at right #shocked
     with moveinright
     wm "It's YOU!"
@@ -451,7 +451,8 @@ label magicworld:
             with moveoutright
             wm "Let's go!"
             $ magic_tour_suspended = False
-        "Are there any problems in this world I should know about?" if done_magic_problem_intro = False:
+            jump finaltourstop
+        "Are there any problems in this world I should know about?" if done_magic_problem_intro == False:
             jump magicworldproblems
         "Can we talk about your problems again?" if magic_problem_suspended:
             show wildmyst at center
@@ -558,7 +559,7 @@ label magicworldexposition:
                     show wildmyst #happy
         "Yes! Make them feel JUSTICE!":
             show wildmyst #happy
-            "You really seem to GET what we're all about HERE!."
+            "You really seem to GET what we're all about HERE!"
             show wildmyst #happy
     hide wildmyst
     hide main
@@ -567,7 +568,7 @@ label magicworldexposition:
     show main at right #neutral
     show wildmyst at rightish #neutral
     with moveinright
-    "Next, you descend the hill and come to a stop outside the entrance to a mineshaft."
+    "Next, you climb a hill and come to a stop outside the entrance to a mineshaft."
     "We have mines like this all over our world. It's where we get our maginesium from."
     menu maginesiumquestion:
         "Maginesium? What's that, exactly?":
@@ -659,7 +660,7 @@ label magicworldexposition:
         show wildmyst #happy
         wm "YEEHAW!"
         show main #neutral
-        "{cps=15}{color=#880000}You learned the ways of the Magic World!{/color}{/cps}"
+        "{cps=15}{color=#DD0000}You learned the ways of the Magic World!{/color}{/cps}"
         $ has_magic_philo = True
         hide main
         hide wildmyst
@@ -672,6 +673,7 @@ label magicworldexposition:
 
 label magicworldproblems:
 
+    $ done_magic_problem_intro = True
     show wildmyst #happy
     wm "No way! This world is a happy place."
     menu insistmagic:
@@ -742,24 +744,71 @@ label magicworldproblems:
             mc "'Kay."
             $ magic_problem_suspended = True
             jump magicrootdecision
-        "I learned something from another world that might help." if has_phil_philo:
+        "I learned something from another world that might help." if has_philo_philo:
             $ magic_problem_suspended = False
             show wildmyst at center
             with move
             wm "Another world? Really?"
             show wildmyst #angry
-            wm "But those scientists and philosophers are so SNOOTY! They don't know ANYTHING about love or magic!"
+            wm "But those scientists and philosophers are so SNOOTY! They don't know ANYTHING about love or justice!"
             mc "Maybe not, but the philosophers do know something about ideas."
             show wildmyst #neutral
             mc "You're seeing your problem in black and white. You think you have to make a moral judgement between only two possibilities."
             mc "But the philosophers would tell you that there are always infinite possibilities, shades between extremes."
             wm "What?!"
             mc "Being just doesn't mean being rigid."
-            mc "Find the fairest solution by..."
-
-    
+            mc "Find the fairest solution by giving yourself FREEDOM to explore the nuance."
+            wm "Well, I do like freedom."
+            wm "Hmmm... Let me think..."
+            hide wildmyst
+            with moveoutbottom
+            show wildmyst at right
+            with moveinright
+            hide wildmyst
+            with moveoutbottom
+            show wildmyst at center
+            with moveinright
+            hide wildmyst
+            with moveoutbottom
+            show wildmyst at right #happy
+            wm "OKAY! You convinced me."
+            show wildmyst #neutral
+            wm "Maybe I could find a way for the groups to share the mine?"
+            mc "Yep. Or you could ask if any of them have ideas to fairly decide the issue."
+            wm "Yeah..."
+            wm "..."
+            wm "Well, I have to say that I'm feeling a lot better, like I can lead my people through the next steps!"
+            show wildmyst #happy
+            wm "Actually, it makes me so happy that..."
+            wm "FIRE SPELL!"
+            play sound "fire.mp3"
+            with vpunch
+            mc "(Huh. That didn't surprise me at all. Guess I got used to it.)"
+            wm "Seriously... just..."
+            show wildmyst at left
+            with move
+            play sound "thud.mp3"
+            with hpunch
+            hide main
+            with moveoutleft
+            wm "THANK YOU SO MUCH!"
+            menu thankyou:
+                "... ... ... you're welcome.":
+                    pass
+                "No problem, fellow Witch.":
+                    pass
+                "HAPPY TO DO IT!":
+                    pass
+            show wildmyst at right #neutral
+            with move
+            wm "I guess... the other worlds have some good ideas after all..."
+            "Deep down, you feel you have achieved something important - something you were meant to do."
+            show main at left
+            with moveinbottom
+            $ is_solved_magic = True
+            "{cps=15}{color=#DD0000}You helped the Magic World get out of their bubble!{/color}{/cps}"
     jump magicrootdecision
-    # highly branched conversation to find opportunity to present philosophy world's "idea" goes here
+
 
 label philosophyworld:
 
