@@ -6,6 +6,9 @@ $ has_magic_philo = False
 $ has_philo_philo = False
 $ has_industry_philo = False
 $ has_magic_intro = False
+$ has_philo_intro = False
+$ has_industry_intro = False
+$ has_skipped_sciphilodialogue = False #if the player doesn't bother to ask the right question, makes it so they don't need to go menuing to find it again
 $ has_witch_watch_info = False
 
 # Declare characters used by this game. The color argument colorizes the
@@ -58,31 +61,78 @@ label start:
 
 label scienceworld:
 
-    # all science world scripting goes here
-    show main at left
-    with moveinleft
-    "You slip through the membrane, into another sphere."
-    "A soft neon glow fills your vision."
-    "After some time of aimless wandering, a large black limo abruptly pulls in front of you"
-    "Out from the vehicle steps an imposing, but clean-cut creature"
-    show sapona at right
-    with moveinright
-    sr "Welcome, traveller"
-    sr "What brings you to our grand metropolis?"
+    if !has_industry_intro:
+        #introduction
+        show main at left
+        with moveinleft
+        "You slip through the membrane, into another sphere."
+        "A soft neon glow fills your vision."
+        "After some time of aimless wandering, a large black limo abruptly pulls in front of you"
+        "Out from the vehicle steps an imposing, but clean-cut creature"
+        show sapona at right
+        with moveinright
+        sr "Welcome, traveller"
+        sr "What brings you to our grand metropolis?"
 
-    #first branch, no consequense
-    menu sci_main_menu:
-        "I'm just looking around, I was curious about this world.":
-            sr "I see. I'm flattered to have piqued your interest"
-        "I'm bored. This place looked interesting":
-            #show sapona happy
-            sr "Well you've come to the right place!"
-            sr "Come and stay a while in one of our fantastic luxury hotels!"
-            sr "Buy a souvenir, and stimulate the local economy!"
-        "I think it must have been fate that guided me here":
-            sr "If one believes in such things, I suppose."
-            sr "This {i}is{/i} a land of opportunity"
-
+        #first branch, no consequense
+        menu sci_initial:
+            "I'm just looking around, I was curious about this world.":
+                sr "I see. I'm flattered to have piqued your interest"
+            "I'm bored. This place looked interesting":
+                #show sapona happy
+                sr "Well you've come to the right place!"
+                sr "Come and stay a while in one of our fantastic luxury hotels!"
+                sr "Buy a souvenir, and stimulate the local economy!"
+            "I think it must have been fate that guided me here":
+                #show sapona angry
+                sr "If one believes in such things, I suppose."
+                sr "This {i}is{/i} a land of opportunity"
+        $has_industry_intro = True
+    else:
+        #main menu, where you go if you have been here already
+        menu sci_main:
+            "Who are you?":
+                #show sapona angry
+                sr "Ah, you must be one of the new ones."
+                sr "Forgive me, you nothing-witches come and go so often I tend to forget your faces."
+                #show sapona happy
+                sr "I am the Witch of the City"
+                sr "Patron of industry, and Bringer of prosperity."
+                sr "I run this world with a cold, unbiased, and concrete hand..."
+                #show sapona
+                sr "...and as a result, my people are the wealthiest amoung the spheres."
+                menu sci_whoareyou:
+                    if !has_industry_philo:
+                        $ has_skipped_sciphilodialogue = True
+                    #show sapona
+                    "What is a \"Witch\"?":
+                        #show sapona angry
+                        sr "{i}You{/i} are a Witch, Little Witch of the Dead Sphere."
+                        #show sapona
+                        sr "You are not the first, they tend to come and go somewhat aimlessly."
+                        jump sci_whoareyou
+                    "Tell me more about your business philosophy.":
+                        #show sapona happy
+                        sr "Very wise of you to seek my council, witch of nothingness."
+                        sr "Perhaps with my guidance you can breath some life into that empty world of yours."
+                        #show sapona
+                        sr "First and foremost is efficiency."
+                        sr "A good witch will not tolerate waste."
+                        sr "Try new things, yes; that is the only way to prevent stagnation."
+                        sr "But do not allow a failed product line to drag down your entire business."
+                        sr "As soon as something stops working, you have to change it..."
+                        #show sapona angry
+                        sr "...or scrap it entirely"
+                        $ has_industry_philo = True
+                        $ has_skipped_sciphilodialogue = False
+                        jump sci_whoareyou
+                    "I'd like to ask something else.":
+                        sr "If you insist."
+                        jump sci_main
+            "Where exactly am I?":
+                sr "We call it \"The Grand Metropolis\"."
+                sr "It is a city of unprecedented wealth and beauty."
+                sr "" 
     
 
 
