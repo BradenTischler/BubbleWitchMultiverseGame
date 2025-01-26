@@ -568,7 +568,7 @@ label magicworldexposition:
         "Sounds like some sort of vitamin.":
             show wildmyst #shocked
             wm "NO! It's not a VITAMIN!"
-            show wildmsyt #neutral
+            show wildmyst #neutral
             wm "Well, actually it is. Sort of."
         "Ah, of course. I know all about manganese.":
             show wildmyst #angry
@@ -652,7 +652,7 @@ label magicworldexposition:
         show wildmyst #happy
         wm "YEEHAW!"
         show main #neutral
-        "{cps=15}{colour=#880000}You learned the ways of the Magic World!{/color}{/cps}"
+        "{cps=15}{color=#880000}You learned the ways of the Magic World!{/color}{/cps}"
         $ has_magic_philo = True
         hide main
         hide wildmyst
