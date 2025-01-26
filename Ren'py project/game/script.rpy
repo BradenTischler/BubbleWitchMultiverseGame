@@ -1,6 +1,8 @@
 # The script of the game goes in this file.
 
 # variables
+$ max_jumps = 4
+$ current_jumps = 0
 $ mc_name = ""
 $ has_magic_philo = False
 $ has_philo_philo = False
@@ -8,7 +10,12 @@ $ has_industry_philo = False
 $ has_magic_intro = False
 $ has_philo_intro = False
 $ has_industry_intro = False
+$ is_solved_industry = False
+$ is_solved_magic = False
+$ is_solved_philo = False
 $ has_skipped_sciphilodialogue = False #if the player doesn't bother to ask the right question, makes it so they don't need to go menuing to find it again
+$ knows_industry_issue = False #if the player has discovered the problem facing the world, hey can bring it up again without the menus
+$ industry_bored = False #if the player answers boredom for why they entered science world, they get a sales pitch.
 $ has_witch_watch_info = False
 
 # Declare characters used by this game. The color argument colorizes the
@@ -83,14 +90,20 @@ label scienceworld:
                 sr "Well you've come to the right place!"
                 sr "Come and stay a while in one of our fantastic luxury hotels!"
                 sr "Buy a souvenir, and stimulate the local economy!"
+                $ industry_bored = True
             "I think it must have been fate that guided me here":
                 #show sapona angry
                 sr "If one believes in such things, I suppose."
                 sr "This {i}is{/i} a land of opportunity"
-        $has_industry_intro = True
+        $ has_industry_intro = True
+        jump sci_main
     else:
         #main menu, where you go if you have been here already
+        #show sapona
+        sr "Oh, you again."
+        sr "Welcome back. What can I do for you?"
         menu sci_main:
+            #show sapona
             "Who are you?":
                 #show sapona angry
                 sr "Ah, you must be one of the new ones."
@@ -130,9 +143,144 @@ label scienceworld:
                         sr "If you insist."
                         jump sci_main
             "Where exactly am I?":
+                #show sapona happy
                 sr "We call it \"The Grand Metropolis\"."
                 sr "It is a city of unprecedented wealth and beauty."
-                sr "" 
+                sr "I'm sure you're quite overwhelmed, coming from that dinky little world, where nothing ever happens."
+                sr "But don't worry, our industious workforce will ensure you are comfortable and taken care of."
+                #show sapona embarrased/neutral
+                sr "...er, well; most of them will."
+                sr "I do apologise, this is a somewhat inconvenient timing."
+                sr "There is a slight hiccup with some of our staff refusing to do their job."
+                #show sapona happy
+                sr "But I assure you, it's nothing that can't be fixed with high enough overtime pay."
+                menu:
+                    #illusion of choice lol
+                    #also breaks up the monotony of a long exposition if the player has to do something.
+                    "Why exactly are people refusing to do their job?":
+                    "What do you think they want?":
+                #show sapona angry
+                sr "Certain {i}lazy{/i} individuals have got it in their heads they need..."
+                "Sapona leans in and states in a low wisper:"
+                #show sapona happy
+                sr "{i}...vacation days!{/i}"
+                sr "I know, it's absoultely absurd, right?"
+                sr "I mean, it's not like they aren't paid well enough."
+                sr "You'd think with this much compensation they would be chomping at the bit to come in."
+                $ knows_industry_issue = True
+                menu sci_issue:
+                    "Scandalous! I can't believe there are people who could be so impertinent":
+                        #show main
+                        mc "How could they show such little gratitude for your kindness?"
+                        #show sapona
+                        sr "My thoughts exactly."
+                        sr "You know, I didn't expect to find a kindred spirit in you, Little Witch."
+                        sr "But you really have the right additude about things."
+                        sr "If you ever tire of ruling over a blank slate, Let me know."
+                        #show sapona happy
+                        sr "You'd be perfect material for middle management."
+                        jump sci_main
+                    "I can see how you might think of it that way, but have you considered their point of view?":
+                        #show sapona angry
+                        sr "And what point of view is that?"
+                        jump sci_conflict
+                    "What is wrong with you?!":
+                        #show main
+                        mc "How could you be so callous as to deny your workers vacation days?"
+                        mc "You're like some sort of cartoon villain."
+                        mc "Like, seriously."
+                        mc "If I was reading a book and you were in it, I'd consider the author to be a hack."
+                        #show sapona angry
+                        "Sapona starts visibly fuming."
+                        sr "...I...well I never..."
+                        "Just as you think steam might start shooting out of her ears, she suddenly calms herself."
+                        #if we could pause the music here, that'd be cool
+                        #show sapona
+                        sr "..."
+                        #show sapona happy
+                        sr "Please; oh enlightened one."
+                        sr "Inform me on what {i}you{/i} think is going on."
+                        jump sci_conflict
+
+                menu sci_conflict:
+                    "I'm not quite sure yet":
+                    if has_magic_philo:
+                        "It just ain't right to force people to work that many hours.":
+                            #show sapona angry
+                            sr "You think you know better than me, Little Witch?"
+                            sr "What do you know of running a sphere?"
+                            sr "Do you have thousands of lives in your hands, depending on you to keep them in house and home?"
+                            menu:
+                                "I guess not...":
+                                    #show main
+                                    mc "I don't really know all that much about business, but it still seems wrong..."
+                                    jump sci_main
+                                if has_industry_philo:
+                                    "Your commitment to efficiency should compel you to change your stance.":
+                                        #show main
+                                        #que ace attourney music
+                                        mc "Overwork is just as large a threat to productivity as lack of work."
+                                        mc "And currently, due to your callous demeanour, you are experiencing both."
+                                        mc "You are stuck in a local maximum, your laser-focus has left you unable to see the forest for the trees."
+                                        #show sapona
+                                        sr "..."
+                                        sr "...I had not thought of it that way."
+                                        sr "I think you may actually be right."
+                                        sr "Who knew a nothing-witch could be so wise?"
+                                        $ is_solved_industry = True
+                                        jump sci_solved
+                    if has_philo_philo:
+                        "How can you really be sure the reason for this strike is the lack of vacation days?":
+                            #show main
+                            mc "You have to think about this rationally."
+                            mc "What reason do you have to believe that these workers are telling you the truth?"
+                            mc "If you are to come to any sort of concrete conclusion you have to start at base principals."
+                            mc "To start, you have to rule out the possibility you are living in a dream concocted by some evil imp..."
+                            #show sapona
+                            sr "..."
+                            sr "Get out of my world."
+                            "Sapona manifests a portal directly behind you, and sends you through it with a solid kick to centre mass."
+                            jump hub_world
+
+            if industry_bored:
+                "Tell me more about this hotel.":
+                    #show sapona
+                    sr "I'm glad you asked! only the finest accomodations are availible for our esteemed guests."
+                    sr "We keep them running 24/7, just in case a guest comes along."
+                    sr "Happens about once a century or so, but the jobs it creates are well worth it anyway."
+                    sr "Besides, what use is all this wealth if we can't show it off when the opportunity arises?"
+                    $ industry_bored = False
+                    jump sci_main
+
+            if has_skipped_sciphilodialogue:
+                "About your job earlier...":
+                    #show sapona
+                    sr "What about it?"
+                    jump sci_whoareyou
+            
+            if knows_industry_issue:
+                "Remember that issue you were talking about?":
+                    #show sapona
+                    sr "Of course. What is it?"
+                    jump sci_issue
+
+    label sci_solved:
+        #do color change stuff
+        "With those words, you feel a weight in the air lift."
+        "A subtle change in the atmosphere,"
+        "A shift in your perception,"
+        "You think you have done something good."
+        if (is_solved_magic and is_solved_philo):
+            jump best_end
+        elif (current_jumps > max_jumps):
+            if (is_solved_magic):
+                jump magic_sci_end
+            elif (is_solved_philo):
+                jump philo_sci_end
+        else:
+            jump hub_world
+
+# THIS COMMENT MARKS THE END OF SCIENCE WORLD
     
 
 
