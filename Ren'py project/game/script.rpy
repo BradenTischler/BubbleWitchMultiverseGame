@@ -703,8 +703,6 @@ label philosophyworld:
 
     scene bg philosophy with dissolve
     play music "philosophy.mp3"
-    "Wow. Time to go back to the Hub World."
-    jump hub_world
 
     P "Hark! Who enters my lair!?"
 
