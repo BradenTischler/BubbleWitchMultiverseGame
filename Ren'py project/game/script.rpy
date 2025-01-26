@@ -344,6 +344,11 @@ label scienceworld:
                 sr "Of course. What is it?"
                 jump sci_issue
 
+            "Can I leave?"
+                sr "I can't keep you here, if you must go."
+                sr "At least buy something on the wawy out, will you?"
+                jump hub_world
+
     label sci_solved:
         #do color change stuff
         "With those words, you feel a weight in the air lift."
@@ -1049,9 +1054,6 @@ label philosophyworld:
 
         $ is_solved_philo = True
 
-
-return
-
 label ending:
     "A strange sense of finality fills the air"
     "That celestial object between the shperes..."
@@ -1068,7 +1070,7 @@ label ending:
             "GAME OVER"
             "RETRY?"
             menu:
-                "Yeah sure.":
+                "Yeah, sure.":
                     jump ending
                 "Nah, I'm too cool for school, even if it kills me.":
                     return
@@ -1077,10 +1079,16 @@ label ending:
     elif is_solved_industry==False:
         jump magic_philo_end
     elif is_solved_magic==False:
-        jump philoindustry_end
+        jump philo_industry_end
     elif is_solved_philo==False:
-        jump magicindustry_end
-        
+        jump magic_industry_end
+  
+label magic_philo_end:
+    "You contact your allies in the worlds of magic and philosophy"
+    "Working together, you hatch a genius plan"
+    ""
+label philo_industry_end:
 
+label magic_industry_end:
     
-        
+return        
