@@ -1231,9 +1231,11 @@ label good_end_narration:
     what seems impossible when they work together!"
     """
 
-    "That said..."
+    # "That said..."
 
-    jump sequel_bait
+    # jump sequel_bait
+
+    jump fin_screen
 
 label sequel_bait:
     scene granite with dissolve
