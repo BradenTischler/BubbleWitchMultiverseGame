@@ -575,7 +575,7 @@ label magicworldexposition:
         "Sounds like some sort of vitamin.":
             show wildmyst #shocked
             wm "NO! It's not a VITAMIN!"
-            show wildmsyt #neutral
+            show wildmyst #neutral
             wm "Well, actually it is. Sort of."
         "Ah, of course. I know all about manganese.":
             show wildmyst #angry
@@ -659,7 +659,7 @@ label magicworldexposition:
         show wildmyst #happy
         wm "YEEHAW!"
         show main #neutral
-        "{cps=15}{colour=#880000}You learned the ways of the Magic World!{/color}{/cps}"
+        "{cps=15}{color=#880000}You learned the ways of the Magic World!{/color}{/cps}"
         $ has_magic_philo = True
         hide main
         hide wildmyst
@@ -768,8 +768,6 @@ label philosophyworld:
 
     scene bg philosophy with dissolve
     play music "philosophy.mp3"
-    "Wow. Time to go back to the Hub World."
-    jump hub_world
 
     P "Hark! Who enters my lair!?"
 
@@ -825,6 +823,8 @@ label philosophyworld:
             P "Well, there are many theories..."
 
             V """
+            {clear}
+            
             One day, my roomate told me how if you triangulate the velocity of the Austrlabus Valley's teloscope
             quite right, the object is {i}clearly{/i} a magnificent dragon that we must feast to every night, lest he
             be lonely and eat us! Of course, I'm so busy with my figures that planning a feast right now seems very hard,
@@ -1006,6 +1006,8 @@ label philosophyworld:
                 pass
 
         V '''
+        {clear}
+
         You're right. It was that debate that sparked all the good that people did: the arguing,
         the fierce determination, and yet the genuinely kind ones always manage to synthesize things
         and make things more that their parts. I understand. But I need to know: how can I trust myself
@@ -1034,6 +1036,8 @@ label philosophyworld:
             "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
                 pass
         V '''
+        {clear}
+
         You're right. I knew how to talk, and be jovial and accept people. And I learned how to trust
         people. But I forgot how to think, and that makes me a bad scientist and philosopher. I haven't
         really thought in a while. I got so caught up in all the different ways of doing things, I forgot
@@ -1046,4 +1050,37 @@ label philosophyworld:
         $ is_solved_philo = True
 
 
-    return
+return
+
+label ending:
+    "A strange sense of finality fills the air"
+    "That celestial object between the shperes..."
+    "The one that draws nearer at every breath"
+    "You suddenly understand that it's approach is inevitable"
+    mc "That thing is going to destroy us all!"
+    menu:
+        "Contact the witches!":
+            pass
+        "Somebody save me!":
+            pass
+        "Heh, I can handle it alone.":
+            "You could {i}not{/i} handle it alone."
+            "GAME OVER"
+            "RETRY?"
+            menu:
+                "Yeah sure.":
+                    jump ending
+                "Nah, I'm too cool for school, even if it kills me.":
+                    return
+    if is_solved_industry and is_solved_magic and is_solved_philo:
+        jump good_end
+    elif is_solved_industry==False:
+        jump magic_philo_end
+    elif is_solved_magic==False:
+        jump philoindustry_end
+    elif is_solved_philo==False:
+        jump magicindustry_end
+        
+
+    
+        
