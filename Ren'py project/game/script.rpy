@@ -726,7 +726,7 @@ label philosophyworld:
             P "Ah, is that so? Books are wonderful and give us so much good information, but your information is good, too! We can all learn so much from each other!"
 
         "I have to go now. My planet needs me.":
-            P "Oh, so soon! How inconvenient! Our fun was just beginning to blossom. À beintôt!"
+            P "Oh, so soon! How inconvenient! Our fun was just beginning to blossom. À bientôt!"
             jump hub_world
     
     if loopy_phil_1 == True:
