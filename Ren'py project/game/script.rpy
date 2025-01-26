@@ -27,7 +27,7 @@ define mc = Character("[mc_name]", image='main.png', kind=adv)
 define b = Character("Book", kind=nvl)
 define sr = Character("Sapona Ramune", image='sapona.png', kind=adv)
 define wm = Character("Wild Myst", image='wildmyst.png', kind=adv)
-define P = Character("Loopy Phil", image='phil.png', kind=adv
+define P = Character("Loopy Phil", image='phil.png', kind=adv)
 define V = Character("Loopy Phil", image='phil.png', kind=nvl)
 define r = Character("rat.jpg", image='rat.jpg', kind = adv)
 
@@ -36,7 +36,8 @@ image sapona = "sapona.png"
 image wildmyst = "wildmyst.png"
 image phil = "phil.png"
 image granite = "granite.png"
-imat rat = "rat.jpg"
+image rat = "rat.jpg"
+image french_end = "fin_screen.png"
 
 # defining consistent transforms for use
 
