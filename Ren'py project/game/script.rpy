@@ -1141,6 +1141,8 @@ label ending:
 
     b """
     
+    {clear}
+
     Hi there! Hope the job's going okay, and you're settling in! Just a quick thing you need to know:
 
     {clear}
@@ -1175,8 +1177,8 @@ label ending:
     
     "A strange sense of finality fills the air."
     "That celestial object between the shperes..."
-    "The one that draws nearer at every breath"
-    "You suddenly understand that it's approach is inevitable"
+    "The one that draws nearer at every breath."
+    "You suddenly understand that itss approach is inevitable."
     mc "That thing is going to destroy us all!"
     menu:
         "Contact the witches!":
@@ -1204,12 +1206,12 @@ label ending:
 label magic_philo_end:
     "You contact your allies in the worlds of magic and philosophy."
     "Working together, you hatch a genius plan."
-    show phil
+    show phil at right
     with moveinright
     "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and trajectory of the object."
     hide phil
     with moveoutright
-    show wildmyst
+    show wildmyst at right
     with moveinright
     "While Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
     hide wildmyst
@@ -1223,11 +1225,11 @@ label magic_philo_end:
 label philo_industry_end:
     "You contact your allies in the worlds of science and philosophy."
     "Working together, you concoct a wily scheme."
-    show phil
+    show phil at right
     with moveinright
     "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
     hide phil
-    show sapona
+    show sapona at right
     with moveinright
     "While Sapona and the worker's union manufacture a ship to intercept it."
     hide sapona
@@ -1243,12 +1245,12 @@ label philo_industry_end:
 label magic_industry_end:
     "You contact your allies in the worlds of magic and philosophy."
     "Working together, you figure yerselves a solution."
-    show wildmyst
+    show wildmyst at right
     with moveinright
     "Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
     hide wildmyst
     with moveoutright
-    show sapona
+    show sapona at right
     with moveinright
     "While Sapona and the worker's union manufacture a ship to intercept it."
     hide sapona
