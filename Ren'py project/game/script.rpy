@@ -27,16 +27,16 @@ define mc = Character("[mc_name]", image='main.png', kind=adv)
 define b = Character("Book", kind=nvl)
 define sr = Character("Sapona Ramune", image='sapona.png', kind=adv)
 define wm = Character("Wild Myst", image='wildmyst.png', kind=adv)
-define P = Character("Loopy Phil", image='phil.png', kind=adv
+define P = Character("Loopy Phil", image='phil.png', kind=adv)
 define V = Character("Loopy Phil", image='phil.png', kind=nvl)
-define r = Character("rat.jpg", image='rat.jpg', kind = adv)
+define r = Character("rat.jpg")
 
 image main = "main.png"
 image sapona = "sapona.png"
 image wildmyst = "wildmyst.png"
 image phil = "phil.png"
 image granite = "granite.png"
-imat rat = "rat.jpg"
+image rat = "rat.jpg"
 
 # defining consistent transforms for use
 
@@ -761,7 +761,8 @@ label philosophyworld:
             One day, my roommate told me how if you triangulate the velocity of the Austrlabus Valley's teloscope
             quite right, the object is {i}clearly{/i} a magnificent dragon that we must feast to every night, lest he
 
-            {}
+            {clear}
+            
             be lonely and eat us! Of course, I'm so busy with my figures that planning a feast right now seems very hard,
             but of course we must keep him happy! Another friend suggested that the object is a dancing elephant on a tightrope,
             and it's trying to perform to us and keep {i}us{/i} happy! Of course! A evil dragon that's hungry to eat us that
@@ -797,7 +798,7 @@ label philosophyworld:
 
     label expo_dump:
         # music gets sad and reflective
-        V '''
+        V """
         [elated]
         Well, one day I wasn't, and then I was. There's not much to tell there. Oh, but so much in between! Yes, that's the space I like.
         When I was born, the vivacious place full of life you see was barren, if you can believe it! It was a barren field of grass and dirt, if
@@ -828,7 +829,7 @@ label philosophyworld:
         [neutral]
         They got better after they had a sense of self, and after we all realized that complicated things have nuance.
         [this is a hint for how to solve the western world's problems]
-        '''
+        """
         # music returns to normal
         # elated
         P "So now, I take everyone's ideas seriously, no matter how absurd! People might be wrong sometimes, but by and large they're smart and capable!"
@@ -943,12 +944,12 @@ label philosophyworld:
             "Not all challenge is abuse. Philosophy needs rigorous debate.":
                 pass
 
-        V '''
+        V """
         You're right. It was that debate that sparked all the good that people did: the arguing,
         the fierce determination, and yet the genuinely kind ones always manage to synthesize things
         and make things more that their parts. I understand. But I need to know: how can I trust myself
         enough to trust I won't do what I did to my people again?
-        '''
+        """
 
         menu final_challenge:
 
@@ -971,7 +972,7 @@ label philosophyworld:
             
             "You need to take some time to think. Really {i}listen{/i} to yourself for once.":
                 pass
-        V '''
+        V """
         You're right. I knew how to talk, and be jovial and accept people. And I learned how to trust
         people. But I forgot how to think, and that makes me a bad scientist and philosopher. I haven't
         really thought in a while. I got so caught up in all the different ways of doing things, I forgot
@@ -979,13 +980,56 @@ label philosophyworld:
         I haven't always stood with, whether because I was mean or I was neglectful. No more. We are going to
         find this object, and now {i}exactly{/i} what it is, {i}scientifically!{/i}! And you know what? If 
         I can help other worlds out, I'll open my arms to them, too! Trust and challenge: that is the essense of being human!
-        '''
+        """
 
         $ is_solved_philo = True
 
-{new character: r = rat.png}
-
 label ending:
+
+    play music "rock.mp3"
+    scene bg hub with dissolve
+
+    show main at center
+    with moveinbottom
+    "You have a bad feeling about this. This place feels unfamiliar, unstable, somehow. And was that rock always so close!?" # earthquake SFX
+    play sound "fire.mp3"
+    with hpunch
+    "You see another book has arrived for you. At a loss of what to do, you decide to read what's there." # more violent earthquake SFX
+
+    b """
+    
+    Hi there! Hope the job's going okay, and you're settling in! Just a quick thing you need to know:
+
+    {clear}
+
+    The entire multiverse has been collapsing the entire time you've been on the job, and we're all going to 
+    die if we don't stop an interdimensional moon from destroying all worlds. 
+
+    {clear}
+    
+    Sorry, should have lead with that! 
+    
+    {clear}
+
+    We call it the Literal-Embodiment-of-Hate-Rock here because, well, it starting coming at us when the bubble witches outside of
+    the interdimensional realm started to isolate themselves and become fearful of others' ideas. No idea how {i}that{/i} happened! 
+    Again, so sorry! Thankfully, though, it's both the literal embodiment of hate {i}and{/i} a rock! Which means: you just need to 
+    get some of the bubble witches together and blow it up! Of course, if you could get at least a core trio of them together to 
+    ward it off forever, that would be ideal.
+
+    {clear}
+
+    Don't worry, though! If you get at least two of them together, at least that much should be enough of a starting point to start off with!
+    Again, again, sorry, sorry! It's just so weird adjusting to being a transcendental essence that can only communicate cryptically! Ciao brutta!
+
+    {clear}
+
+    But, wait, did you not do good on getting everyone together?
+    """
+
+    "Well..."
+    "...that's not ideal."
+    
     "A strange sense of finality fills the air."
     "That celestial object between the shperes..."
     "The one that draws nearer at every breath"
@@ -1074,173 +1118,147 @@ label magic_industry_end:
     "Times are tough for a while, but you are confident that eventually everyone can pull through."
     jump fin_screen
     
-label fin_screen:
-    
-    "You have a bad feeling about this. This place feels unfamiliar, unstable, somehow. And was that rock always so close!?" # earthquake SFX
-    "You see another book has arrived for you. At a loss of what to do, you decide to read what's there." # more violent earthquake SFX
+label good_end:
 
-    b:
-    """
-    Hi there! Hope the job's going okay, and you're settling in! Just a quick thing you need to know:
-
-    {clear}
-
-    The entire multiverse has been collapsing the entire time you've been on the job, and we're all going to 
-    die if we don't stop an interdimensional moon from destroying all worlds. 
-
-    {clear}
-    
-    Sorry, should have lead with that! 
-    
-    {clear}
-
-    We call it the Literal-Embodiment-of-Hate-Rock here because, well, it starting coming at us when the bubble witches outside of
-    the interdimensional realm started to isolate themselves and become fearful of others' ideas. No idea how {i}that{/i} happened! 
-    Again, so sorry! Thankfully, though, it's both the literal embodiment of hate {i}and{/i} a rock! Which means: you just need to 
-    get some of the bubble witches together and blow it up! Of course, if you could get at least a core trio of them together to 
-    ward it off forever, that would be ideal.
-
-    {clear}
-
-    Don't worry, though! If you get at least two of them together, at least that much should be enough of a starting point to start off with!
-    Again, again, sorry, sorry! It's just so weird adjusting to being a transcendental essence that can only communicate cryptically! Ciao brutta!
-    """
-
-    "Well..."
-    "...that's not ideal."
-    "But, wait, did you not do good on getting everyone together?"
     "And wait.." # flash
+    show main at left
+    with move
     "is that..." # flash
+    show sapona at leftish
+    show wildmyst at rightish
+    show phil at right
+    with moveinbottom
     "YES!! Some of your friends have come!" # flash if you got the good ending.
 
-	P "You..."
-	wm "You..."
-	sr "You..."
-		
-	P "It's been a long time since I could see anyone so bellicosely close-minded..."
-	wm "Well, it's been a long time since I've seen anyone so cold hearted..."
-	sr "Speak for yourselves! I would {i]never{/i} hire workers as lackadasical as you lot!"
-		
-	P "Yet, despite our differences, we need to come together, because I don't have the resources"
-	P "to do this myself. I need to learn to trust you."
-		
-	wm "And I think all y'all's plans are STUPID and if we just had a bit more time I'm sure I could get"
-	wm "a big FIREBALL BLAST to DESTROY everything! But, I suppose, I don't have time to figure that one out,"
-	wm "so I guess I need to trust y'all to take me down a notch so we can do this quickly."
-		
-	sr "Harumph! As if I'd be able to trust the likes of you! But I guess people need to be able to"
-	sr "ask for help while getting their own backyard trimmed, so I guess I'll step back on the latter"
-	sr "and put a foot forward on how to do the former."
-		
-	"Finally! People behaving like {i}people{/i}!
-		
-	P "My people and I have triangulated the location of Mr. Ma'am Mean Moon, as well as where it's going."
-	P "With the skills from your realms, its days are as numbered as there are cats in the ocean!"
-		
-	sr 'Hmph! This "end of the world" business is uninteresting in the extreme! But I suppose it's"
-	sr "Bad for profits, and without some concessions end up with riots and eternal death. Very well,"
-	sr "My infrastructure and labour reserves are at your beck and call. My engineers have proposed a rocket."
-		
-	P "I've already sent my engineers to help yours, Noodle-kun! I can't wait to work together after so much time alone!"
-		
-	sr "I can't say I return the favour. But yes, this partnership will be..."
-	sr "...interesting, and dare I say..."
-	sr "...fun."
-		
-	wm "Well, what are we waiting for!? My maginesium loaded onto that baby is going to EXPLODE THAT 
-	wm "DUMB ROCKET'S FACE INTO SMITHEREENS!!!"
-		
-	P "Well put, Wintery Mint! This gargantuan granite is no mach for the flowering power of partnership!"
-		
-	wm "And hey, we haven't let the most {i}important{/i} partner speak! [mc_name], you're the {i}real{/i} hero
-	wm "of this story!"
-		
-	P "Yeah. Without you, we would never have worked together! Thank you ever so!"
-		
-	sr "Pheh. Some congratulations are in order, I suppose."
-		
-	mc "...No."
-		
-	sr "Pardon?"
-		
-	mc "I didn't do anything. I just blubbered about figuring out a job I didn't understand. You and the"
-	mc "people around you were the ones to put your heads together to actually solve a problem. {i}you{/i}
-	mc "are the ones bending heaven and earth to save the multiverse!"
-		
-	P "That's true, but we all have our own agency in what happened. And your part to play, just by talking to people"
-	P "who wouldn't without you, is just as invaluable as any rocket headed to the sky!"
-		
-	wm "Yeah, don't beat yourself up! Self-pity is ANNOYING and WEAK! We all have a part to play in revolutionizing"
-	wm "the way we live our lives!"
-		
-	sr "Heh. I'm reticent to say it, but the brash one is right..."
-	sr "...on most accounts"
-		
-	mc "I suppose, on that, I feel..."
-		
-	menu I_need_to_go:
-			
-		"Jubilant! We've all saved the world!":
-			P "Excellent! I'm glad to hear it!
-			
-		"I'm just getting my accounts in order.":
-			sr "Good. As we all must."
-				
-		"Happy, but also kind of sentimental!? That was so fun!!"
-			wm "Yeah, you strangers are so much nicer than I thought!"
-			wm "The world should almost end more often!"
-			
-		"I did my part, and you did yours. I guess that's all we can do."
-			sr "Yes, we all have our part to play. A good assessment."
-			P "We fit in like a puzzle! We challenge, we build, and we grow!"
-			wm "Yeeeeeeeeeehawwwwwwwww!"
-				
-		mc "We were all in our bubbles before. But after stepping out and seeing the world, I think we all kind of know now — people
-		mc "can do anything, as long as they work together!"
-		
-		P "Together!"
-		
-		wm "Together!"
-		
-		sr "Everyone in their place, together."
-		
-		jump good_end_narration
-		
-		
+    P "You..."
+    wm "You..."
+    sr "You..."
+
+    P "It's been a long time since I could see anyone so bellicosely close-minded..."
+    wm "Well, it's been a long time since I've seen anyone so cold hearted..."
+    sr "Speak for yourselves! I would {i}never{/i} hire workers as lackadasical as you lot!"
+
+    P "Yet, despite our differences, we need to come together, because I don't have the resources to do this myself."
+    P "I need to learn to trust you."
+
+    wm "And I think all y'all's plans are STUPID and if we just had a bit more time I'm sure I could get a big FIREBALL BLAST to DESTROY everything!"
+    wm "But, I suppose I don't have time to figure that one out, so I guess I need to trust y'all to take me down a notch so we can do this quickly."
+
+    sr "Harumph! As if I'd be able to trust the likes of you!"
+    sr "But I guess people need to be able to ask for help while getting their own backyard trimmed..."
+    sr "So I suppose I can step back on the latter and put a foot forward on how to do the former."
+
+    "Finally! People behaving like {i}people{/i}!"
+
+    P "My people and I have triangulated the location of Mr. Ma'am Mean Moon, as well as where it's going."
+    P "With the skills from your realms, its days are as numbered as there are cats in the ocean!"
+
+    sr "Hmph! This \"end of the world\" business is uninteresting in the extreme!"
+    sr "But it's bad for profits, and without some concessions I'll end up with riots and eternal death."
+    sr "Very well, my infrastructure and labour reserves are at your beck and call. My engineers have proposed a rocket."
+
+    P "I've already sent my engineers to help yours, Noodle-kun! I can't wait to work together after so much time alone!"
+
+    sr "I can't say I will return the favour. But yes, this partnership will be..."
+    sr "...interesting, and dare I say..."
+    sr "...fun."
+
+    wm "Well, what are we waiting for!?"
+    wm "My maginesium loaded onto that baby is going to EXPLODE THAT DUMB ROCKET'S FACE INTO SMITHEREENS!!!"
+
+    P "Well put, Wintery Mint! This gargantuan granite is no mach for the flowering power of partnership!"
+
+    wm "And, hey, we haven't let the most {i}important{/i} partner speak! [mc_name], you're the {i}real{/i} hero of this story!"
+
+    P "Indeed. Without you, we would never have worked together! Thank you ever so!"
+
+    sr "Pheh. Some congratulations are in order, I suppose."
+
+    mc "...No."
+
+    sr "Pardon?"
+
+    mc "I didn't do anything. I just blubbered about figuring out a job I didn't understand."
+    mc "You and the people around you were the ones to put your heads together to actually solve a problem."
+    mc "{i}You{/i} are the ones bending heaven and earth to save the multiverse!"
+
+    P "That's true, but we all have our own agency in what happened."
+    P "And your part to play, just by talking to people who wouldn't without you, is just as invaluable as any rocket headed to the sky!"
+
+    wm "Yeah, don't beat yourself up! Self-pity is ANNOYING and NOT AWESOME!"
+    wm "We all have a part to play in revolutionizing the way we live our lives!"
+
+    sr "Heh. I'm reticent to say it, but the brash one is right..."
+    sr "...on most accounts."
+
+    mc "I suppose, on that, I feel..."
+
+    menu I_need_to_go:
+
+        "Jubilant! We've all saved the world!":
+            P "Excellent! I'm glad to hear it!"
+
+        "I'm just getting my accounts in order.":
+            sr "Good. As we all must."
+
+        "Happy, but also kind of sentimental!? That was so fun!!":
+            wm "Yeah, you strangers are so much nicer than I thought!"
+            wm "The world should almost end more often!"
+
+        "I did my part, and you did yours. I guess that's all we can do.":
+            sr "Yes, we all have our part to play. A good assessment."
+            P "We fit in like a puzzle! We challenge, we build, and we grow!"
+            wm "Yeeeeeeeeeehawwwwwwwww!"
+
+    mc "We were all in our bubbles before."
+    mc "But after stepping out and seeing the world, I think we all kind of know now - people can do anything, as long as they work together!"
+
+    P "Together!"
+
+    wm "Together!"
+
+    sr "Everyone in their place, together."
+
+    jump good_end_narration
+
+
 label good_end_narration:
-	scene bg black with dissolve
-	
-	"""
-	And so, our valient heroes saved the day, and used all their powers together to stop
-	the impending doom of the Literal-Embodiment-of-Hate-Rock. With Loopy Phil's compassion,
-	Wild Mysts maginesium, and Sapona Ramune's...
-	...business...
-	...acumen...
-	the stupid piece of granit was blasted to smithereen's (Myst's words). You did it!
-	But never forget the people who made that possible. Remember: people can only do
-	what seems impossible when they work together!"
-	"""
-	
-	"That said..."
-	
-	jump sequel_bait
-	
+    scene bg black with dissolve
+
+    """
+    And so, our valiant heroes saved the day, and used all their powers together to stop
+    the impending doom of the Literal-Embodiment-of-Hate-Rock. With Loopy Phil's compassion,
+    Wild Myst's passionate magic, and Sapona Ramune's...
+    ...business...
+    ...acumen...
+    the stupid piece of granit was blasted to smithereens (Myst's words). You did it!
+    But never forget the people who made that possible. Remember: people can only do
+    what seems impossible when they work together!"
+    """
+
+    "That said..."
+
+    jump sequel_bait
+
 label sequel_bait:
     scene granite with dissolve
-	sr "Is everything prepared for the market expansion, Mr. Rat?"
-	r "Yes, yes, don't rush me!"
-	sr "[mc_name] has reminded me of just how lucrative multiverse travel is."
-	sr "I've extracted all the profits I can from my world. It's time to expand."
-	sr "The gaping maw of capital demands it."
-	
-	r 'Yes, yes, I\'m getting all the systems organized to prepare for your "business expansion." But don\'t these plans seem to be...'
-	
-	sr "I care little for ethics. So long as there is a world, there is profit to be had, and I am prepared to be the one to make those profits."
-	
-	r "So you can have a fancier life than you already do?"
-	
-	sr "...someone will do this. Be thankful that person is {i]me{/i}.
-	
-	
-    {À suivre screen}
+    sr "Is everything prepared for the market expansion, Mr. Rat?"
+    r "Yes, yes, don't rush me!"
+    sr "[mc_name] has reminded me of just how lucrative multiverse travel is."
+    sr "I've extracted all the profits I can from my world. It's time to expand."
+    sr "The gaping maw of capital demands it."
+
+    r "Yes, yes, I'm getting all the systems organized to prepare for your \"business expansion.\" But don't these plans seem to be..."
+
+    sr "I care little for ethics. So long as there is a world, there is profit to be had, and I am prepared to be the one to make those profits."
+
+    r "So you can have a fancier life than you already do?"
+
+    sr "...someone will do this. Be thankful that person is {i}me{/i}."
+
+label fin_screen:
+    scene bg fin_screen
+
+    pause 4.0
+
     return
