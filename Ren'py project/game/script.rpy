@@ -3,6 +3,7 @@
 # name of the character.
 
 define mc = Character("[mc_name]", image='main.png', kind=bubble)
+define b = Character("Book", kind=nvl)
 define sr = Character("Sapona Ramune", image='sapona.png', kind=bubble)
 define wm = Character("Wild Myst", image='wildmyst.png', kind=bubble)
 define P = Character("Loopy Phil", image='phil.png', kind=bubble)
@@ -29,43 +30,77 @@ label start:
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
-    # variables
-    $ max_jumps = 4
-    $ current_jumps = 0
-    $ mc_name = ""
-    $ has_magic_philo = False
-    $ has_philo_philo = False
-    $ has_industry_philo = False
-    $ has_magic_intro = False
-    $ has_philo_intro = False
-    $ has_industry_intro = False
-    $ is_solved_industry = False
-    $ is_solved_magic = False
-    $ is_solved_philo = False
-    $ has_skipped_sciphilodialogue = False #if the player doesn't bother to ask the right question, makes it so they don't need to go menuing to find it again
-    $ knows_industry_issue = False #if the player has discovered the problem facing the world, hey can bring it up again without the menus
-    $ industry_bored = False #if the player answers boredom for why they entered science world, they get a sales pitch.
-    $ has_witch_watch_info = False
-
-    scene bg hub
+    scene bg black
     play music "hub.mp3"
-    # These display lines of dialogue.
-
+    "You don't know where you are."
+    "It's somewhere dark and silent... but perfectly calm."
+    "You force your eyes open."
+    scene bg hub with dissolve
+    pause 1.5
+    "You see void... and floating platforms... and bubbles... and yourself."
     show main at center
     with moveinbottom
     python:
-        mc_name = renpy.input("What is your name?")
+        mc_name = renpy.input("This is you. What is your name?")
         mc_name = mc_name.strip() or "Witchley"
-    mc "Where should I go today?"
+    mc "This place is..."
+    menu firstchoice:
+        "Weird.":
+            mc "I bet the laws of physics don't even apply here."
+            hide main
+            with moveoutright
+            show main at center
+            with moveinbottom
+            hide main
+            with moveoutleft
+            show main at center
+            with moveinbottom
+            mc "Yep. That's what I thought."
+        "Depressing.":
+            show main #confused
+            mc "Maybe I should just go back to sleep and hope this is all a bad dream."
+        "Fun!":
+            show main #happy
+            mc "I wonder if there are any other neat things around here?"
+    "You notice a book lying open on the main platform."
+    "It reads..."
+    b "Dear newest Witch,"
+    b "This interdimensional space is your home now."
+    b "However, your destiny is elsewhere."
+    b "You must bridge the worlds, or all will fall to ruin."
+    b "Sorry I can't write more, but I'm running out of time."
+    b "Also, I don't really like this pen."
+    b "Good luck. Bye!"
+    mc "Hmmm... this book makes me feel..."
+    menu bookchoice:
+        "Spooky. I want to throw it away.":
+            "You toss the book into the void, but it just floats there."
+            mc "Great."
+        "Important. I want to treasure it.":
+            "You close the book and gently set it back down in its place on the platform."
+            show main #happy
+            mc "There. Perfect."
+            show main #neutral
+        "Frustrated. I want to rip it to pieces.":
+            show main #angry
+            "You rip the pages of the book apart in a wild frenzy!"
+            mc "Yaaargh!"
+            "But the pieces just float around and keep poking you in the eye."
+            show main #confused
+            mc "Yaargh."
+            show main #neutral
+    mc "Well, I guess I'm supposed to go to those bubbles."
+    mc "Where to first?"
     menu travel:
-        "To the science world.":
+        "To the blue world.":
             jump scienceworld
-        "To the magic world.":
+        "To the red world.":
             jump magicworld
-        "To the philosophy world.":
+        "To the green world.":
             jump philosophyworld
 
     # This ends the game.
+    # Probably simplify things by using the separate hub_world label below and not jumping back to this start label.
 
     return
 
@@ -74,7 +109,7 @@ label hub_world:
 
 label scienceworld:
 
-    scene bg science
+    scene bg science with dissolve
     play music "science.mp3"
     if has_industry_intro==False:
         #introduction
@@ -299,7 +334,7 @@ label scienceworld:
 
 label magicworld:
 
-    scene bg magic
+    scene bg magic with dissolve
     play music "magic.mp3"
     show main at left #neutral
     with moveinleft
@@ -484,7 +519,7 @@ label magicworldproblems:
 
 label philosophyworld:
 
-    scene bg philosophy
+    scene bg philosophy with dissolve
     play music "philosophy.mp3"
     "Wow. Time to go back to the Hub World."
     jump start
