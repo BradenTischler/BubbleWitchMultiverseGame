@@ -1,7 +1,7 @@
 # The script of the game goes in this file.
 
   # variables
-default max_jumps = 4
+default max_jumps = 5
 default current_jumps = 0
 default mc_name = ""
 default has_magic_philo = False
@@ -322,7 +322,7 @@ label scienceworld:
                                 sr "...I had not thought of it that way."
                                 sr "I think you may actually be right."
                                 sr "Who knew a nothing-witch could be so wise?"
-                                "{cps=15}{color=#0066FF}You helped the Magic World get out of their bubble!{/color}{/cps}"
+                                "{cps=15}{color=#0066FF}You helped the Science World get out of their bubble!{/color}{/cps}"
                                 $ is_solved_industry = True
                                 jump sci_solved
                     "How can you really be sure the reason for this strike is the lack of vacation days?" if has_philo_philo:
