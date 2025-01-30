@@ -151,10 +151,10 @@ label hub_world:
     show moon at topright
     play music "hub.mp3"
     "You return to your home, the empty interdimensional space."
-    mc "Where to next?"
     if current_jumps >= max_jumps:
         if (has_industry_philo and has_magic_philo) or (has_industry_philo and has_philo_philo) or (has_magic_philo and has_philo_philo):
             jump ending
+    mc "Where to next?"
     menu travelagain:
         "To the left-most world.":
             $ if current_jumps<max_jumps: current_jumps += 1
@@ -178,7 +178,7 @@ label scienceworld:
         "A soft neon glow fills your vision."
         "After some time of aimless wandering, a large black limo abruptly pulls in front of you."
         "Out from the vehicle steps an imposing but clean-cut creature."
-        show sapona at right
+        show sapona right at right
         with moveinright
         sr "Welcome, traveller."
         sr "What brings you to our grand metropolis?"
@@ -201,7 +201,7 @@ label scienceworld:
         jump sci_main
     else:
         #main menu, where you go if you have been here already
-        #show sapona
+        show sapona right
         sr "Oh, you again."
         sr "Welcome back. What can I do for you?"
         menu sci_main:
@@ -851,7 +851,7 @@ label philosophyworld:
     show main at left
     with moveinleft
     "You step through the portal into a strange, very musty room."
-    show phil at right
+    show phil right at right
     with moveinright
     P "Hark! Who enters my lair!?"
 
@@ -1218,12 +1218,12 @@ label ending:
 label magic_philo_end:
     "You contact your allies in the worlds of magic and philosophy."
     "Working together, you hatch a genius plan."
-    show phil at right
+    show phil right at right
     with moveinright
     "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and trajectory of the object."
     hide phil
     with moveoutright
-    show wildmyst at right
+    show wildmyst right at right
     with moveinright
     "While Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
     hide wildmyst
@@ -1237,11 +1237,11 @@ label magic_philo_end:
 label philo_industry_end:
     "You contact your allies in the worlds of science and philosophy."
     "Working together, you concoct a wily scheme."
-    show phil at right
+    show phil right at right
     with moveinright
     "Loopy Phil and the academy calculate the exact size, diameter, mass, distance and tragectory of the object."
     hide phil
-    show sapona at right
+    show sapona right at right
     with moveinright
     "While Sapona and the worker's union manufacture a ship to intercept it."
     hide sapona
@@ -1257,12 +1257,12 @@ label philo_industry_end:
 label magic_industry_end:
     "You contact your allies in the worlds of magic and philosophy."
     "Working together, you figure yerselves a solution."
-    show wildmyst at right
+    show wildmyst right at right
     with moveinright
     "Wild Myst rounds up a posse of fire mages to blast that varmint outta the sky." 
     hide wildmyst
     with moveoutright
-    show sapona at right
+    show sapona right at right
     with moveinright
     "While Sapona and the worker's union manufacture a ship to intercept it."
     hide sapona
@@ -1282,8 +1282,8 @@ label good_end:
     with move
     "is that..." # flash
     show sapona at leftish
-    show wildmyst at rightish
-    show phil at right
+    show wildmyst right at rightish
+    show phil right at right
     with moveinbottom
     "YES!! Some of your friends have come!" # flash if you got the good ending.
 
