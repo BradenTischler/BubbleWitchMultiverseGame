@@ -34,11 +34,16 @@ define V = Character("Loopy Phil", image='phil.png', kind=nvl, color="#00BB00")
 define r = Character("rat.jpg")
 
 image main = "main.png"
+image main right = Transform("main.png", xzoom=-1)
 image sapona = "sapona.png"
+image sapona right = Transform("sapona.png", xzoom=-1)
 image wildmyst = "wildmyst.png"
+image wildmyst right = Transform("wildmyst.png", xzoom=-1)
 image phil = "phil.png"
+image phil right = Transform("phil.png", xzoom=-1)
 image granite = "granite.png"
 image rat = "rat.jpg"
+image moon = "Mimas_Cassini.png"
 
 # defining consistent transforms for use
 
@@ -76,7 +81,7 @@ label start:
             mc "I bet the laws of physics don't even apply here."
             hide main
             with moveoutright
-            show main at rightish
+            show main right at rightish
             with moveinbottom
             hide main
             with moveoutleft
@@ -343,7 +348,7 @@ label scienceworld:
                 sr "We keep them running 24/7, just in case a guest comes along."
                 sr "Happens about once a century or so, but the jobs it creates are well worth it anyway."
                 sr "Besides, what use is all this wealth if we can't show it off when the opportunity arises?"
-                $ industry_bored = False
+                $ industry_bored = False     
                 jump sci_main
 
             "About your job earlier..." if has_skipped_sciphilodialogue:

@@ -7,3 +7,5 @@ Ren'py project/game/saves/navigation.json
 *.rpyb
 /BubbleWitchMultiverseGame-1.0-dists
 Ren'py project/progressive_download.txt
+*.rpyc
+Ren'py project/traceback.txt
