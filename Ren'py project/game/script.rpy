@@ -35,12 +35,19 @@ define r = Character("rat.jpg")
 
 image main = "main.png"
 image main right = Transform("main.png", xzoom=-1)
+image main left = Transform("main.png", xzoom=1)
 image sapona = "sapona.png"
 image sapona right = Transform("sapona.png", xzoom=-1)
+image sapona left = Transform("sapona.png", xzoom=1)
 image wildmyst = "wildmyst.png"
 image wildmyst right = Transform("wildmyst.png", xzoom=-1)
+image wildmyst left = Transform("wildmyst.png", xzoom=1)
 image phil = "phil.png"
 image phil right = Transform("phil.png", xzoom=-1)
+image phil left = Transform("phil.png", xzoom=1)
+# character portraits default to left, but if you show right first you need to specify left to change it
+# "right" and "left" here refers to how the character would face if they were on that side of the screen, not what direction they are facing
+# i understand this is confusing, but i don't want to go through the code and change all the lefts to right and vice versa, if you want to do it feel free
 image granite = "granite.png"
 image rat = "rat.jpg"
 
@@ -201,7 +208,11 @@ label scienceworld:
         jump sci_main
     else:
         #main menu, where you go if you have been here already
-        show sapona right
+        show main at left
+        with moveinleft
+        "Returning to the neon city, you are surprised to find the diminuative creature already waiting for you."
+        show sapona right at right
+        with moveinright
         sr "Oh, you again."
         sr "Welcome back. What can I do for you?"
         menu sci_main:
@@ -355,7 +366,7 @@ label scienceworld:
                 sr "We keep them running 24/7, just in case a guest comes along."
                 sr "Happens about once a century or so, but the jobs it creates are well worth it anyway."
                 sr "Besides, what use is all this wealth if we can't show it off when the opportunity arises?"
-                $ industry_bored = False     
+                $ industry_bored = False
                 jump sci_main
 
             "About your job earlier..." if has_skipped_sciphilodialogue:
@@ -395,14 +406,14 @@ label magicworld:
     with moveinleft
     "You step out of the portal into a strange place."
     if (has_magic_intro==True):
-        show wildmyst at right #neutral
+        show wildmyst right at right #neutral
         with moveinright
         jump magicrootdecision
     "Dashing down the steps of a building is a figure who seems to have been expecting you."
-    show wildmyst at right #shocked
+    show wildmyst right at right #shocked
     with moveinright
     wm "It's YOU!"
-    show wildmyst at left #neutral
+    show wildmyst right at left #neutral
     with move
     play sound "thud.mp3"
     with hpunch
@@ -411,26 +422,26 @@ label magicworld:
     wm "WELCOME!"
     menu reactionfromground:
         "Okay. Help me up now, please.":
-            show wildmyst at center
+            show wildmyst right at center
             with move
             show main at left #neutral
             with moveinbottom
             wm "Oh, you're no fun."
         "Hey! Watch where you're going!":
-            show wildmyst at center #happy
+            show wildmyst right at center #happy
             with move
             show main at left #neutral
             with moveinbottom
             wm "Oooh! You've got a temper on you. I like it!"
             mc "That makes one of us."
         "THANK YOU!":
-            show wildmyst at center #shocked
+            show wildmyst right at center #shocked
             with move
             show main at left #neutral
             with moveinbottom
             wm "That's right! Let's shout our excitement from the hilltops. YAY!"
             mc "HOORAY?"
-    show wildmyst at right #neutral
+    show wildmyst right at right #neutral
     with move
     wm "SO! My name is Wild Myst and you are the new Witch of the Watch."
     show main #confused
@@ -440,29 +451,30 @@ label magicworld:
         "So, you're in charge around here?":
             wm "Yep, basically. I'm the Witch who controls the craft of magic and I lead this world."
         "Wild Myst is a COOL name!":
-            show wildmyst #happy
+            show wildmyst right #happy
             wm "I know, right? A fitting name for the Witch of magic-craft and leader of this amazing world!"
-            show wildmyst #neutral
+            show wildmyst right #neutral
         "Can you take me to your boss already?":
             wm "Boss?"
-            show wildmyst #angry
+            show wildmyst right #angry
             wm "HEY! I {i}am{/i} the boss around here!"
             wm "Don't you know a fellow Witch when you see one? I control the craft of magic, so I get to be the leader!"
             mc "Whoopsie."
-            show wildmyst #neutral
+            show wildmyst right #neutral
     wm "Anyway, it's good that you're visiting. This is a place where everyone is free to be themselves and cast magic spells all the time!"
-    show wildmyst #angry
+    show wildmyst right #angry
     wm "Like a FIRE SPELL!"
     play sound "fire.mp3"
     with vpunch
     mc "Aaaah!"
-    show wildmyst #neutral
+    show wildmyst left #neutral
+    with None
     hide wildmyst
     with moveoutright
     wm "Okay. BYE!"
     show main #confused
     mc "What? Wait!"
-    show wildmyst at right #neutral
+    show wildmyst right at right #neutral
     with moveinright
     wm "Oh yeah. You probably came here for some reason, right?"
     mc "(Finally.)"
@@ -473,9 +485,11 @@ label magicworld:
         "This world is about more than magic, right?" if done_magic_tour==False:
             jump magicworldexposition
         "Actually, can we continue that tour?" if magic_tour_suspended==True:
-            show wildmyst #happy
+            show wildmyst right #happy
             wm "YAY! I knew you secretly LOVED my tour!"
             mc "(That's not really what I said, but sure.)"
+            show wildmyst left
+            with None
             hide wildmyst
             hide main
             with moveoutright
@@ -485,10 +499,10 @@ label magicworld:
         "Are there any problems in this world I should know about?":
             jump magicworldproblems
         "I have to go now.":
-            show wildmyst #shocked
+            show wildmyst right #shocked
             wm "WHAT?! ALREADY?!"
             mc "Yep."
-            show wildmyst #neutral
+            show wildmyst right #neutral
             wm "Okay. Come back soon."
             hide main
             with moveoutleft
@@ -498,55 +512,57 @@ label magicworld:
 label witchwatchinfo:
 
     wm "Ummm... it's been a long time, so I'm not really sure."
-    show wildmyst #happy
+    show wildmyst right #happy
     wm "I remember them visiting and asking questions. I got to show them around!"
-    show wildmyst #angry
+    show wildmyst right #angry
     wm "It's nice to have visitors as long as they aren't STUPID or always JUDGING us!"
     show main #happy
     mc "Well, I'm not planning on being stupid or judgemental on this visit. Maybe next time."
-    show wildmyst #neutral
+    show wildmyst right #neutral
     wm "Good. Haha."
     wm "..."
-    show wildmyst #shocked
+    show wildmyst right #shocked
     wm "WAIT! I remember something else."
     wm "One Witch of the Watch used to say something about \"the bubble bursting\" but I never knew what they meant."
     show main #confused
     mc "Yeah. That's pretty vague."
-    show wildmyst #neutral
+    show wildmyst right #neutral
     wm "Sorry I don't remember anything else."
     menu witchwatchinforeaction:
         "Well, you still gave me a little bit of context.":
             wm "Yeah, I guess."
             wm "..."
-            show wildmyst #angry
+            show wildmyst right #angry
             wm "FIRE SPELL!"
             play sound "fire.mp3"
             with vpunch
             hide main
             with moveoutbottom
             mc "Aaaah!"
-            show wildmyst #happy
+            show wildmyst right #happy
             wm "That always makes me feel better."
             show main at left #confused
             with moveinbottom
         "How uninformative.":
-            show wildmyst #angry
+            show wildmyst right #angry
             wm "That's RUDE. You said you WEREN'T going to be JUDGEMENTAL!"
             mc "Whoopsie."
-            show wildmyst #neutral
+            show wildmyst right #neutral
         "YOU were very HELPFUL!":
-            show wildmyst #happy
+            show wildmyst right #happy
             wm "I KNOW!"
-            show wildmyst #neutral
+            show wildmyst right #neutral
     $ has_witch_watch_info = True
     jump magicrootdecision
 
 label magicworldexposition:
 
     $ done_magic_tour = True
-    show wildmyst #happy
+    show wildmyst right #happy
     wm "You'd better believe it, FRIEND!"
     wm "Come with me and I'll show you around."
+    show wildmyst left
+    with None
     hide wildmyst
     with moveoutright
     hide main
@@ -588,12 +604,15 @@ label magicworldexposition:
             show wildmyst #happy
             "You really seem to GET what we're all about HERE!."
             show wildmyst #happy
+    show wildmyst right
+    show main right
+    with None
     hide wildmyst
     hide main
     with moveoutleft
     wm "Let's continue the tour."
-    show wildmyst at rightish #neutral
-    show main at right #neutral
+    show wildmyst right at rightish #neutral
+    show main right at right #neutral
     with moveinright
     "Next, you descend the hill and come to a stop outside the entrance to a mineshaft."
     "We have mines like this all over our world. It's where we get our maginesium from."
@@ -601,45 +620,51 @@ label magicworldexposition:
         "Maginesium? What's that, exactly?":
             wm "I'm glad you asked."
         "Sounds like some sort of vitamin.":
-            show wildmyst #shocked
+            show wildmyst right #shocked
             wm "NO! It's not a VITAMIN!"
-            show wildmyst #neutral
+            show wildmyst right #neutral
             wm "Well, actually it is. Sort of."
         "Ah, of course. I know all about manganese.":
-            show wildmyst #angry
+            show wildmyst right #angry
             wm "It's not MANGANESE!"
-            show wildmyst #neutral
+            show wildmyst right #neutral
             wm "Manganese is a metallic element used in rubber, glass, ceramics, and stainless steel alloys."
             mc "You sure know a lot about mining."
-            show wildmyst #happy
+            show wildmyst right #happy
             wm "Yes, I do!"
-            show wildmyst #neutral
+            show wildmyst right #neutral
             wm "Anyway..."
     wm "Maginesium is the root of all magical energy on our world."
     wm "It can be used to make magical artifacts like my super cool badge-wand."
     wm "You can also consume small amounts of it to boost your own magical powers."
     mc "Nifty."
-    show wildmyst #happy
+    show wildmyst right #happy
     wm "Yes, it is. We have a lot of it here, which is why our world is so AWESOME!"
-    show wildmyst
+    show wildmyst right
     wm "Okay, I think we can move on to the next part of our tour."
     menu magictourdecision:
         "Goody.":
             pass
         "Actually, I'm pretty bored of this tour.":
             $ magic_tour_suspended = True
-            show wildmyst #shocked
+            show wildmyst right #shocked
             wm "Wha...?"
-            show wildmyst #neutral
+            show wildmyst right #neutral
             wm "That's too bad, but I will respect your choice."
+            show wildmyst left
+            show main left
+            with None
             hide wildmyst
             hide main
             with moveoutright
             wm "Let's go back to where we started."
-            show wildmyst at right
+            show wildmyst right at right
             show main at left
             with moveinbottom
             jump magicrootdecision
+    show wildmyst left
+    show main left
+    with None
     hide wildmyst
     hide main
     with moveoutright
@@ -688,12 +713,15 @@ label magicworldexposition:
         show main #neutral
         "{cps=15}{color=#FF0000}You learned the ways of the Magic World!{/color}{/cps}"
         $ has_magic_philo = True
+        show wildmyst right
+        show main right
+        with None
         hide main
         hide wildmyst
         with moveoutleft
         mc "Let's go back outside."
         show main at left #neutral
-        show wildmyst at right #neutral
+        show wildmyst right at right #neutral
         with moveinbottom
         jump magicrootdecision
 
@@ -703,21 +731,21 @@ label magicworldexposition:
 label magicworldproblems:
 
     $ done_magic_problem_intro = True
-    show wildmyst #happy
+    show wildmyst right #happy
     wm "No way! This world is a happy place."
     menu insistmagic:
         "Oh. Okay, then.":
             jump magicrootdecision
         "Come on. There must be SOMETHING!":
             pass
-    show wildmyst #neutral
+    show wildmyst right #neutral
     wm "Well, I don't know... but you asked with such enthusiasm..."
     wm "I guess..."
-    show wildmyst #shocked
+    show wildmyst right #shocked
     wm "I don't know if I can TRUST you!"
     menu insistfurther:
         "Yeah, you probably can't.":
-            show wildmyst #neutral
+            show wildmyst right #neutral
             wm "See? Exactly."
             jump magicrootdecision
         "Please. I think my destiny has something to do with helping you.":
@@ -726,23 +754,23 @@ label magicworldproblems:
     wm "I suppose I can trust a Witch of the Watch. They've never done anything to harm us in the past."
     wm "You see... there is one thing..."
     mc "What is it?"
-    show wildmyst at center
+    show wildmyst right at center
     with move
     "Wild Myst moves closer and speaks in a quieter voice, so as not to be overheard."
     wm "My people recently discovered a new vein of maginesium, the resource that powers our magic, deep underground."
-    show wildmyst #happy
+    show wildmyst right #happy
     wm "It's the biggest deposit ever found, which is actually PRETTY exciting!"
-    show wildmyst #shocked
+    show wildmyst right #shocked
     wm "But it runs under the lands of many different towns and farms..."
     wm "So it's not clear who should have the right to start mining the maginesium."
     wm "And two competing groups have formed, claiming the resource belongs to them."
-    show wildmyst #angry
+    show wildmyst right #angry
     wm "They've actually started FIGHTING with MAGIC!"
     wm "It's FIRE SPELLS all over the place!"
     play sound "fire.mp3"
     with vpunch
     mc "Aaaah!"
-    show wildmyst #neutral
+    show wildmyst right #neutral
     wm "Like that one."
     menu badadvice:
         "Can't you just use your powers to mine the resource yourself?":
@@ -750,9 +778,9 @@ label magicworldproblems:
         "Can't you just punish the people who have started fighting?":
             wm "Normally, I would, but too many people are involved now."
     wm "Usually, I have a very clear picture of what is right and what is wrong."
-    show wildmyst #shocked
+    show wildmyst right #shocked
     wm "But both sides are huge! And I can't decide which one is right..."
-    show wildmyst #neutral
+    show wildmyst right #neutral
     wm "I've never had to deal with anything like this before."
     hide wildmyst
     with moveoutbottom
@@ -760,14 +788,14 @@ label magicworldproblems:
     mc "(She's thrown herself to the ground and is now lying in a pitiful heap.)"
     mc "Hey, I'm sure every problem can be solved."
     mc "Maybe I can help?"
-    show wildmyst at leftish #happy
+    show wildmyst right at leftish #happy
     with moveinbottom
     wm "YES! You're a Witch of the Watch! You've come to help us in our hour of NEED!"
     wm "PLEASE! Tell me you know what to do!"
     menu solvemagic:
         "Actually, I don't have any ideas right now.":
             wm "Awww..."
-            show wildmyst at right
+            show wildmyst right at right
             with move
             wm "Well, on the off chance that you come up with something, please let me know."
             mc "'Kay."
@@ -775,13 +803,13 @@ label magicworldproblems:
             jump magicrootdecision
         "I learned something from another world that might help." if has_philo_philo:
             $ magic_problem_suspended = False
-            show wildmyst at center
+            show wildmyst right at center
             with move
             wm "Another world? Really?"
-            show wildmyst #angry
+            show wildmyst right #angry
             wm "But those scientists and philosophers are so SNOOTY! They don't know ANYTHING about love or justice!"
             mc "Maybe not, but the philosophers do know something about ideas."
-            show wildmyst #neutral
+            show wildmyst right #neutral
             mc "You're seeing your problem in black and white. You think you have to make a moral judgement between only two possibilities."
             mc "But the philosophers would tell you that there are always infinite possibilities, shades between extremes."
             wm "What?!"
@@ -791,30 +819,30 @@ label magicworldproblems:
             wm "Hmmm... Let me think..."
             hide wildmyst
             with moveoutbottom
-            show wildmyst at right
+            show wildmyst right at right
             with moveinright
             hide wildmyst
             with moveoutbottom
-            show wildmyst at center
+            show wildmyst right at center
             with moveinright
             hide wildmyst
             with moveoutbottom
-            show wildmyst at right #happy
+            show wildmyst right at right #happy
             wm "OKAY! You convinced me."
-            show wildmyst #neutral
+            show wildmyst right #neutral
             wm "Maybe I could find a way for the groups to share the mine?"
             mc "Yep. Or you could ask if any of them have ideas to fairly decide the issue. Trust in them."
             wm "Yeah..."
             wm "..."
             wm "Well, I have to say that I'm feeling a lot better, like I can lead my people through the next steps!"
-            show wildmyst #happy
+            show wildmyst right #happy
             wm "Actually, it makes me so happy that..."
             wm "FIRE SPELL!"
             play sound "fire.mp3"
             with vpunch
             mc "(Huh. That didn't surprise me at all. Guess I got used to it.)"
             wm "Seriously... just..."
-            show wildmyst at left
+            show wildmyst right at left
             with move
             play sound "thud.mp3"
             with hpunch
@@ -828,7 +856,7 @@ label magicworldproblems:
                     pass
                 "HAPPY TO DO IT!":
                     pass
-            show wildmyst at right #neutral
+            show wildmyst right at right #neutral
             with move
             wm "I guess... the other worlds have some good ideas after all..."
             "Deep down, you feel you have achieved something important - something you were meant to do."
