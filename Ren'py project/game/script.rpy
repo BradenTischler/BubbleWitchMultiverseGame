@@ -43,7 +43,12 @@ image phil = "phil.png"
 image phil right = Transform("phil.png", xzoom=-1)
 image granite = "granite.png"
 image rat = "rat.jpg"
-image moon = "Mimas_Cassini.png"
+
+transform moon_trans:
+    xsize (200+(20*current_jumps))
+    ysize (200+(20*current_jumps))
+
+image moon = At("moon.png", moon_trans)
 
 # defining consistent transforms for use
 
@@ -68,6 +73,7 @@ label start:
     "It's somewhere dark and silent... but perfectly calm."
     "You force your eyes open."
     scene bg hub with dissolve
+    show moon at topright
     pause 1.5
     "You see void... and floating platforms... and bubbles... and yourself."
     show main at leftish
@@ -142,6 +148,7 @@ label start:
 label hub_world:
 
     scene bg hub with dissolve
+    show moon at topright
     play music "hub.mp3"
     "You return to your home, the empty interdimensional space."
     mc "Where to next?"
@@ -150,13 +157,13 @@ label hub_world:
             jump ending
     menu travelagain:
         "To the left-most world.":
-            $ current_jumps += 1
+            $ if current_jumps<max_jumps: current_jumps += 1
             jump scienceworld
         "To the middle-most world.":
-            $ current_jumps += 1
+            $ if current_jumps<max_jumps: current_jumps += 1
             jump magicworld
         "To the right-most world.":
-            $ current_jumps += 1
+            $ if current_jumps<max_jumps: current_jumps += 1
             jump philosophyworld  
 
 label scienceworld:
